@@ -22,7 +22,7 @@
   $row = mysqli_num_rows($result);
 
   if (!$row) {
-    echo "<script>alert('密码错误，请重新输入');location='http://127.0.0.1:5500/frontend/src/html/login.html'</script>";
+    echo "<script>alert('用户名或密码错误，请重新输入');location='http://127.0.0.1:5500/frontend/src/html/login.html'</script>";
   } else {
     echo "<script>location='http://127.0.0.1:5500/frontend/src/html/home.html'</script>";
   };

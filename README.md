@@ -14,11 +14,25 @@
 
 ## Backend First
 
-## 设计手册
+### TODO Lists
 
-- [Vue](https://cn.vuejs.org/) + [quasar](http://www.quasarchs.com/) + PHP
+- 🥱 TODO
 
-- 文件名，大写，如：Home.vue
+- 👋 Doing
+  - 👉 前端登录拦截 ing...
+  - 👉 密码加盐 ing...
+- 👌 Done
+
+  - 👉 [登录](backend/login.php) √
+  - 👉 [注册](backend/register.php) √
+
+### 一些实现
+
+- [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
+
+## Frontend
+
+### 设计手册
 
 - 颜色
   - 蓝 #409EFF
@@ -31,22 +45,3 @@
   - 浅灰 #dcdfe6
   - 浅白 #fafafa
   - 白 #ffffff
-
-## 技术栈
-
-- 👌 finished
-  - HTML √
-  - CSS √
-- 👋 ing...
-  - JS
-  - Vue
-  - Java
-- 🤪 tolearn
-  - Spring
-  - mini Program
-
-## 一些实现
-
-- [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
-
-## Log
