@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="bathtown">
+    <meta name="COPYRIGHT" content="Bathtub">
+    <meta name="description" content="search page">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="icon" href="../../img/Bathtub.png" type="image/x-icon">
+    <base target="_self">
+    <title>search</title>
+</head>
+
+<body>
+    <header id="laptopHeader">
+        <ul>
+            <li>
+                <a href="../html/bathtub.html" class="logo">
+                    <span class="fa fa-bathtub"></span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/home.html" class="home">
+                    <span>
+                        <span class="fa fa-home"></span>
+                        Home
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="../html/browser.html" class="browser">
+                    <span class="fa fa-cloud"></span>
+                    Browser
+                </a>
+            </li>
+            <li>
+                <a href="../html/search.html" class="search">
+                    <span class="imlooking">
+                        <span class="fa fa-search"></span>
+                        Search
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a class="account">
+                    My Account <span class="fa fa-angle-down"></span>
+                </a>
+                <ul>
+                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
+                    <li>
+                        <a href="../html/upload.html">
+                            <span class="fa fa-cloud-upload"></span>
+                            Upload
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/myGallery.html">
+                            <span class="fa fa-photo"></span>
+                            My Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/myHearts.html">
+                            <span class="fa fa-heart"></span>
+                            My Hearts
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_self" href="../html/login.html">
+                            <span class="fa fa-child"></span>
+                            Log in
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <header id="phoneHeader">
+        <ul>
+            <li>
+                <p id="bar">
+                    <span class="fa fa-bars"></span>
+                </p>
+                <ul id="barlist">
+                    <li>
+                        <a href="../html/home.html" class="home">
+                            <span>
+                                <span class="fa fa-home"></span>
+                                Home
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/browser.html" class="browser">
+                            <span class="fa fa-cloud"></span>
+                            Browser
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/search.html" class="search">
+                            <span class="imlooking">
+                                <span class="fa fa-search"></span>
+                                Search
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="../html/bathtub.html" id="logo">
+                    <span class="fa fa-bathtub"></span>
+                </a>
+            </li>
+            <li>
+                <a id="my">
+                    <span class="fa fa-user"></span>
+                </a>
+                <ul>
+                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
+                    <li>
+                        <a href="../html/upload.html">
+                            <span class="fa fa-cloud-upload"></span>
+                            Upload
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/myGallery.html">
+                            <span class="fa fa-photo"></span>
+                            My Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../html/myHearts.html">
+                            <span class="fa fa-heart"></span>
+                            My Hearts
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_self" href="../html/login.html">
+                            <span class="fa fa-child"></span>
+                            Log in
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <article id="search">
+            <div class="filter">
+                <form name="searchFilter" id="searchFilter">
+                    <div>
+                        <input type="radio" name="choice" id="title" value="title" checked>
+                        <label for="title">Title</label>
+                    </div>
+                    <input type="text" placeholder="..." required>
+                    <div>
+                        <input type="radio" name="choice" id="description" value="description">
+                        <label for="description">Description</label>
+                    </div>
+                    <textarea type="texarea" id="descripText" placeholder="..."></textarea>
+                    <input type="button" onclick="searchResult();" value="submit" />
+                </form>
+            </div>
+            <div class="result">
+                <section class="onePic">
+                    <div class="picContain">
+                        <img src="../../img/firstPic.jpg" alt="a pic"
+                            onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+                    <div class="message">
+                        <h1>The Greatest Web River</h1>
+                        <p>I loved you, and I probably still do,
+                            And for a while the feeling may remain...
+                            But let my love no longer trouble you,
+                            I do not wish to cause you any pain.
+                            I loved you; and the hopelessness I knew,
+                            The jealousy, the shyness - though in vain -
+                            Made up a love so tender and so true
+                            As may God grant you to be loved again.
+                        </p>
+                    </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain">
+                        <img src="../../img/firstPic.jpg" alt="a pic"
+                            onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+                    <div class="message">
+                        <h1>The Greatest Web River</h1>
+                        <p>I loved you, and I probably still do,
+                            And for a while the feeling may remain...
+                            But let my love no longer trouble you,
+                            I do not wish to cause you any pain.
+                            I loved you; and the hopelessness I knew,
+                            The jealousy, the shyness - though in vain -
+                            Made up a love so tender and so true
+                            As may God grant you to be loved again.
+                        </p>
+                    </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain">
+                        <img src="../../img/firstPic.jpg" alt="a pic"
+                            onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+                    <div class="message">
+                        <h1>The Greatest Web River</h1>
+                        <p>I loved you, and I probably still do,
+                            And for a while the feeling may remain...
+                            But let my love no longer trouble you,
+                            I do not wish to cause you any pain.
+                            I loved you; and the hopelessness I knew,
+                            The jealousy, the shyness - though in vain -
+                            Made up a love so tender and so true
+                            As may God grant you to be loved again.
+                        </p>
+                    </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain">
+                        <img src="../../img/firstPic.jpg" alt="a pic"
+                            onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+                    <div class="message">
+                        <h1>The Greatest Web River</h1>
+                        <p>I loved you, and I probably still do,
+                            And for a while the feeling may remain...
+                            But let my love no longer trouble you,
+                            I do not wish to cause you any pain.
+                            I loved you; and the hopelessness I knew,
+                            The jealousy, the shyness - though in vain -
+                            Made up a love so tender and so true
+                            As may God grant you to be loved again.
+                        </p>
+                    </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain">
+                        <img src="../../img/firstPic.jpg" alt="a pic"
+                            onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+                    <div class="message">
+                        <h1>The Greatest Web River</h1>
+                        <p>I loved you, and I probably still do,
+                            And for a while the feeling may remain...
+                            But let my love no longer trouble you,
+                            I do not wish to cause you any pain.
+                            I loved you; and the hopelessness I knew,
+                            The jealousy, the shyness - though in vain -
+                            Made up a love so tender and so true
+                            As may God grant you to be loved again.
+                        </p>
+                    </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain">
+                        <img src="../../img/firstPic.jpg" alt="a pic"
+                            onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+                    <div class="message">
+                        <h1>The Greatest Web River</h1>
+                        <p>I loved you, and I probably still do,
+                            And for a while the feeling may remain...
+                            But let my love no longer trouble you,
+                            I do not wish to cause you any pain.
+                            I loved you; and the hopelessness I knew,
+                            The jealousy, the shyness - though in vain -
+                            Made up a love so tender and so true
+                            As may God grant you to be loved again.
+                        </p>
+                    </div>
+                </section>
+                <section class="pageNum">
+                    <p>
+                        &#60;<span>1</span>
+                        2 3 4 5 6 ... 9 &#62;
+                    </p>
+                </section>
+            </div>
+        </article>
+        <!-- extension -->
+        <div class="search_extension">
+            <span class="fa fa-search" onclick="showSearchBox()"></span>
+        </div>
+    </main>
+    <footer>
+        <section>
+            <copyright id="copyright">Copyright © 2020 Bathtub Inc. All rights reserved.</copyright>
+            <div>
+                <a href="../html/privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="../html/usage.html">Terms of Use</a>
+                <span>|</span>
+                <a href="../html/legal.html">Legal</a>
+                <span>|</span>
+                <a href="../html/siteMap.html">Site Map</a>
+            </div>
+        </section>
+    </footer>
+    <script src="../js/feature.js" type="text/javascript"></script>
+</body>
+
+</html>

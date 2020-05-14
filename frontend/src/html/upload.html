@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="bathtown">
+    <meta name="COPYRIGHT" content="Bathtub">
+    <meta name="description" content="upload page">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="icon" href="../../img/Bathtub.png" type="image/x-icon">
+    <base target="_self">
+    <title>upload</title>
+</head>
+
+<body>
+    <header id="laptopHeader">
+        <ul>
+            <li><a href="../html/bathtub.html" class="logo"><span class="fa fa-bathtub"></span></a></li>
+            <li><a href="../html/home.html" class="home"><span><span class="fa fa-home"></span> Home</span></a></li>
+            <li><a href="../html/browser.html" class="browser"><span class="fa fa-cloud"></span> Browser</a></li>
+            <li><a href="../html/search.html" class="search"><span class="fa fa-search"></span> Search</a></li>
+        </ul>
+
+        <ul>
+            <li>
+                <a class="account">My Account <span class="fa fa-angle-down"></span></a>
+                <ul>
+                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
+                    <li><a href="../html/upload.html"><span class="imlooking"><span class="fa fa-cloud-upload"></span>
+                                Upload</span></a></li>
+                    <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
+                    <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
+                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <header id="phoneHeader">
+        <ul>
+            <li>
+                <p id="bar"><span class="fa fa-bars"></span></p>
+                <ul id="barlist">
+                    <li><a href="../html/home.html" class="home"><span><span class="fa fa-home"></span> Home</span></a>
+                    </li>
+                    <li><a href="../html/browser.html" class="browser"><span class="fa fa-cloud"></span> Browser</a>
+                    </li>
+                    <li><a href="../html/search.html" class="search"><span class="fa fa-search"></span> Search</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../html/bathtub.html" id="logo"><span class="fa fa-bathtub"></span></a></li>
+
+            <li>
+                <a id="my"><span class="fa fa-user"></span></a>
+                <ul>
+                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
+                    <li><a href="../html/upload.html"><span class="imlooking"><span class="fa fa-cloud-upload"></span>
+                                Upload</span></a></li>
+                    <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
+                    <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
+                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        <article id="upload">
+
+            <div class="pic">
+                <form class="uploadBtn">
+                    <p>No picture now...</p>
+                    <label for="picFile">Upload a picture <span class="fa fa-cloud-upload"></span></label>
+                    <input type="file" onchange="show(this)" id="picFile" />
+                </form>
+                <div id="uploadPicBox">
+                    <img id="uploadPic" src="" alt="loading..." />
+                </div>
+            </div>
+
+            <div class="info">
+                <form class="picInfo">
+                    <label for="uploadTitle"></label>
+                    <input type="text" id="uploadTitle" class="oneLine" placeholder="Title..." required />
+
+                    <label for="uploadNation"></label>
+                    <input type="text" id="uploadNation" class="oneLine" placeholder="Nation..." required />
+
+                    <label for="uploadCity"></label>
+                    <input type="text" id="uploadCity" class="oneLine" placeholder="City..." required />
+
+                    <label for="uploadDescription"></label>
+                    <textarea type="text" id="uploadDescription" class="moreLine" placeholder="Description..."
+                        required></textarea>
+
+                    <input type="submit"
+                        onclick="alert('This is my pj!');window.open('../html/myGallery.html', '_self')"
+                        value="submit" />
+                </form>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <section>
+            <copyright id="copyright">Copyright © 2020 Bathtub Inc. All rights reserved.</copyright>
+            <div>
+                <a href="../html/privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="../html/usage.html">Terms of Use</a>
+                <span>|</span>
+                <a href="../html/legal.html">Legal</a>
+                <span>|</span>
+                <a href="../html/siteMap.html">Site Map</a>
+            </div>
+        </section>
+    </footer>
+
+    <script src="../js/feature.js" type="text/javascript"></script>
+
+</body>
+
+</html>

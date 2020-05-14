@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="bathtown">
+    <meta name="COPYRIGHT" content="Bathtub">
+    <meta name="description" content="browser page">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="icon" href="../../img/Bathtub.png" type="image/x-icon">
+    <base target="_self">
+    <title>browser</title>
+</head>
+
+<body>
+    <header id="laptopHeader">
+        <ul>
+            <li><a href="../html/bathtub.html" class="logo"><span class="fa fa-bathtub"></span></a></li>
+            <li><a href="../html/home.html" class="home"><span><span class="fa fa-home"></span> Home</span></a></li>
+            <li>
+                <a href="../html/browser.html" class="browser">
+                    <span class="imlooking"><span class="fa fa-cloud"></span> Browser</span>
+                </a>
+            </li>
+            <li><a href="../html/search.html" class="search"><span class="fa fa-search"></span> Search</a></li>
+        </ul>
+
+        <ul>
+            <li>
+                <a class="account">My Account <span class="fa fa-angle-down"></span></a>
+                <ul>
+                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
+                    <li><a href="../html/upload.html"><span class="fa fa-cloud-upload"></span> Upload</a></li>
+                    <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
+                    <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
+                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <header id="phoneHeader">
+        <ul>
+            <li>
+                <p id="bar"><span class="fa fa-bars"></span></p>
+                <ul id="barlist">
+                    <li><a href="../html/home.html" class="home"><span><span class="fa fa-home"></span> Home</span></a>
+                    </li>
+                    <li>
+                        <a href="../html/browser.html" class="browser">
+                            <span class="imlooking"><span class="fa fa-cloud"></span> Browser</span>
+                        </a>
+                    </li>
+                    <li><a href="../html/search.html" class="search"><span class="fa fa-search"></span> Search</a></li>
+                </ul>
+            </li>
+
+            <li><a href="../html/bathtub.html" id="logo"><span class="fa fa-bathtub"></span></a></li>
+
+            <li>
+                <a id="my"><span class="fa fa-user"></span></a>
+                <ul>
+                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
+                    <li><a href="../html/upload.html"><span class="fa fa-cloud-upload"></span> Upload</a></li>
+                    <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
+                    <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
+                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+
+        <article id="browser">
+            <header class="hinter"> try "👆→" | Browser | try "←👆"</header>
+
+            <aside class="browserAside">
+                
+                <form class="searchBox">
+                    <input type="text" placeholder="Search by Title..."/>
+                    <button type="button" onclick="alert('This is my pj!')"><span class="fa fa-search"></span></button>
+                </form>
+               
+                <h1>Hot Country</h1>
+                <ul class="hotList hotCountry">
+                    <li><a href="../html/china.html" onclick="alert('This is my pj!');">China</a></li>
+                    <li><a href="../html/japan.html" onclick="alert('This is my pj!');">Japan</a></li>
+                    <li><a href="../html/italy.html" onclick="alert('This is my pj!');">Italy</a></li>
+                    <!-- <li><a href="../html/australia.html" onclick="alert('This is my pj!');">Australia</a></li> -->
+                </ul>
+
+                <h1>Hot City</h1>
+                <ul class="hotList hotCity">
+                    <li><a href="../html/Chengdu.html" onclick="alert('This is my pj!');">Chengdu</a></li>
+                    <li><a href="../html/Shanghai.html" onclick="alert('This is my pj!');">Shanghai</a></li>
+                    <li><a href="../html/NewYork.html" onclick="alert('This is my pj!');">New York</a></li>
+                    <!-- <li><a href="../html/London.html" onclick="alert('This is my pj!');">London</a></li> -->
+                </ul>
+
+                <h1>Hot Content</h1>
+                <ul class="hotList hotContent">
+                    <li><a href="../html/scenery.html" onclick="alert('This is my pj!');">Scenery</a></li>
+                    <li><a href="../html/city.html" onclick="alert('This is my pj!');">City</a></li>
+                    <li><a href="../html/people.html" onclick="alert('This is my pj!');">People</a></li>
+                    <!-- <li><a href="../html/animal.html" onclick="alert('This is my pj!');">Animal</a></li> -->
+                    <!-- <li><a href="../html/building.html" onclick="alert('This is my pj!');">Building</a></li> -->
+                </ul>
+
+            </aside>
+
+            <section class="browserResult">
+                <form class="filter" id="threeFilter">
+                    <div>
+                        <select class="byContent">
+                            <option value="default" style="display: none;">Filter by Content</option>
+                            <option>Scenery</option>
+                            <option>People</option>
+                            <option>Animal</option>
+                            <option>Building</option>
+                        </select>
+
+                        <select class="byCountry" id="country" onchange="countrysCity(this)">
+                            <option value="default" style="display: none;">Filter by Country</option>
+                        </select>
+
+                        <select class="byCity" id="city">
+                            <option value="default" style="display: none;">Filter by City</option>
+                        </select>
+                    </div>
+
+                    <button type="button" value="Filter" onclick="alert('This is my pj!');">Filter</button>
+                </form>
+
+                <div class="mainPic">
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                    <div class="picContain">
+                        <img src="../../img/sample.jpg" onclick="window.open('../html/details.html', '_self')" />
+                    </div>
+
+                </div>
+
+                <section class="pageNum">
+                    <p>
+                        &#60; <span>1</span> 2 3 4 5 6 ... 9 &#62;
+                    </p>
+                </section>
+
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <section>
+            <copyright id="copyright">Copyright © 2020 Bathtub Inc. All rights reserved.</copyright>
+            <div>
+                <a href="../html/privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="../html/usage.html">Terms of Use</a>
+                <span>|</span>
+                <a href="../html/legal.html">Legal</a>
+                <span>|</span>
+                <a href="../html/siteMap.html">Site Map</a>
+            </div>
+        </section>
+    </footer>
+
+    <script src="../js/feature.js" type="text/javascript"></script>
+
+</body>
+
+</html>

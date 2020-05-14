@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="bathtown">
+    <meta name="COPYRIGHT" content="Bathtub">
+    <meta name="description" content="register page">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="icon" href="../../img/Bathtub.png" type="image/x-icon">
+    <base target="_self">
+    <title>Register</title>
+</head>
+
+<body>
+
+    <main>
+        <article id="register">
+            <form action="http://localhost:81/backend/register.php" method="post" name="registerForm">
+                <h1>Register an Account</h1>
+                <label>
+                    <input type="text" placeholder="Please enter user name" class="userName" name="username"
+                        autofocus="autofocus" required="required" />
+                </label>
+                <label for="password1"></label><input type="password" placeholder="Please enter password"
+                    class="password" name="password" required="required" id="password1" />
+                <p>* The password shall be 6-16 characters long, and a combination of at least 2 types of characters
+                    including digits, letters or symbols</p>
+                <label>
+                    <input type="password" placeholder="Please confirm password" class="password" name="repassword"
+                        required="required" />
+                </label>
+                <label>
+                    <input type="email" placeholder="please enter email address" class="address" id="codeAddress"
+                        required="required" name="email" />
+                </label>
+                <!-- <section id="verifyCode">
+                    <label for="codeAddress"></label><input type="email" placeholder="please enter email address"
+                        class="address" id="codeAddress" required="required" name="codeAddress" />
+                    <input type="submit" onclick="alert('This is my pj!')" id="getCode" value="Get Code">
+                </section>
+                <label for="inputCode"></label><input type="text" placeholder="Please enter code" id="inputCode"
+                    name="code" required="required" />
+                <br> -->
+                <label for="checkAgreement"></label><input type="checkbox" id="checkAgreement" name="checkAgreement">
+                <div class="agreeText">
+                    <p>I've read and agree to
+                        <span onclick="window.open('../html/agreement.html', '_self')">Agreement on
+                            Bathtub ID Use</span>,
+                        <span onclick="window.open('../html/privacy.html', '_self')">Bathtub ID Privacy
+                            Statement</span>
+                    </p>
+                </div>
+                <input type="submit" id="registerButton" value="Register">
+            </form>
+        </article>
+    </main>
+
+
+    <footer>
+        <section>
+            <copyright id="copyright">Copyright © 2020 Bathtub Inc. All rights reserved.</copyright>
+            <div>
+                <a href="../html/privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="../html/usage.html">Terms of Use</a>
+                <span>|</span>
+                <a href="../html/legal.html">Legal</a>
+                <span>|</span>
+                <a href="../html/siteMap.html">Site Map</a>
+            </div>
+        </section>
+    </footer>
+
+    <script src="../js/feature.js" type="text/javascript"></script>
+
+</body>
+
+</html>
