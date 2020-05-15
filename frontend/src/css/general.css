@@ -13,7 +13,7 @@ html {
 
 body {
   /* basic font */
-  font-family: monospace !important;
+  font-family: Nunito, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   text-align: center;
   color: black;
   background-color: #fafafa;
@@ -402,4 +402,15 @@ main #siteMap section {
   main #siteMap section div {
     width: auto;
   }
+}
+
+/* fix bugs :(*/
+.jconfirm-holder {
+  width: 300px;
+  margin: auto;
+}
+
+.jconfirm-content {
+  font-size: 16px;
+  line-height: 2;
 }

@@ -7,15 +7,11 @@
     <meta name="author" content="bathtown">
     <meta name="COPYRIGHT" content="Bathtub">
     <meta name="description" content="register page">
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <!-- jQuery -->
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script> -->
+    <!-- jquery-confirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link rel="stylesheet" href="../font/iconfont.css">
@@ -93,15 +89,18 @@
         $('#registerButton').click(() => {
 
             if (!$('#username').val() || !$('#password1').val() || !$('#password2').val() || !$('#email').val()) {
-                alert('Please fill in the form!'); return;
+                myAlert('warning', 'Please fill in the form!');
+                return;
             }
 
             if ($('#password1').val() !== $('#password2').val()) {
-                alert('Confirm password must be the same with password!'); return;
+                myAlert('warning', 'Confirm password must be the same with password!');
+                return;
             }
 
             if (!$('#checkAgreement').prop('checked')) {
-                alert('You must read and agree to Agreement on Bathtub ID Use & Bathtub ID Privacy Statement!'); return;
+                myAlert('warning', 'You must read and agree to Agreement on Bathtub ID Use & Bathtub ID Privacy Statement!');
+                return;
             }
 
             $.post("http://localhost:8080/backend/PHP/register.php",
@@ -109,11 +108,11 @@
                     username: $('#username').val(),
                     password: $('#password1').val(),
                     email: $('#email').val()
-                }).done((data) => {
-                    // console.log(data);
+                }).done(() => {
+                    myAlert('success', 'Login successfully!');
                     window.location.href = "../html/login.html";
                 }).fail((err) => {
-                    alert(err.responseText);
+                    myAlert('error', err.responseText);
                 });
         });
     </script>

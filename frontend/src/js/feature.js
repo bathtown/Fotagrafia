@@ -1,9 +1,9 @@
 // for safari, to make hover available
-document.body.addEventListener('touchstart', function () {}, false);
+document.body.addEventListener('touchstart', function () { }, false);
 
 // home page
 // goto top
-function goTop() {
+function goTop () {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
@@ -11,7 +11,7 @@ function goTop() {
 }
 
 // refresh pictures
-function refreshPic() {
+function refreshPic () {
     // 刷新页面
     location.reload();
     alert('This is my pj!');
@@ -20,7 +20,7 @@ function refreshPic() {
 // details page
 // heart++
 
-function likedPlus() {
+function likedPlus () {
     const likedNumberObj = document.getElementById("likedNumber");
     let num = likedNumberObj.textContent;
     const heart = document.getElementById("liking");
@@ -36,7 +36,7 @@ function likedPlus() {
 }
 
 // switch description and properties
-function switchDeAndPro() {
+function switchDeAndPro () {
     document.getElementsByClassName("de_choice de_myProperties")[0].style.display = "none";
 
     // 上面两个tab
@@ -64,7 +64,7 @@ if (document.getElementsByClassName("de_choice de_myProperties")[0]) {
 
 // upload page
 // show picture
-function show(file) {
+function show (file) {
     const reader = new FileReader();
     const img = document.getElementById('uploadPic');
 
@@ -78,7 +78,7 @@ function show(file) {
 
 // search page
 // show search result
-function searchResult() {
+function searchResult () {
     alert('This is my pj!');
     document.getElementsByClassName('result')[0].style.display = 'block';
     if (document.getElementsByClassName('filter')[0]) {
@@ -99,14 +99,14 @@ function searchResult() {
     }
 }
 // show search box
-function showSearchBox() {
+function showSearchBox () {
     document.getElementsByClassName('filterAfter')[0].style.display = 'block';
     document.getElementsByClassName('search_extension')[0].style.display = 'none';
 }
 
 //my hearts & my gallery pages
 // make del & modify buttons appear
-function buttonAppear() {
+function buttonAppear () {
     let onePic = document.getElementsByClassName("onePic");
     for (let i = 0; i < onePic.length; i++) {
         let addr = onePic[i].children[0].children[0].onclick;
@@ -151,18 +151,18 @@ if (document.getElementsByClassName("onePic") && document.body.clientWidth <= 83
     document.addEventListener('touchend', touchEnd);
     document.addEventListener('touchcanel', touchCancel);
 
-    function newEvent(type) {
+    function newEvent (type) {
         return new Event(type, {
             bubbles: true,
             cancelable: true
         });
     }
 
-    function touchCancel() {
+    function touchCancel () {
         coord = {}
     }
 
-    function touchStart(e) {
+    function touchStart (e) {
         const c = e.touches[0];
         start = {
             x: c.clientX,
@@ -173,7 +173,7 @@ if (document.getElementsByClassName("onePic") && document.body.clientWidth <= 83
         el = 'tagName' in el ? el : el.parentNode;
     }
 
-    function touchMove(e) {
+    function touchMove (e) {
         const t = e.touches[0];
         coord = {
             x: t.clientX - start.x,
@@ -181,7 +181,7 @@ if (document.getElementsByClassName("onePic") && document.body.clientWidth <= 83
         }
     }
 
-    function touchEnd() {
+    function touchEnd () {
         const touchTimes = Date.now() - start.time,
             c = 250 > touchTimes && Math.abs(coord.x) > 40 || Math.abs(coord.x) > 120,
             s = 250 > touchTimes && Math.abs(coord.y) > 40 || Math.abs(coord.y) > 120,
@@ -200,7 +200,7 @@ if (document.getElementsByClassName("onePic") && document.body.clientWidth <= 83
 
 // browser page
 // swipe right to show aside, swipe left to show filter
-function browserAsideAppear() {
+function browserAsideAppear () {
     const browserAside = document.getElementsByClassName("browserAside")[0];
     const mainPic = document.getElementsByClassName("mainPic")[0];
     const browserResult = document.getElementsByClassName("browserResult")[0];
@@ -239,7 +239,7 @@ data = {
     America: ['New York', 'San Francisco', 'Washington']
 };
 // initial countries
-function initialFilter() {
+function initialFilter () {
     const country = document.getElementById("country");
 
     for (let i in data) {
@@ -252,7 +252,7 @@ if (document.getElementById("country")) {
     initialFilter();
 }
 // initial cities
-function countrysCity(thisCountry) {
+function countrysCity (thisCountry) {
     const choice = (thisCountry.options[thisCountry.selectedIndex]).innerHTML;
     const city = document.getElementById("city");
 
@@ -276,7 +276,7 @@ function countrysCity(thisCountry) {
 }
 
 // login page
-function hintRegister() {
+function hintRegister () {
     var hintIt = document.getElementById("hintIt");
     let counter = setInterval(function () {
         if (hintIt.style.display == "inline-block")
@@ -290,4 +290,11 @@ function hintRegister() {
 }
 if (document.getElementById("hintIt")) {
     hintRegister();
+}
+
+// 提示框
+function myAlert (type, content) {
+    if (type === 'warning') $.dialog({ title: '⚠ Warning', content: content, type: 'orange', backgroundDismiss: true });
+    else if (type === 'success') $.dialog({ title: '✔ Success', content: content, type: 'green', backgroundDismiss: true });
+    else if (type === 'err') $.dialog({ title: '❌ Error', content: content, type: 'red', backgroundDismiss: true });
 }

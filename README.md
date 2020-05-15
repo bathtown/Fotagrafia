@@ -14,13 +14,14 @@
 
 ## Backend First
 
-### TODO Lists
+### Backend TODO Lists
 
 - 🥱 TODO
 
 - 👋 Doing
   - 👉 前端登录拦截 ing...
   - 👉 local Storage / cookie
+  - 👉 JWT
 - 👌 Done
 
   - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/register.php) √
@@ -31,25 +32,23 @@
 - [php 修行之路](https://github.com/threadshare/php)
 - [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
 - [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
-- [local Storage / cookie](https://blog.csdn.net/zhangjin9546/article/details/93629882)
+- [JWT](https://github.com/firebase/php-jwt)
 
 ## Frontend
 
-### Bootstrap
+### 前端框架使用
 
-🤙 [Bootstrap](https://v3.bootcss.com/)
+- 🤙 [jQuery](https://jquery.com/)
+- 🤙 [jquery-confirm](http://craftpip.github.io/jquery-confirm/)
+- 🖖 ~~[Bootstrap](https://getbootstrap.com/)~~
+- 🖖 ~~[bulma](https://bulma.io/)~~
 
-```html
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-<!-- jQuery -->
-<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" 
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script> -->
-```
+### Frontend TODO Lists
+
+- 🥱 TODO
+- 👋 Doing
+- 👌 Done
+  - [more friendly alert](frontend/src/html/register.html) √
 
 ### 设计手册
 
