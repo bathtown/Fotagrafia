@@ -27,9 +27,11 @@
   - 👉 [登录](backend/login.php) √
   - 👉 [密码加盐](backend/register.php) √
 
-### 一些实现
+### 一些实现 | 参考资料
 
+- [php 修行之路](https://github.com/threadshare/php)
 - [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
+- [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
 - [local Storage / cookie](https://blog.csdn.net/zhangjin9546/article/details/93629882)
 
 ## Frontend
