@@ -1,0 +1,148 @@
+/* article=login */
+main #login {
+  width: 450px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    background-color: white;
+  }
+
+  main #login {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+main #login > h1 {
+  margin: 30px;
+}
+
+main #login > h1 > .fa {
+  padding: 20px;
+  font-size: 3em;
+  font-weight: normal;
+}
+
+main #login p {
+  padding: 0 0 30px 0;
+  cursor: default;
+  margin: auto;
+}
+
+main #login section {
+  width: inherit;
+  height: 450px;
+  margin: auto;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+main #login section h1 {
+  font-size: 2rem;
+  padding: 20px;
+  font-weight: normal;
+  cursor: default;
+  height: 30px;
+}
+
+main #login section.p {
+  font-size: 1.2rem;
+}
+
+main #login section form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 300px;
+}
+
+main #login section form input {
+  border: none;
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 5px 15px;
+  background-color: #fafafa;
+}
+
+main #login section form a {
+  width: 80%;
+  margin: 5px auto;
+  padding: 0;
+  text-decoration: none;
+  text-align: left;
+  font-size: 1rem;
+  color: grey;
+}
+
+main #login section form a:hover,
+main #login section form a:active {
+  color: black;
+}
+
+main #login section form #sign {
+  display: inline-block;
+  border: none;
+  box-sizing: content-box;
+  height: 40px;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 5px 15px;
+  background-color: #444444;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  width: 80%;
+}
+
+main #login section form #sign:hover,
+main #login section form #sign:active {
+  color: white;
+}
+
+main #login section > div {
+  width: 80%;
+  margin: 5px auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 40px;
+}
+
+main #login section > div > div {
+  height: 40px;
+}
+
+main #login section div a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: grey;
+  height: 40px;
+  line-height: 40px;
+}
+
+main #login section div span {
+  font-size: 2rem;
+  /*     position: relative; */
+  line-height: 30px;
+  display: none;
+}
+
+main #login section div a:hover,
+main #login section div a:active {
+  color: black;
+}

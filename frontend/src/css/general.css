@@ -1,0 +1,405 @@
+@charset "utf-8";
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+html {
+  font-size: 12px;
+  height: 100vh;
+}
+
+body {
+  /* basic font */
+  font-family: monospace !important;
+  text-align: center;
+  color: black;
+  background-color: #fafafa;
+  /* position */
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* 解决safari圆角问题 */
+input[type='submit'],
+input[type='button'] {
+  -webkit-appearance: none;
+}
+
+/* header */
+/* laptopHeader */
+#laptopHeader {
+  background-color: #444444;
+  width: 100%;
+  position: fixed;
+  float: left;
+  clear: both;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateZ(10px);
+  z-index: 3;
+}
+
+#laptopHeader #emoji {
+  width: 60px;
+  text-align: center;
+}
+
+#laptopHeader ul {
+  list-style: none;
+}
+
+#laptopHeader ul li {
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  float: left;
+}
+
+#laptopHeader ul li a,
+#laptopHeader ul li p {
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: gainsboro;
+  display: block;
+  width: 160px;
+  transition-duration: 0.2s;
+  text-align: left;
+  padding-left: 20%;
+  height: 40px;
+}
+
+#laptopHeader ul li p {
+  cursor: default;
+  overflow: hidden;
+  width: 160px;
+}
+
+#laptopHeader ul li a:hover,
+#laptopHeader ul li a:active {
+  color: #fafafa;
+  /* font-size: 1.25rem; */
+}
+
+#laptopHeader ul li ul li {
+  float: none;
+  background-color: #444444;
+  overflow: hidden;
+}
+
+#laptopHeader ul li ul {
+  position: absolute;
+  display: none;
+  box-shadow: 3px 0 3px #444444, -3px 0 3px #444444, 0 3px 3px #444444;
+}
+
+#laptopHeader ul li:hover ul,
+#laptopHeader ul li:active ul {
+  display: block;
+}
+
+#phoneHeader {
+  display: none;
+}
+
+/* phoneHeader */
+@media screen and (max-width: 830px) {
+  #laptopHeader {
+    display: none;
+  }
+
+  #phoneHeader {
+    display: block;
+    background-color: #444444;
+    width: 100%;
+    position: fixed;
+    float: left;
+    clear: both;
+    top: 0;
+    left: 0;
+    transform: translateZ(100px);
+    z-index: 3;
+  }
+
+  #phoneHeader ul {
+    list-style: none;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  #phoneHeader ul li {
+    width: inherit;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    float: left;
+    height: 40px;
+  }
+
+  #phoneHeader ul #bar,
+  #phoneHeader ul #logo,
+  #phoneHeader ul #my {
+    text-align: center;
+    height: 40px;
+  }
+
+  #phoneHeader ul li a,
+  #phoneHeader ul li p {
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: gainsboro;
+    display: block;
+    transition-duration: 0.2s;
+    text-align: left;
+    padding-left: 1rem;
+    /* overflow: auto; */
+  }
+
+  #phoneHeader ul li p {
+    cursor: default;
+  }
+
+  #phoneHeader ul li a:hover,
+  #phoneHeader ul li a:active {
+    color: #fafafa;
+  }
+
+  #phoneHeader ul li ul li {
+    float: none;
+    background-color: #444444;
+  }
+
+  #phoneHeader ul li ul {
+    position: absolute;
+    display: none;
+    box-shadow: 3px 0 3px #444444, -3px 0 3px #444444, 0 3px 3px #444444;
+  }
+
+  #phoneHeader ul li:hover ul,
+  #phoneHeader ul li:active ul {
+    display: block;
+  }
+}
+
+/* The page I'm looking */
+.imlooking {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+.imlooking:hover,
+.imlooking:active {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+/* main */
+main {
+  width: 100%;
+  /* to insure footer is under */
+  height: 100%;
+  flex: 1;
+  display: flex;
+}
+
+/* footer */
+footer {
+  background-color: whitesmoke;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+footer section {
+  text-align: center;
+  line-height: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer section #copyright {
+  text-align: center;
+  cursor: default;
+}
+
+footer section div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer section a {
+  font-size: 1rem;
+  /* width: 80px; */
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: grey;
+}
+
+footer section a:hover,
+footer section a:active {
+  color: #444444;
+}
+
+footer section span {
+  color: grey;
+  cursor: default;
+}
+
+footer p {
+  line-height: 30px;
+  font-size: 1rem;
+  text-align: center;
+  color: grey;
+  cursor: default;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+/* home extension part */
+.home_extension {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateZ(8px);
+  z-index: 2;
+}
+
+.home_extension .fa {
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(68, 68, 68, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.home_extension .fa:hover,
+.home_extension .fa:active {
+  color: white;
+  background-color: #444444;
+}
+
+/* search extension part */
+.search_extension {
+  position: fixed;
+  display: none;
+  bottom: 60px;
+  right: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateZ(10px);
+}
+
+.search_extension .fa {
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(68, 68, 68, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.search_extension .fa:hover,
+.search_extension .fa:active {
+  color: white;
+  background-color: #444444;
+}
+
+/* site map */
+
+main #siteMap {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+main #siteMap section {
+  padding-bottom: 20px;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+#siteMap div {
+  width: 100%;
+}
+
+#siteMap h1 {
+  font-size: 1.8rem;
+  text-align: left;
+  padding: 4rem;
+  line-height: 4rem;
+  height: 4rem;
+}
+
+#siteMap p {
+  padding: 2rem 4rem;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+#siteMap ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin: 0 2rem;
+  padding: 0 2rem;
+  text-align: initial;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#siteMap ul li a {
+  text-decoration: none;
+  line-height: 5rem;
+  font-family: monospace;
+  font-size: 1.4rem;
+  color: darkgrey;
+}
+
+#siteMap ul li a:hover {
+  color: #444444;
+}
+
+@media screen and (min-width: 830px) {
+  main #siteMap section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    background-color: #fafafa;
+    width: 100%;
+  }
+
+  main #siteMap section div {
+    width: auto;
+  }
+}
