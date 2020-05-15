@@ -1,4 +1,4 @@
-# Fotagrafia
+# 🗽 Fotagrafia
 
 - project 01 repository: **[bathtown.github.io](https://github.com/bathtown/bathtown.github.io)**
 
@@ -8,7 +8,7 @@
 
 - my page:
 
-- my repository: **[squareChat](https://github.com/bathtown/squareChat)**
+- my repository: **[Fotagrafia](https://github.com/bathtown/Fotagrafia)**
 
 - Bonus 完成情况
 
@@ -23,9 +23,8 @@
   - 👉 local Storage / cookie
 - 👌 Done
 
-  - 👉 [注册 | 密码加盐 | Ajax](backend/register.php) √
-  - 👉 [登录](backend/login.php) √
-  - 👉 [密码加盐](backend/register.php) √
+  - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/register.php) √
+  - 👉 [登录](backend/PHP/login.php) √
 
 ### 一些实现 | 参考资料
 
