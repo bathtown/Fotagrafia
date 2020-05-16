@@ -23,7 +23,7 @@
       $hashPass = $row["hashPassword"];
     }
   } else {
-    echo "Wrong username!";
+    echo "<script>alert('Username or password is wrong, please try again!');location='http://127.0.0.1:5500/frontend/src/html/login.html'</script>";
   }
 
   if (!validate_password($password, $hashPass)) {
