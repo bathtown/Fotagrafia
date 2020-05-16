@@ -7,13 +7,27 @@
     <meta name="author" content="bathtown">
     <meta name="COPYRIGHT" content="Bathtub">
     <meta name="description" content="home page">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/general.css">
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
     <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="icon" href="../../img/Bathtub.png" type="image/x-icon">
+    <!-- jQuery -->
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <base target="_self">
     <title>Home</title>
     <!--    remove tel feature-->
     <meta name="format-detection" content="telephone=no">
+    <script>
+        if (sessionStorage.getItem("token") === null)
+            window.location.href = "../html/login.html";
+        else {
+            async function checkUserAuthority() {
+                try { await $.post("http://localhost:8080/backend/PHP/token.php", { token: sessionStorage.getItem("token") }); }
+                catch { window.location.href = "../html/login.html"; }
+            }
+            checkUserAuthority();
+        }
+    </script>
 </head>
 
 <body>
