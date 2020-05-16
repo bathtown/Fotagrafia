@@ -19,13 +19,13 @@
 - 🥱 TODO
 
 - 👋 Doing
-  - 👉 前端登录拦截 ing...
-  - 👉 local Storage / cookie
   - 👉 JWT
 - 👌 Done
 
   - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/register.php) √
   - 👉 [登录](backend/PHP/login.php) √
+  - 👉 [跨域](backend/PHP/CORS.php) √
+  - 👉 [错误码](backend/PHP/statusCode.php) √
 
 ### 一些实现 | 参考资料
 
@@ -47,8 +47,10 @@
 
 - 🥱 TODO
 - 👋 Doing
+  - 👉 [localStorage | sessionStorage | cookie](frontend/src/html/login.html) √
 - 👌 Done
-  - [more friendly alert](frontend/src/html/register.html) √
+  - 👉 [more friendly alert](frontend/src/html/register.html) √
+  - 👉 [前端登录拦截](frontend/src/html/home.html) √
 
 ### 设计手册
 
