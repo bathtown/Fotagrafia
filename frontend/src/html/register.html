@@ -112,6 +112,7 @@
                     myAlert('success', JSON.parse(data).message);
                     window.location.href = "../html/login.html";
                 }).fail((err) => {
+                    if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                     myAlert('error', JSON.parse(err.responseText));
                 });
         });

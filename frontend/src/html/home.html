@@ -9,6 +9,9 @@
     <meta name="description" content="home page">
     <!-- jQuery -->
     <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <!-- jquery-confirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/css/uikit.min.css" />
     <!-- UIkit JS -->
@@ -31,6 +34,7 @@
                     await $.post("http://localhost:8080/backend/PHP/api/token.php", { token: sessionStorage.getItem("token") })
                         .done(() => {
                         }).fail((err) => {
+                            if (err.status === 0) return;
                             sessionStorage.clear();
                             window.location.href = "../html/login.html";
                         })
