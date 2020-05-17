@@ -7,7 +7,8 @@
     <meta name="author" content="bathtown">
     <meta name="COPYRIGHT" content="Bathtub">
     <meta name="description" content="upload page">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/general.css">
+    <link rel="stylesheet" type="text/css" href="../css/upload.css">
     <link rel="stylesheet" href="../font/iconfont.css">
     <link rel="icon" href="../../img/Bathtub.png" type="image/x-icon">
     <base target="_self">
@@ -15,33 +16,10 @@
 </head>
 
 <body>
-    <header id="laptopHeader">
+    <header>
         <ul>
-            <li><a href="../html/bathtub.html" class="logo"><span class="fa fa-bathtub"></span></a></li>
-            <li><a href="../html/home.html" class="home"><span><span class="fa fa-home"></span> Home</span></a></li>
-            <li><a href="../html/browser.html" class="browser"><span class="fa fa-cloud"></span> Browser</a></li>
-            <li><a href="../html/search.html" class="search"><span class="fa fa-search"></span> Search</a></li>
-        </ul>
-
-        <ul>
-            <li>
-                <a class="account">My Account <span class="fa fa-angle-down"></span></a>
-                <ul>
-                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
-                    <li><a href="../html/upload.html"><span class="imlooking"><span class="fa fa-cloud-upload"></span>
-                                Upload</span></a></li>
-                    <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
-                    <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
-                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
-                </ul>
-            </li>
-        </ul>
-    </header>
-
-    <header id="phoneHeader">
-        <ul>
-            <li>
-                <p id="bar"><span class="fa fa-bars"></span></p>
+            <li id="bar">
+                <a><span class="fa fa-bars"></span></a>
                 <ul id="barlist">
                     <li><a href="../html/home.html" class="home"><span><span class="fa fa-home"></span> Home</span></a>
                     </li>
@@ -51,14 +29,13 @@
                 </ul>
             </li>
 
-            <li><a href="../html/bathtub.html" id="logo"><span class="fa fa-bathtub"></span></a></li>
+            <li id="logo"><a href="../html/bathtub.html"><span class="fa fa-bathtub"></span></a></li>
 
-            <li>
+            <li id="account">
+                <a id="myAccount">My Account <span class="fa fa-angle-down"></span></a>
                 <a id="my"><span class="fa fa-user"></span></a>
                 <ul>
-                    <!-- <li><a target="_self" href="../html/register.html"><span class="fa fa-male"></span> Log up</a></li> -->
-                    <li><a href="../html/upload.html"><span class="imlooking"><span class="fa fa-cloud-upload"></span>
-                                Upload</span></a></li>
+                    <li><a href="../html/upload.html"><span class="imlooking"><span class="fa fa-cloud-upload"></span> Upload</span></a></li>
                     <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
                     <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
                     <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>

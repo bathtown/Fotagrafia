@@ -1,0 +1,70 @@
+/* site map */
+
+main #siteMap {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+main #siteMap section {
+  padding-bottom: 20px;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+#siteMap div {
+  width: 100%;
+}
+
+#siteMap h1 {
+  font-size: 1.8rem;
+  text-align: left;
+  padding: 4rem;
+  line-height: 4rem;
+  height: 4rem;
+}
+
+#siteMap p {
+  padding: 2rem 4rem;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+#siteMap ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin: 0 2rem;
+  padding: 0 2rem;
+  text-align: initial;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#siteMap ul li a {
+  text-decoration: none;
+  line-height: 5rem;
+  font-family: monospace;
+  font-size: 1.4rem;
+  color: darkgrey;
+}
+
+#siteMap ul li a:hover {
+  color: #444444;
+}
+
+@media screen and (min-width: 830px) {
+  main #siteMap section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    background-color: #fafafa;
+    width: 100%;
+  }
+
+  main #siteMap section div {
+    width: auto;
+  }
+}

@@ -32,8 +32,7 @@ input[type='button'] {
 }
 
 /* header */
-/* laptopHeader */
-#laptopHeader {
+header {
   background-color: #444444;
   width: 100%;
   position: fixed;
@@ -41,30 +40,45 @@ input[type='button'] {
   clear: both;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: space-between;
   transform: translateZ(10px);
   z-index: 3;
 }
 
-#laptopHeader #emoji {
-  width: 60px;
-  text-align: center;
-}
-
-#laptopHeader ul {
+header ul {
   list-style: none;
+  width: 100%;
+  display: flex;
 }
 
-#laptopHeader ul li {
+header ul li {
   line-height: 40px;
   text-align: center;
   position: relative;
   float: left;
 }
 
-#laptopHeader ul li a,
-#laptopHeader ul li p {
+header ul #bar {
+  display: contents;
+}
+
+header ul #bar > a {
+  display: none;
+}
+
+header ul #barlist {
+  display: contents;
+}
+
+header ul #logo {
+  order: -1;
+}
+
+header ul #account {
+  margin-left: auto;
+}
+
+header ul li a,
+header ul li p {
   cursor: pointer;
   font-size: 1.2rem;
   text-decoration: none;
@@ -75,48 +89,43 @@ input[type='button'] {
   text-align: left;
   padding-left: 20%;
   height: 40px;
+  box-sizing: border-box;
 }
 
-#laptopHeader ul li p {
+header ul li p {
   cursor: default;
   overflow: hidden;
   width: 160px;
 }
 
-#laptopHeader ul li a:hover,
-#laptopHeader ul li a:active {
+header ul li a:hover,
+header ul li a:active {
   color: #fafafa;
-  /* font-size: 1.25rem; */
 }
 
-#laptopHeader ul li ul li {
+header ul li ul li {
   float: none;
   background-color: #444444;
   overflow: hidden;
 }
 
-#laptopHeader ul li ul {
+header ul li ul {
   position: absolute;
   display: none;
   box-shadow: 3px 0 3px #444444, -3px 0 3px #444444, 0 3px 3px #444444;
 }
 
-#laptopHeader ul li:hover ul,
-#laptopHeader ul li:active ul {
+header ul li:hover ul,
+header ul li:active ul {
   display: block;
 }
 
-#phoneHeader {
+header #my {
   display: none;
 }
 
-/* phoneHeader */
 @media screen and (max-width: 830px) {
-  #laptopHeader {
-    display: none;
-  }
-
-  #phoneHeader {
+  header {
     display: block;
     background-color: #444444;
     width: 100%;
@@ -129,7 +138,15 @@ input[type='button'] {
     z-index: 3;
   }
 
-  #phoneHeader ul {
+  header #myAccount {
+    display: none;
+  }
+
+  header #my {
+    display: block;
+  }
+
+  header ul {
     list-style: none;
     width: inherit;
     display: flex;
@@ -138,7 +155,7 @@ input[type='button'] {
     text-align: center;
   }
 
-  #phoneHeader ul li {
+  header ul li {
     width: inherit;
     line-height: 40px;
     text-align: center;
@@ -147,15 +164,51 @@ input[type='button'] {
     height: 40px;
   }
 
-  #phoneHeader ul #bar,
-  #phoneHeader ul #logo,
-  #phoneHeader ul #my {
+  header ul #bar,
+  header ul #logo,
+  header ul #account {
     text-align: center;
     height: 40px;
   }
 
-  #phoneHeader ul li a,
-  #phoneHeader ul li p {
+  header ul #logo {
+    order: 0;
+    width: 60px;
+    margin: auto;
+  }
+
+  header ul #logo > a {
+    padding-left: 0;
+    width: 60px;
+    text-align: center;
+  }
+
+  header ul #bar {
+    width: 160px;
+    margin-left: 0;
+  }
+
+  header ul #account {
+    width: 160px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  header ul #account > a {
+    padding-right: 20%;
+    text-align: right;
+  }
+
+  header ul #bar {
+    display: block;
+  }
+
+  header ul #bar > a {
+    display: block;
+  }
+
+  header ul li a,
+  header ul li li {
     cursor: pointer;
     font-size: 1.2rem;
     text-decoration: none;
@@ -163,32 +216,34 @@ input[type='button'] {
     display: block;
     transition-duration: 0.2s;
     text-align: left;
-    padding-left: 1rem;
-    /* overflow: auto; */
   }
 
-  #phoneHeader ul li p {
+  header ul #barlist {
+    display: none;
+  }
+
+  header ul li li {
     cursor: default;
   }
 
-  #phoneHeader ul li a:hover,
-  #phoneHeader ul li a:active {
+  header ul li a:hover,
+  header ul li a:active {
     color: #fafafa;
   }
 
-  #phoneHeader ul li ul li {
+  header ul li ul li {
     float: none;
     background-color: #444444;
   }
 
-  #phoneHeader ul li ul {
+  header ul li ul {
     position: absolute;
     display: none;
     box-shadow: 3px 0 3px #444444, -3px 0 3px #444444, 0 3px 3px #444444;
   }
 
-  #phoneHeader ul li:hover ul,
-  #phoneHeader ul li:active ul {
+  header ul li:hover ul,
+  header ul li:hover #barlist {
     display: block;
   }
 }
@@ -210,6 +265,41 @@ main {
   height: 100%;
   flex: 1;
   display: flex;
+}
+
+/* page number */
+.pageNum {
+  width: 100%;
+}
+
+.pageNum p {
+  width: 80%;
+  color: darkgrey;
+  font-size: 1.6rem;
+  padding: 20px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.pageNum p span {
+  color: #444444;
+}
+
+/* hinter */
+.hinter {
+  background-color: #555555;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  height: 40px;
+  top: 40px;
+  left: 0;
+  line-height: 40px;
+  color: #fafafa;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transform: translateZ(8px);
+  z-index: 2;
 }
 
 /* footer */
@@ -332,77 +422,6 @@ footer p {
 .search_extension .fa:active {
   color: white;
   background-color: #444444;
-}
-
-/* site map */
-
-main #siteMap {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-  background-color: #fafafa;
-  width: 100%;
-}
-
-main #siteMap section {
-  padding-bottom: 20px;
-  background-color: #fafafa;
-  width: 100%;
-}
-
-#siteMap div {
-  width: 100%;
-}
-
-#siteMap h1 {
-  font-size: 1.8rem;
-  text-align: left;
-  padding: 4rem;
-  line-height: 4rem;
-  height: 4rem;
-}
-
-#siteMap p {
-  padding: 2rem 4rem;
-  font-size: 1.5rem;
-  text-align: left;
-}
-
-#siteMap ul {
-  list-style-type: circle;
-  list-style-position: inside;
-  margin: 0 2rem;
-  padding: 0 2rem;
-  text-align: initial;
-  background-color: white;
-  border-radius: 10px;
-}
-
-#siteMap ul li a {
-  text-decoration: none;
-  line-height: 5rem;
-  font-family: monospace;
-  font-size: 1.4rem;
-  color: darkgrey;
-}
-
-#siteMap ul li a:hover {
-  color: #444444;
-}
-
-@media screen and (min-width: 830px) {
-  main #siteMap section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
-    background-color: #fafafa;
-    width: 100%;
-  }
-
-  main #siteMap section div {
-    width: auto;
-  }
 }
 
 /* fix bugs :(*/

@@ -43,7 +43,7 @@
 - 🤙 [jquery-confirm](http://craftpip.github.io/jquery-confirm/)
 - 🖖 ~~[Bootstrap](https://getbootstrap.com/)~~
 - 🖖 ~~[bulma](https://bulma.io/)~~
-- 🤙 [UIkit](https://getuikit.com/)
+- 🖖 ~~[UIkit](https://getuikit.com/) | [UIkit 中文网](http://www.getuikit.net/)~~
 
 - Tip: 头文件引入顺序
 
@@ -53,11 +53,6 @@
   <!-- jquery-confirm -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-  <!-- UIkit CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/css/uikit.min.css" />
-  <!-- UIkit JS -->
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit-icons.min.js"></script>
   <!-- 自定义css -->
   <link rel="stylesheet" type="text/css" href="../css/general.css" />
   <link rel="stylesheet" type="text/css" href="../css/register.css" />
