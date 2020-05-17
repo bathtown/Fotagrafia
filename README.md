@@ -17,7 +17,7 @@
 ### Backend TODO Lists
 
 - 🥱 TODO
-
+  - 👉 前后端分离 ...
 - 👋 Doing
 - 👌 Done
 
@@ -53,10 +53,11 @@
   <!-- jquery-confirm -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+  <!-- font-awesome CDN -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" />
   <!-- 自定义css -->
   <link rel="stylesheet" type="text/css" href="../css/general.css" />
   <link rel="stylesheet" type="text/css" href="../css/register.css" />
-  <link rel="stylesheet" href="../font/iconfont.css" />
   ```
 
 ### Frontend TODO Lists
