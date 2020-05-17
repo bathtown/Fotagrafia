@@ -22,8 +22,18 @@
             window.location.href = "../html/login.html";
         else {
             async function checkUserAuthority() {
-                try { await $.post("http://localhost:8080/backend/PHP/token.php", { token: sessionStorage.getItem("token") }); }
-                catch { window.location.href = "../html/login.html"; }
+                try {
+                    await $.post("http://localhost:8080/backend/PHP/api/token.php", { token: sessionStorage.getItem("token") })
+                        .done(() => {
+                        }).fail((err) => {
+                            sessionStorage.clear();
+                            window.location.href = "../html/login.html";
+                        })
+                }
+                catch {
+                    sessionStorage.clear();
+                    window.location.href = "../html/login.html";
+                }
             }
             checkUserAuthority();
         }

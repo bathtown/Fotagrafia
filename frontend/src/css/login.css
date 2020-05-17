@@ -93,7 +93,7 @@ main #login section form a:active {
   color: black;
 }
 
-main #login section form #sign {
+main #login section form #signButton {
   display: inline-block;
   border: none;
   box-sizing: content-box;
@@ -107,8 +107,8 @@ main #login section form #sign {
   width: 80%;
 }
 
-main #login section form #sign:hover,
-main #login section form #sign:active {
+main #login section form #signButton:hover,
+main #login section form #signButton:active {
   color: white;
 }
 

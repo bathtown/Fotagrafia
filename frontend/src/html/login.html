@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="bathtown">
     <meta name="COPYRIGHT" content="Bathtub">
+    <!-- jQuery -->
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <!-- jquery-confirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link rel="stylesheet" href="../font/iconfont.css">
@@ -22,14 +27,13 @@
             <p>Sign in with a Bathtub ID to enjoy more services</p>
             <section>
                 <h1>Account login</h1>
-                <form action="http://localhost:8080/backend/PHP/login.php" method="post" name="loginForm">
-                    <input type="text" placeholder="Please enter user name" class="userName" name="username"
-                        autofocus="autofocus" required="required" />
+                <form name="loginForm">
+                    <input type="text" placeholder="Please enter user name" class="username" name="username"
+                        autofocus="autofocus" required="required" id="username" />
                     <input type="password" placeholder="Please enter password" class="password" name="password"
-                        required="required" />
+                        required="required" id="password" />
                     <a href="../html/forgotPsw.html">Forgot password</a>
-                    <button type="submit" onclick="window.open('../html/home.html','_self')" id="sign"
-                        value="Sign in">Sign in</button>
+                    <button type="button" id="signButton" value="Sign in">Sign in</button>
                 </form>
                 <div>
                     <a href="../html/privacy.html">Privacy Statement</a>
@@ -58,6 +62,30 @@
     </footer>
 
     <script src="../js/feature.js" type="text/javascript"></script>
+    <script>
+
+        $('#signButton').click(() => {
+
+            if (!$('#username').val() || !$('#password').val()) {
+                myAlert('warning', 'Please fill in the form!');
+                return;
+            }
+
+            $.post("http://localhost:8080/backend/PHP/api/login.php",
+                {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                }).done((data) => {
+                    sessionStorage.setItem('token', JSON.parse(data).token);
+                    myAlert('success', JSON.parse(data).message);
+                    window.location.href = "../html/home.html";
+                }).fail((err) => {
+                    myAlert('error', JSON.parse(err.responseText).message);
+                    sessionStorage.clear();
+                });
+        });
+
+    </script>
 
 </body>
 

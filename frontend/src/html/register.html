@@ -27,7 +27,7 @@
             <form>
                 <h1>Register an Account</h1>
                 <label>
-                    <input type="text" placeholder="Please enter user name" class="userName" name="username"
+                    <input type="text" placeholder="Please enter user name" class="username" name="username"
                         id="username" autofocus="autofocus" required="required" />
                 </label>
                 <label for="password1"></label><input type="password" placeholder="Please enter password"
@@ -103,16 +103,16 @@
                 return;
             }
 
-            $.post("http://localhost:8080/backend/PHP/register.php",
+            $.post("http://localhost:8080/backend/PHP/api/register.php",
                 {
                     username: $('#username').val(),
                     password: $('#password1').val(),
                     email: $('#email').val()
-                }).done(() => {
-                    myAlert('success', 'Login successfully!');
+                }).done((data) => {
+                    myAlert('success', JSON.parse(data).message);
                     window.location.href = "../html/login.html";
                 }).fail((err) => {
-                    myAlert('error', err.responseText);
+                    myAlert('error', JSON.parse(err.responseText));
                 });
         });
     </script>

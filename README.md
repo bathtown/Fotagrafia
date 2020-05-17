@@ -19,13 +19,13 @@
 - 🥱 TODO
 
 - 👋 Doing
-  - 👉 JWT
 - 👌 Done
 
-  - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/register.php) √
-  - 👉 [登录](backend/PHP/login.php) √
-  - 👉 [跨域](backend/PHP/CORS.php) √
-  - 👉 [错误码](backend/PHP/statusCode.php) √
+  - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/api/register.php) √
+  - 👉 [登录](backend/PHP/api/login.php) √
+  - 👉 [跨域](backend/PHP/app/CORS.php) √
+  - 👉 [错误码](backend/PHP/app/statusCode.php) √
+  - 👉 [JWT](backend/PHP/app/JwtAuth.php) half √
 
 ### 一些实现 | 参考资料
 
@@ -33,6 +33,7 @@
 - [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
 - [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
 - [JWT](https://github.com/firebase/php-jwt)
+  - 真的坑，原是想用单例模式实现 token 储存，没想到 PHP 页面被销毁了，没有内存常驻，每次都是新的……
 
 ## Frontend
 

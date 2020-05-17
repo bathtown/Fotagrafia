@@ -292,9 +292,9 @@ if (document.getElementById("hintIt")) {
     hintRegister();
 }
 
-// 提示框
+// 提示框 warning, success, error
 function myAlert (type, content) {
     if (type === 'warning') $.dialog({ title: '⚠ Warning', content: content, type: 'orange', backgroundDismiss: true });
     else if (type === 'success') $.dialog({ title: '✔ Success', content: content, type: 'green', backgroundDismiss: true });
-    else if (type === 'err') $.dialog({ title: '❌ Error', content: content, type: 'red', backgroundDismiss: true });
+    else if (type === 'error') $.dialog({ title: '❌ Error', content: content, type: 'red', backgroundDismiss: true });
 }
