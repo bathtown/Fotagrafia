@@ -25,7 +25,7 @@
   - 👉 [登录](backend/PHP/api/login.php) √
   - 👉 [跨域](backend/PHP/app/CORS.php) √
   - 👉 [错误码](backend/PHP/app/statusCode.php) √
-  - 👉 [JWT](backend/PHP/app/JwtAuth.php) half √
+  - 👉 [JWT](backend/PHP/app/JwtAuth.php) **half √**
 
 ### 一些实现 | 参考资料
 
@@ -43,15 +43,35 @@
 - 🤙 [jquery-confirm](http://craftpip.github.io/jquery-confirm/)
 - 🖖 ~~[Bootstrap](https://getbootstrap.com/)~~
 - 🖖 ~~[bulma](https://bulma.io/)~~
+- 🤙 [UIkit](https://getuikit.com/)
+
+- Tip: 头文件引入顺序
+
+  ```html
+  <!-- jQuery -->
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+  <!-- jquery-confirm -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/css/uikit.min.css" />
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit-icons.min.js"></script>
+  <!-- 自定义css -->
+  <link rel="stylesheet" type="text/css" href="../css/general.css" />
+  <link rel="stylesheet" type="text/css" href="../css/register.css" />
+  <link rel="stylesheet" href="../font/iconfont.css" />
+  ```
 
 ### Frontend TODO Lists
 
 - 🥱 TODO
 - 👋 Doing
-  - 👉 [localStorage | sessionStorage | cookie](frontend/src/html/login.html) √
 - 👌 Done
   - 👉 [more friendly alert](frontend/src/html/register.html) √
   - 👉 [前端登录拦截](frontend/src/html/home.html) √
+  - 👉 [localStorage | sessionStorage | cookie + token](frontend/src/html/login.html) √
 
 ### 设计手册
 
