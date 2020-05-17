@@ -3,7 +3,7 @@
   require_once '../app/StatusCode.php';
   require_once '../app/PBKDF2.php';
   require_once '../app/CORS.php';
-  require_once '../app/JwtAuth.php';
+  require_once '../app/Token.php';
 
   $username =  trim($_POST['username']);
   $password = trim($_POST['password']);
@@ -34,9 +34,8 @@
     https(400);
     echo json_encode(array("message" => "Username or password is wrong, please try again!"));
   } else {
-    $jwt = new JwtAuth();
     https(200);
-    echo json_encode(array("message" => "Log in successfully", "token" => $jwt->getToken(['jwt_admin', time(), time() + 7200, time() + 60, 'frontend', md5(uniqid('JWT') . time())])));
+    echo json_encode(array("message" => "Log in successfully", "token" => Token::lssue($username)));
   };
 
   ?>
