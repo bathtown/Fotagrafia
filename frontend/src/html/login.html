@@ -71,19 +71,19 @@
                 return;
             }
 
-            $.post("http://localhost:8080/backend/PHP/api/login.php",
-                {
-                    username: $('#username').val(),
-                    password: $('#password').val(),
-                }).done((data) => {
-                    sessionStorage.setItem('token', JSON.parse(data).token);
-                    myAlert('success', JSON.parse(data).message);
-                    window.location.href = "../html/home.html";
-                }).fail((err) => {
-                    if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-                    myAlert('error', JSON.parse(err.responseText).message);
-                    sessionStorage.clear();
-                });
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8080/backend/PHP/api/login.php",
+                data: { username: $('#username').val(), password: $('#password').val() },
+            }).done((data) => {
+                sessionStorage.setItem('token', data.token);
+                myAlert('success', data.message);
+                window.location.href = "../html/home.html";
+            }).fail((err) => {
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText).message);
+                sessionStorage.clear();
+            });
         });
 
     </script>

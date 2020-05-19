@@ -18,7 +18,8 @@
 ### Backend TODO Lists
 
 - 🥱 TODO
-  - 👉 前后端分离 ...
+  - 🤜 前后端分离 ...
+  - 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
 - 👋 Doing
 - 👌 Done
 

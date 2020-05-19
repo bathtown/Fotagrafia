@@ -25,19 +25,14 @@
             window.location.href = "../html/login.html";
         else {
             async function checkUserAuthority() {
-                try {
-                    await $.post("http://localhost:8080/backend/PHP/api/token.php", { token: sessionStorage.getItem("token") })
-                        .done(() => {
-                        }).fail((err) => {
-                            if (err.status === 0) return;
-                            sessionStorage.clear();
-                            window.location.href = "../html/login.html";
-                        })
-                }
-                catch {
+                await $.ajax({
+                    method: "POST",
+                    url: "http://localhost:8080/backend/PHP/api/token.php",
+                    data: { token: sessionStorage.getItem("token") },
+                }).fail(() => {
                     sessionStorage.clear();
                     window.location.href = "../html/login.html";
-                }
+                })
             }
             checkUserAuthority();
         }
