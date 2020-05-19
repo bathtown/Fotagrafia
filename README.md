@@ -29,13 +29,16 @@
   - 👉 [错误码](backend/PHP/app/StatusCode.php) √
   - 👉 [JWT](backend/PHP/app/Token.php) √
 
-### 一些实现 | 参考资料
+### 参考资料
 
 - [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
 - [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
 - [firebase/php-jwt](https://github.com/firebase/php-jwt) | [firebase/php-jwt token 使用](https://www.cnblogs.com/yehuisir/p/11521165.html)
   - 原想用单例模式实现 token 储存，但是 PHP 页面没有常驻内存，被销毁了，每次都是新的……
   - 实现：token 自验证
+- [PHP 实现 RESTful 风格的 API](https://www.jianshu.com/p/f784ad32bf7f)
+- [PHP 实现 RESTful 风格的 API 实例](https://www.cnblogs.com/luyucheng/p/6016801.html)
+- [caoym/phpboot](https://github.com/caoym/phpboot)
 
 ## Frontend
 
