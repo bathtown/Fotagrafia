@@ -1,44 +1,50 @@
 # 🗽 Fotagrafia
 
-- project 01 repository: **[bathtown.github.io](https://github.com/bathtown/bathtown.github.io)**
+> project 01 repository: **[bathtown.github.io](https://github.com/bathtown/bathtown.github.io)**
 
 ## 说明
 
-- 这是 fudan*19ss_web 基础课程\_Project_01* 旅游照片分享平台（下）
-
-- my page:
-
-- my repository: **[Fotagrafia](https://github.com/bathtown/Fotagrafia)**
-
-- Bonus 完成情况
-  - 🙋‍♂️ [密码加盐](backend/PHP/api/register.php)
+1. 这是 fudan*19ss_web 基础课程\_Project_01* 旅游照片分享平台（下）
+2. my page:
+3. my repository: **[Fotagrafia](https://github.com/bathtown/Fotagrafia)**
+4. Bonus 完成情况
+   - 🙋‍♂️ [密码加盐](backend/PHP/api/register.php)
 
 ## Backend First
 
 ### Backend TODO Lists
 
-- 🥱 TODO
-  - 🤜 前后端分离 ...
-  - 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
-- 👋 Doing
-- 👌 Done
+1. 🥱 TODO
+   - 🤜 前后端分离 ...
+   - 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
+2. 👋 Doing
+3. 👌 Done
 
-  - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/api/register.php) √
-  - 👉 [登录](backend/PHP/api/login.php) √
-  - 👉 [跨域](backend/PHP/app/CORS.php) √
-  - 👉 [错误码](backend/PHP/app/StatusCode.php) √
-  - 👉 [JWT](backend/PHP/app/Token.php) √
+   - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/api/register.php) √
+   - 👉 [登录](backend/PHP/api/login.php) √
+   - 👉 [跨域](backend/PHP/app/CORS.php) √
+   - 👉 [错误码](backend/PHP/app/StatusCode.php) √
+   - 👉 [JWT](backend/PHP/app/Token.php) √
+   - 👉 [CORS](backend/PHP/app/CORS.php) √
+
+### Trick Points 👻
+
+1. token
+   - 原想用单例模式实现 token 储存，但是 PHP 页面没有常驻内存，被销毁了，每次都是新的……
+   - 最后实现方法：token 自验证
+2. [headers](backend/PHP/app/CORS.php)
+   - preflight request 要额外注意
+   - 学习: [same-origin](https://wangdoc.com/javascript/bom/same-origin.html)
 
 ### 参考资料
 
-- [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
-- [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
-- [firebase/php-jwt](https://github.com/firebase/php-jwt) | [firebase/php-jwt token 使用](https://www.cnblogs.com/yehuisir/p/11521165.html)
-  - 原想用单例模式实现 token 储存，但是 PHP 页面没有常驻内存，被销毁了，每次都是新的……
-  - 实现：token 自验证
-- [PHP 实现 RESTful 风格的 API](https://www.jianshu.com/p/f784ad32bf7f)
-- [PHP 实现 RESTful 风格的 API 实例](https://www.cnblogs.com/luyucheng/p/6016801.html)
-- [caoym/phpboot](https://github.com/caoym/phpboot)
+1. [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
+2. [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
+3. [same-origin](https://wangdoc.com/javascript/bom/same-origin.html)
+4. [firebase/php-jwt](https://github.com/firebase/php-jwt) | [firebase/php-jwt token 使用](https://www.cnblogs.com/yehuisir/p/11521165.html)
+5. [PHP 实现 RESTful 风格的 API](https://www.jianshu.com/p/f784ad32bf7f)
+6. [PHP 实现 RESTful 风格的 API 实例](https://www.cnblogs.com/luyucheng/p/6016801.html)
+7. [caoym/phpboot](https://github.com/caoym/phpboot)
 
 ## Frontend
 
@@ -68,9 +74,9 @@
 
 ### Frontend TODO Lists
 
-- 🥱 TODO
-- 👋 Doing
-- 👌 Done
-  - 👉 [more friendly alert](frontend/src/html/register.html) √
-  - 👉 [前端登录拦截](frontend/src/html/home.html) √
-  - 👉 [sessionStorage + token](frontend/src/html/login.html) √
+1. 🥱 TODO
+2. 👋 Doing
+3. 👌 Done
+   - 👉 [more friendly alert](frontend/src/html/register.html) √
+   - 👉 [前端登录拦截](frontend/src/html/home.html) √
+   - 👉 [sessionStorage + token](frontend/src/html/login.html) √
