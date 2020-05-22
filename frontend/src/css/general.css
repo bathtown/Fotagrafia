@@ -73,7 +73,7 @@ header ul #logo {
   order: -1;
 }
 
-header ul #account {
+header ul .account {
   margin-left: auto;
 }
 
@@ -166,7 +166,7 @@ header #my {
 
   header ul #bar,
   header ul #logo,
-  header ul #account {
+  header ul .account {
     text-align: center;
     height: 40px;
   }
@@ -188,13 +188,13 @@ header #my {
     margin-left: 0;
   }
 
-  header ul #account {
+  header ul .account {
     width: 160px;
     margin-right: 0;
     margin-left: 0;
   }
 
-  header ul #account > a {
+  header ul .account > a {
     padding-right: 20%;
     text-align: right;
   }

@@ -21,23 +21,6 @@
     <title>Home</title>
     <!--    remove tel feature-->
     <meta name="format-detection" content="telephone=no">
-    <script>
-        if (sessionStorage.getItem("token") === null)
-            window.location.href = "../html/login.html";
-        else {
-            async function checkUserAuthority() {
-                await $.ajax({
-                    method: "POST",
-                    url: "http://localhost:8080/backend/PHP/api/token.php",
-                    headers: { Authorization: sessionStorage.getItem("token") }
-                }).fail(() => {
-                    sessionStorage.clear();
-                    window.location.href = "../html/login.html";
-                })
-            }
-            checkUserAuthority();
-        }
-    </script>
 </head>
 
 <body>
@@ -47,9 +30,7 @@
             <li id="bar">
                 <a><span class="fa fa-bars"></span></a>
                 <ul id="barlist">
-                    <li>
-                        <a href="../html/home.html" class="home">
-                            <span><span class="fa fa-home"> <span class="imlooking"></span> Home</span></span></a>
+                    <li> <a href="../html/home.html" class="home imlooking"> <span class="fa fa-home"> Home</span> </a>
                     </li>
                     <li><a href="../html/browser.html" class="browser"><span class="fa fa-cloud"></span> Browser</a>
                     </li>
@@ -59,14 +40,18 @@
 
             <li id="logo"><a href="../html/bathtub.html"><span class="fa fa-bathtub"></span></a></li>
 
-            <li id="account">
+            <li class="account">
+                <a target="_self" href="../html/login.html" id="login"><span class="fa fa-child"></span> Log in</a>
+            </li>
+
+            <li class="account">
                 <a id="myAccount">My Account <span class="fa fa-angle-down"></span></a>
                 <a id="my"><span class="fa fa-user"></span></a>
                 <ul>
                     <li><a href="../html/upload.html"><span class="fa fa-cloud-upload"></span> Upload</a></li>
                     <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
                     <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
-                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
+                    <li><a href="../html/login.html" id="logout"><span class="fa fa-child"></span> Log out</a></li>
                 </ul>
             </li>
         </ul>

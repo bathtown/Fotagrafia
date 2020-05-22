@@ -296,3 +296,15 @@ function myAlert (type, content) {
     else if (type === 'success') $.dialog({ title: '✔ Success', content: content, type: 'green', backgroundDismiss: true });
     else if (type === 'error') $.dialog({ title: '❌ Error', content: content, type: 'red', backgroundDismiss: true });
 }
+
+$(function () {
+    // login toggle
+    if (window.sessionStorage.getItem("token")) document.getElementsByClassName("account")[0].style.display = "none";
+    else document.getElementsByClassName("account")[1].style.display = "none";
+
+    $('#logout').click(() => {
+        window.sessionStorage.clear();
+    })
+
+    $('.imlooking').attr('href', '#');
+})

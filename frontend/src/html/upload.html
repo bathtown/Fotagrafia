@@ -7,6 +7,11 @@
     <meta name="author" content="bathtown">
     <meta name="COPYRIGHT" content="Bathtub">
     <meta name="description" content="upload page">
+    <!-- jQuery -->
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <!-- jquery-confirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/upload.css">
@@ -31,15 +36,18 @@
 
             <li id="logo"><a href="../html/bathtub.html"><span class="fa fa-bathtub"></span></a></li>
 
-            <li id="account">
+            <li class="account">
+                <a target="_self" href="../html/login.html" id="login"><span class="fa fa-child"></span> Log in</a>
+            </li>
+
+            <li class="account">
                 <a id="myAccount">My Account <span class="fa fa-angle-down"></span></a>
                 <a id="my"><span class="fa fa-user"></span></a>
                 <ul>
-                    <li><a href="../html/upload.html"><span class="imlooking"><span class="fa fa-cloud-upload"></span>
-                                Upload</span></a></li>
+                    <li><a href="../html/upload.html"><span class="fa fa-cloud-upload"></span> Upload</a></li>
                     <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
                     <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
-                    <li><a target="_self" href="../html/login.html"><span class="fa fa-child"></span> Log in</a></li>
+                    <li><a href="../html/login.html" id="logout"><span class="fa fa-child"></span> Log out</a></li>
                 </ul>
             </li>
         </ul>
