@@ -299,8 +299,8 @@ function myAlert (type, content) {
 
 $(function () {
     // login toggle
-    if (window.sessionStorage.getItem("token")) document.getElementsByClassName("account")[0].style.display = "none";
-    else document.getElementsByClassName("account")[1].style.display = "none";
+    if (window.sessionStorage.getItem("token")) $('.account').eq(0).hide();
+    else $('.account').eq(1).hide();
 
     $('#logout').click(() => {
         window.sessionStorage.clear();
