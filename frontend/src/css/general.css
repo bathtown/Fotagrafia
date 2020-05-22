@@ -120,7 +120,7 @@ header ul li:active ul {
   display: block;
 }
 
-header #my {
+header .my {
   display: none;
 }
 
@@ -138,11 +138,11 @@ header #my {
     z-index: 3;
   }
 
-  header #myAccount {
+  header .myAccount {
     display: none;
   }
 
-  header #my {
+  header .my {
     display: block;
   }
 

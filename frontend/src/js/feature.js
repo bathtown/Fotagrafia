@@ -306,5 +306,5 @@ $(function () {
         window.sessionStorage.clear();
     })
 
-    $('.imlooking').attr('href', '#');
+    $('.imlooking').removeAttr('href');
 })
