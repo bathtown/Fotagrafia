@@ -14,7 +14,6 @@ function goTop () {
 function refreshPic () {
     // 刷新页面
     location.reload();
-    alert('This is my pj!');
 }
 
 // details page
@@ -79,7 +78,6 @@ function show (file) {
 // search page
 // show search result
 function searchResult () {
-    alert('This is my pj!');
     document.getElementsByClassName('result')[0].style.display = 'block';
     if (document.getElementsByClassName('filter')[0]) {
         const filterAny = document.getElementsByClassName('filter')[0];
