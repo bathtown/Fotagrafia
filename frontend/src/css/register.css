@@ -22,6 +22,10 @@ main #register form {
 }
 
 @media screen and (max-width: 480px) {
+  main {
+    background-color: white;
+  }
+
   main #register {
     width: 100%;
     display: flex;
@@ -111,10 +115,15 @@ main #register form > p {
   text-align: justify;
   padding: 0 10px 0 10px;
   line-height: 20px;
+  transform: translateY(-8px);
+}
+
+main #register form .agreeText {
+  width: 64%;
 }
 
 main #register form #checkAgreement {
-  margin: 0;
+  margin: 6px;
   padding: 0;
   width: 13px;
   height: 13px;
@@ -122,9 +131,6 @@ main #register form #checkAgreement {
   left: 30px;
   top: 16px;
   cursor: pointer;
-}
-
-main #register form .agreeText p {
   margin-left: 1rem;
 }
 

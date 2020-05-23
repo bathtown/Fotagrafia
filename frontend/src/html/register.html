@@ -42,15 +42,14 @@
                     <input type="email" placeholder="please enter email address" class="address" id="email"
                         required="required" name="email" />
                 </label>
-                <label for="checkAgreement"></label><input type="checkbox" id="checkAgreement" name="checkAgreement">
-                <div class="agreeText">
-                    <p>I've read and agree to
-                        <span onclick="window.open('../html/agreement.html', '_self')">Agreement on
-                            Fotagrafia ID Use</span>,
-                        <span onclick="window.open('../html/privacy.html', '_self')">Fotagrafia ID Privacy
-                            Statement</span>
-                    </p>
-                </div>
+                <input type="checkbox" id="checkAgreement" name="checkAgreement">
+                <label class="agreeText" for="checkAgreement">
+                    I've read and agree to
+                    <span onclick="window.open('../html/agreement.html', '_self')">Agreement on
+                        Fotagrafia ID Use</span>,
+                    <span onclick="window.open('../html/privacy.html', '_self')">Fotagrafia ID Privacy
+                        Statement</span>
+                </label>
                 <div>
                     <a href="../html/login.html" id="backButton"> Back </a>
                     <input type="button" id="registerButton" value="Register">
