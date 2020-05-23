@@ -18,6 +18,7 @@ main #myHearts .onePic {
   background: white;
   margin: 20px auto;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 main #myGallery .onePic .picContain,
@@ -30,7 +31,6 @@ main #myHearts .onePic .picContain {
 main #myGallery .onePic .picContain img,
 main #myHearts .onePic .picContain img {
   height: 100%;
-  cursor: pointer;
   border-radius: 10px;
 }
 
@@ -41,6 +41,7 @@ main #myHearts .onePic .message {
   align-items: flex-start;
   padding: 20px;
   justify-content: center;
+  cursor: auto;
 }
 
 main #myGallery .onePic .message h1,

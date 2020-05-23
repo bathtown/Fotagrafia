@@ -126,17 +126,6 @@ function buttonAppear () {
         });
     }
 }
-// condition
-if (document.getElementsByClassName("onePic") && document.body.clientWidth <= 830) {
-    buttonAppear();
-    let hinter = document.getElementsByClassName("hinter")[0];
-    if (document.getElementById("myHearts")) {
-        hinter.innerHTML = "My Hearts | try ←👆";
-    }
-    if (document.getElementById("myGallery")) {
-        hinter.innerHTML = "My Gallery | try ←👆";
-    }
-}
 
 // touch function
 (function () {
@@ -302,9 +291,19 @@ $(function () {
     if (window.sessionStorage.getItem("token")) $('.account').eq(0).hide();
     else $('.account').eq(1).hide();
 
+    // logout
     $('#logout').click(() => {
         window.sessionStorage.clear();
     })
 
+    // im looking
     $('.imlooking').removeAttr('href');
+
+    // hinter
+    if ($(".onePic") && document.body.clientWidth <= 830) {
+        buttonAppear();
+        if ($(".myHearts")) $(".hinter").html("My Hearts | try ←👆");
+        if ($(".myGallery")) $(".hinter").html("My Gallery | try ←👆");
+    }
+
 })
