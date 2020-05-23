@@ -36,7 +36,6 @@ main #search .filter #searchFilter input {
   padding: 5px;
   margin: 20px auto;
   font-size: 1.2rem;
-  font-family: monospace;
 }
 
 main #search .filter #searchFilter #descripText {
@@ -48,9 +47,7 @@ main #search .filter #searchFilter #descripText {
   padding: 5px;
   border: none;
   resize: none;
-  font-family: monospace;
   font-size: 1.2rem;
-  /* color: gainsboro; */
 }
 
 main #search .filter #searchFilter input[type='radio'] {
@@ -110,7 +107,6 @@ main #search .filterAfter #searchFilter input {
   background-color: #fafafa;
   padding: 5px;
   font-size: 1.2rem;
-  font-family: monospace;
 }
 
 main #search .filterAfter #searchFilter #descripText {
@@ -122,7 +118,6 @@ main #search .filterAfter #searchFilter #descripText {
   padding: 5px;
   border: none;
   resize: none;
-  font-family: monospace;
   font-size: 1.2rem;
 }
 
@@ -243,7 +238,6 @@ main #search .result .onePic .message p {
     background-color: #eaeaea;
     padding: 5px;
     font-size: 1.2rem;
-    font-family: monospace;
   }
 
   main #search .filterAfter #searchFilter #descripText {
@@ -255,7 +249,6 @@ main #search .result .onePic .message p {
     padding: 5px;
     border: none;
     resize: none;
-    font-family: monospace;
     font-size: 1.2rem;
   }
 

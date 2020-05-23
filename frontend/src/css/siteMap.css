@@ -45,7 +45,6 @@ main #siteMap section {
 #siteMap ul li a {
   text-decoration: none;
   line-height: 5rem;
-  font-family: monospace;
   font-size: 1.4rem;
   color: darkgrey;
 }
