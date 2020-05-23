@@ -302,8 +302,8 @@ $(function () {
     // hinter
     if ($(".onePic") && document.body.clientWidth <= 830) {
         buttonAppear();
-        if ($(".myHearts")) $(".hinter").html("My Hearts | try ←👆");
-        if ($(".myGallery")) $(".hinter").html("My Gallery | try ←👆");
+        if ($(".myHearts")) $(".hinter").text("My Hearts | try ←👆");
+        if ($(".myGallery")) $(".hinter").text("My Gallery | try ←👆");
     }
 
 })
