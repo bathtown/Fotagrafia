@@ -15,18 +15,18 @@
 ### Backend TODO Lists
 
 1. 🥱 TODO
-   - 🤜 前后端分离 ...
-   - 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
-   - 🤜 防 SQL 注入
+   - [ ] 🤜 前后端分离 ...
+   - [ ] 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
+   - [ ] 🤜 防 SQL 注入
 2. 👋 Doing
 3. 👌 Done
 
-   - 👉 [注册 | 密码加盐 | Ajax](backend/PHP/api/register.php) √
-   - 👉 [登录](backend/PHP/api/login.php) √
-   - 👉 [跨域](backend/PHP/app/CORS.php) √
-   - 👉 [错误码](backend/PHP/app/StatusCode.php) √
-   - 👉 [JWT](backend/PHP/app/Token.php) √
-   - 👉 [CORS](backend/PHP/app/CORS.php) √
+   - [x] 👉 [注册 | 密码加盐 | Ajax](backend/PHP/api/register.php)
+   - [x] 👉 [登录](backend/PHP/api/login.php)
+   - [x] 👉 [跨域](backend/PHP/app/CORS.php)
+   - [x] 👉 [错误码](backend/PHP/app/StatusCode.php)
+   - [x] 👉 [JWT](backend/PHP/app/Token.php)
+   - [x] 👉 [CORS](backend/PHP/app/CORS.php)
 
 ### Trick Points 👻
 
@@ -80,6 +80,6 @@
 1. 🥱 TODO
 2. 👋 Doing
 3. 👌 Done
-   - 👉 [more friendly alert](frontend/src/html/register.html) √
-   - 👉 [前端登录拦截](frontend/src/html/home.html) √
-   - 👉 [sessionStorage + token](frontend/src/html/login.html) √
+   - [x] 👉 [more friendly alert](frontend/src/html/register.html)
+   - [x] 👉 [前端登录拦截](frontend/src/html/home.html)
+   - [x] 👉 [sessionStorage + token](frontend/src/html/login.html)
