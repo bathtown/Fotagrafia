@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <script src="  https://cdn.rawgit.com/imsky/holder/master/holder.js"></script>
+    <!-- <script src="  https://cdn.rawgit.com/imsky/holder/master/holder.js"></script> -->
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/home.css">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
@@ -144,7 +144,22 @@
     </div>
 
     <script src="../js/feature.js" type="text/javascript"></script>
+    <script>
 
+        $(function () {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/photoTest.php",
+                dataType: 'text',
+            }).done((data) => {
+                $('#firstPic').find('img').eq(0).data('src', "");
+                $('#firstPic').find('img').eq(0).attr({ 'src': `http://localhost:8080/backend/PHP/api/${data.trim()}` });
+            }).fail((err) => {
+                console.log(err);
+            });
+        });
+
+    </script>
 </body>
 
 </html>
