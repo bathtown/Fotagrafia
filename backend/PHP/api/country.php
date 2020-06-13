@@ -7,7 +7,7 @@
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  $query = "SELECT * FROM geocountries_regions";
+  $query = "SELECT Country_RegionName FROM geocountries_regions ORDER BY Country_RegionName ASC";
   $result = $conn->query($query);
   if (!$result) die("Fatal Error");
 

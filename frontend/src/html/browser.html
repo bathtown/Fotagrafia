@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <script src="  https://cdn.rawgit.com/imsky/holder/master/holder.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/browser.css">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
@@ -99,8 +98,8 @@
             <section class="browserResult">
                 <form class="filter" id="threeFilter">
                     <div>
-                        <select class="byContent">
-                            <option value="default" style="display: none;">Filter by Content</option>
+                        <select class="byContent" id="content">
+                            <option value="" style="display: none;">Filter by Content</option>
                             <option>Scenery</option>
                             <option>People</option>
                             <option>Animal</option>
@@ -108,56 +107,48 @@
                         </select>
 
                         <select class="byCountry" id="country" onchange="countrysCity(this)">
-                            <option value="default" style="display: none;">Filter by Country</option>
+                            <option value="" style="display: none;">Filter by Country</option>
                         </select>
 
                         <select class="byCity" id="city">
-                            <option value="default" style="display: none;">Filter by City</option>
+                            <option value="" style="display: none;">Filter by City</option>
                         </select>
                     </div>
 
-                    <button type="button" value="Filter">Filter</button>
+                    <button type="button" value="Filter" id="linkageFilter">Filter</button>
                 </form>
 
                 <div class="mainPic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" data-src="holder.js/300x400?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="window.open('../html/details.html', '_self')" />
                     </div>
 
                 </div>
@@ -205,15 +196,13 @@
         });
 
         function countrysCity(country) {
-            console.log($('#city').children());
             $('#city').empty();
-            console.log($('#city').children());
 
             // console.log(country.options[country.selectedIndex].text);
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/city.php",
-                data: { country: country.options[country.selectedIndex].text }
+                data: { country: $('#country  option:selected').val() }
             }).done((data) => {
                 for (let index = 0; index < data.cities.length; index++) {
                     let newOption = $(`<option value="${data.cities[index]}">${data.cities[index]}</option>`);
@@ -224,6 +213,39 @@
                 myAlert('error', JSON.parse(err.responseText).message);
             });
         }
+
+        $('#linkageFilter').click(function () {
+
+            // scenery Canada Calgary
+            let content = $('#content option:selected').val();
+            let city = $('#city  option:selected').val();
+            let country = $('#country option:selected').val();
+
+            if (!content && !city && !country) {
+                // myAlert('warning', 'Please select!');
+                // return;
+                content = 'scenery';
+                country = 'Canada';
+                city = 'Calgary';
+            }
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8080/backend/PHP/api/browser.php",
+                data: { content: content, city: city, country: country }
+            }).done((data) => {
+                console.log(data);
+                console.log($('img'));
+                for (let index = 0; index < data.imgs.length; index++) {
+                    $('img').eq(index).attr('src', `http://localhost:8080/backend/travel-images/large/${data.imgs[index]}`);
+                }
+            }).fail((err) => {
+                console.log(err);
+
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText).message);
+            });
+        })
     </script>
 
 </body>
