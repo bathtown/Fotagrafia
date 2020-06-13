@@ -11,14 +11,14 @@
 ## 评分项
 
 1. 首页
-   - [ ] 登录逻辑
+   - [x] [登录逻辑](frontend/src/html/home.html)
    - [ ] 刷新逻辑
    - [ ] 图片逻辑
 2. 浏览页
-   - [x] 筛选逻辑
+   - [x] [筛选逻辑](backend/PHP/api/browser.php)
    - [ ] 图片逻辑
 3. 搜索页
-   - [x] 搜索逻辑
+   - [x] [搜索逻辑](backend/PHP/api/search.php)
    - [ ] 图片逻辑
 4. 登录页面
    - [x] [登录逻辑](backend/PHP/api/login.php)
@@ -34,7 +34,7 @@
    - [ ] 合法性校验
    - [ ] 修改逻辑
 9. 详细图片页面
-   - [x] 信息展示
+   - [x] [信息展示](backend/PHP/api/detail.php)
    - [ ] 收藏功能
 10. Bonus
     - [x] [密码加盐](backend/PHP/api/register.php)
