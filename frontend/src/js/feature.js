@@ -219,48 +219,48 @@ if (document.getElementsByClassName("browserAside")[0])
     browserAsideAppear();
 
 // browser page
-data = {
-    China: ['Shanghai', 'Kunming', 'Beijing', 'Yantai'],
-    Japan: ['Tokyo', 'Osaka', 'Kamakura'],
-    Italy: ['Roma', 'Milan', 'Venice', 'Florence'],
-    America: ['New York', 'San Francisco', 'Washington']
-};
-// initial countries
-function initialFilter () {
-    const country = document.getElementById("country");
+// data = {
+//     China: ['Shanghai', 'Kunming', 'Beijing', 'Yantai'],
+//     Japan: ['Tokyo', 'Osaka', 'Kamakura'],
+//     Italy: ['Roma', 'Milan', 'Venice', 'Florence'],
+//     America: ['New York', 'San Francisco', 'Washington']
+// };
+// // initial countries
+// function initialFilter () {
+//     const country = document.getElementById("country");
 
-    for (let i in data) {
-        let countryOption = document.createElement("option");
-        countryOption.innerHTML = i;
-        country.appendChild(countryOption);
-    }
-}
-if (document.getElementById("country")) {
-    initialFilter();
-}
-// initial cities
-function countrysCity (thisCountry) {
-    const choice = (thisCountry.options[thisCountry.selectedIndex]).innerHTML;
-    const city = document.getElementById("city");
+//     for (let i in data) {
+//         let countryOption = document.createElement("option");
+//         countryOption.innerHTML = i;
+//         country.appendChild(countryOption);
+//     }
+// }
+// if (document.getElementById("country")) {
+//     initialFilter();
+// }
+// // initial cities
+// function countrysCity (thisCountry) {
+//     const choice = (thisCountry.options[thisCountry.selectedIndex]).innerHTML;
+//     const city = document.getElementById("city");
 
-    let options = city.children;
-    // remove pre children
-    for (let k = 0; k < options.length; k++) {
-        city.removeChild(options[k]);
-        k--;
-    }
-    // add default one
-    let CityOption = document.createElement("option");
-    CityOption.innerHTML = "...";
-    CityOption.style.display = "none";
-    city.appendChild(CityOption);
-    // add new children
-    for (let i in data[choice]) {
-        CityOption = document.createElement("option");
-        CityOption.innerHTML = data[choice][i];
-        city.appendChild(CityOption);
-    }
-}
+//     let options = city.children;
+//     // remove pre children
+//     for (let k = 0; k < options.length; k++) {
+//         city.removeChild(options[k]);
+//         k--;
+//     }
+//     // add default one
+//     let CityOption = document.createElement("option");
+//     CityOption.innerHTML = "...";
+//     CityOption.style.display = "none";
+//     city.appendChild(CityOption);
+//     // add new children
+//     for (let i in data[choice]) {
+//         CityOption = document.createElement("option");
+//         CityOption.innerHTML = data[choice][i];
+//         city.appendChild(CityOption);
+//     }
+// }
 
 // login page
 function hintRegister () {

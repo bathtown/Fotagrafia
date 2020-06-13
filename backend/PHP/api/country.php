@@ -1,9 +1,7 @@
   <?php
 
   require_once '../app/StatusCode.php';
-  require_once '../app/PBKDF2.php';
   require_once '../app/CORS.php';
-  require_once '../app/Token.php';
   require_once '../app/SQLConfig.php';
 
   $conn = new mysqli($hn, $un, $pw, $db);

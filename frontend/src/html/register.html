@@ -100,11 +100,11 @@
                     password: $('#password1').val(),
                     email: $('#email').val()
                 }).done((data) => {
-                    myAlert('success', JSON.parse(data).message);
+                    myAlert('success', data.message);
                     window.location.href = "../html/login.html";
                 }).fail((err) => {
                     if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-                    myAlert('error', JSON.parse(err.responseText));
+                    myAlert('error', JSON.parse(err.responseText).message);
                 });
         });
     </script>
