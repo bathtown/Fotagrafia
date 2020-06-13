@@ -77,9 +77,9 @@
                 </form>
             </div>
             <div class="result">
-                <section class="onePic" onclick="window.open('../html/details.html', '_self')">
+                <section class="onePic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..." />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
                         <h1>The Greatest Web River</h1>
@@ -94,10 +94,9 @@
                         </p>
                     </div>
                 </section>
-                <section class="onePic" onclick="window.open('../html/details.html', '_self')">
+                <section class="onePic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
                         <h1>The Greatest Web River</h1>
@@ -112,10 +111,9 @@
                         </p>
                     </div>
                 </section>
-                <section class="onePic" onclick="window.open('../html/details.html', '_self')">
+                <section class="onePic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
                         <h1>The Greatest Web River</h1>
@@ -130,10 +128,9 @@
                         </p>
                     </div>
                 </section>
-                <section class="onePic" onclick="window.open('../html/details.html', '_self')">
+                <section class="onePic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
                         <h1>The Greatest Web River</h1>
@@ -148,10 +145,9 @@
                         </p>
                     </div>
                 </section>
-                <section class="onePic" onclick="window.open('../html/details.html', '_self')">
+                <section class="onePic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
                         <h1>The Greatest Web River</h1>
@@ -166,10 +162,9 @@
                         </p>
                     </div>
                 </section>
-                <section class="onePic" onclick="window.open('../html/details.html', '_self')">
+                <section class="onePic">
                     <div class="picContain">
-                        <img src="" data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..."
-                            onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
                         <h1>The Greatest Web River</h1>
@@ -269,8 +264,31 @@
                         url: "http://localhost:8080/backend/PHP/api/search.php",
                         data: { choice: choice, text: text }
                     }).done((data) => {
+
+                        // <section class="onePic">
+                        //     <div class="picContain">
+                        //         <img/>
+                        //     </div>
+                        //     <div class="message">
+                        //         <h1></h1>
+                        //         <p></p>
+                        //     </div>
+                        // </section>
+
+                        console.log(data);
+
+                        // description: "First time using HDR with 2 stop bracketing composed in PhotoMatix Pro 4.1"
+                        // id: "5"
+                        // src: "6114904363.jpg"
+                        // title: "Ascending Sulpher Mountain"
+
                         for (let index = 0; index < data.imgs.length; index++) {
-                            $('img').eq(index).attr('src', `http://localhost:8080/backend/travel-images/large/${data.imgs[index]}`);
+                            $('img').eq(index).attr({
+                                'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
+                                'data-id': data.imgs[index].id
+                            });
+                            $('.message').eq(index).children('h1').eq(0).text(data.imgs[index].title);
+                            $('.message').eq(index).children('p').eq(0).text(data.imgs[index].description);
                         }
                     }).fail((err) => {
                         if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }

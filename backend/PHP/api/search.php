@@ -12,9 +12,9 @@
 
   // get imgs array
   if ($choice === 'title')
-    $img_query = "SELECT PATH FROM travelimage WHERE Title LIKE '$text'";
+    $img_query = "SELECT * FROM travelimage WHERE Title LIKE '$text'";
   else
-    $img_query = "SELECT PATH FROM travelimage WHERE Description LIKE '$text'";
+    $img_query = "SELECT * FROM travelimage WHERE Description LIKE '$text'";
 
   $img_result = $conn->query($img_query);
   if (!$img_result) die("Fatal Error");
@@ -23,7 +23,7 @@
   $imgs = array();
   for ($j = 0; $j < $img_rows; ++$j) {
     $img_row = $img_result->fetch_array(MYSQLI_ASSOC);
-    array_push($imgs, htmlspecialchars($img_row['PATH']));
+    array_push($imgs, ['src' => htmlspecialchars($img_row['PATH']), 'id' => htmlspecialchars($img_row['ImageID']), 'title' => htmlspecialchars($img_row['Title']), 'description' => htmlspecialchars($img_row['Description'])]);
   }
   $img_result->close();
 
