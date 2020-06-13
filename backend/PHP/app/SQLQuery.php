@@ -22,7 +22,27 @@
     return $CityName;
   }
 
-  function CountryRegionCodeISO2CountryRegionCodeName($CountryRegionCodeISO)
+  function CityName2CityCode($CityName)
+  {
+    if ($CityName === '') return 'null';
+
+    global $hn, $un, $pw, $db;
+    $conn = new mysqli($hn, $un, $pw, $db);
+    if ($conn->connect_error) die("Fatal Error");
+
+    $city_query = "SELECT GeoNameID FROM geocities WHERE AsciiName='$CityName'";
+    $city_result = $conn->query($city_query);
+    if (!$city_result) die("Fatal Error");
+    $city_row = $city_result->fetch_array(MYSQLI_ASSOC);
+    $CityCode = htmlspecialchars($city_row['GeoNameID']);
+
+    $city_result->close();
+    $conn->close();
+
+    return $CityCode;
+  }
+
+  function CountryRegionCodeISO2CountryRegionName($CountryRegionCodeISO)
   {
     if ($CountryRegionCodeISO  === '') return 'null';
 
@@ -40,6 +60,26 @@
     $conn->close();
 
     return $CountryRegionName;
+  }
+
+  function CountryRegionName2CountryRegionCodeISO($CountryRegionName)
+  {
+    if ($CountryRegionName  === '') return 'null';
+
+    global $hn, $un, $pw, $db;
+    $conn = new mysqli($hn, $un, $pw, $db);
+    if ($conn->connect_error) die("Fatal Error");
+
+    $country_query = "SELECT ISO FROM geocountries_regions WHERE Country_RegionName='$CountryRegionName'";
+    $country_result = $conn->query($country_query);
+    if (!$country_result) die("Fatal Error");
+    $country_row = $country_result->fetch_array(MYSQLI_ASSOC);
+    $CountryRegionCodeISO = htmlspecialchars($country_row['ISO']);
+
+    $country_result->close();
+    $conn->close();
+
+    return $CountryRegionCodeISO;
   }
 
   function UID2UserName($UID)

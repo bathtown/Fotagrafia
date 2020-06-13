@@ -27,7 +27,7 @@
       'author' => UID2UserName(htmlspecialchars($img_row['UID'])),
       'description' => htmlspecialchars($img_row['Description']),
       'content' => htmlspecialchars($img_row['Content']),
-      'country' => CountryRegionCodeISO2CountryRegionCodeName(htmlspecialchars($img_row['Country_RegionCodeISO'])),
+      'country' => CountryRegionCodeISO2CountryRegionName(htmlspecialchars($img_row['Country_RegionCodeISO'])),
       'city' => CityCode2CityName(htmlspecialchars($img_row['CityCode']))
     ]);
   }
