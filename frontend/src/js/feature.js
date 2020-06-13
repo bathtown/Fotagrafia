@@ -75,33 +75,6 @@ function show (file) {
     document.getElementsByClassName("uploadBtn")[0].style.display = "none";
 }
 
-// search page
-// show search result
-function searchResult () {
-    document.getElementsByClassName('result')[0].style.display = 'block';
-    if (document.getElementsByClassName('filter')[0]) {
-        const filterAny = document.getElementsByClassName('filter')[0];
-        filterAny.setAttribute('class', "filterAfter");
-    }
-
-    const width = document.body.clientWidth;
-    const extension = document.getElementsByClassName('search_extension')[0];
-    if (width <= 830)
-        extension.style.display = 'flex';
-    filterAny = document.getElementsByClassName('filterAfter')[0];
-    if (filterAny.style.display = 'block' && width <= 830) {
-        filterAny.style.display = 'none';
-        extension.style.display = 'flex';
-    } else {
-        filterAny.style.display = 'block';
-    }
-}
-// show search box
-function showSearchBox () {
-    document.getElementsByClassName('filterAfter')[0].style.display = 'block';
-    document.getElementsByClassName('search_extension')[0].style.display = 'none';
-}
-
 //my hearts & my gallery pages
 // make del & modify buttons appear
 function buttonAppear () {
@@ -217,50 +190,6 @@ function browserAsideAppear () {
 // condition
 if (document.getElementsByClassName("browserAside")[0])
     browserAsideAppear();
-
-// browser page
-// data = {
-//     China: ['Shanghai', 'Kunming', 'Beijing', 'Yantai'],
-//     Japan: ['Tokyo', 'Osaka', 'Kamakura'],
-//     Italy: ['Roma', 'Milan', 'Venice', 'Florence'],
-//     America: ['New York', 'San Francisco', 'Washington']
-// };
-// // initial countries
-// function initialFilter () {
-//     const country = document.getElementById("country");
-
-//     for (let i in data) {
-//         let countryOption = document.createElement("option");
-//         countryOption.innerHTML = i;
-//         country.appendChild(countryOption);
-//     }
-// }
-// if (document.getElementById("country")) {
-//     initialFilter();
-// }
-// // initial cities
-// function countrysCity (thisCountry) {
-//     const choice = (thisCountry.options[thisCountry.selectedIndex]).innerHTML;
-//     const city = document.getElementById("city");
-
-//     let options = city.children;
-//     // remove pre children
-//     for (let k = 0; k < options.length; k++) {
-//         city.removeChild(options[k]);
-//         k--;
-//     }
-//     // add default one
-//     let CityOption = document.createElement("option");
-//     CityOption.innerHTML = "...";
-//     CityOption.style.display = "none";
-//     city.appendChild(CityOption);
-//     // add new children
-//     for (let i in data[choice]) {
-//         CityOption = document.createElement("option");
-//         CityOption.innerHTML = data[choice][i];
-//         city.appendChild(CityOption);
-//     }
-// }
 
 // login page
 function hintRegister () {

@@ -67,13 +67,13 @@
                         <input type="radio" name="choice" id="title" value="title" checked>
                         <label for="title">Title</label>
                     </div>
-                    <input type="text" required>
+                    <input type="text" id="searchText">
                     <div>
                         <input type="radio" name="choice" id="description" value="description">
                         <label for="description">Description</label>
                     </div>
                     <textarea type="texarea" id="descripText"></textarea>
-                    <input type="button" onclick="searchResult();" value="submit" />
+                    <input type="button" id="searchButton" value="submit" />
                 </form>
             </div>
             <div class="result">
@@ -211,7 +211,79 @@
             </div>
         </section>
     </footer>
+
     <script src="../js/feature.js" type="text/javascript"></script>
+
+    <script>
+        // show search result
+        function searchResult() {
+            document.getElementsByClassName('result')[0].style.display = 'block';
+            if (document.getElementsByClassName('filter')[0]) {
+                const filterAny = document.getElementsByClassName('filter')[0];
+                filterAny.setAttribute('class', "filterAfter");
+            }
+
+            const width = document.body.clientWidth;
+            const extension = document.getElementsByClassName('search_extension')[0];
+            if (width <= 830)
+                extension.style.display = 'flex';
+            filterAny = document.getElementsByClassName('filterAfter')[0];
+            if (filterAny.style.display = 'block' && width <= 830) {
+                filterAny.style.display = 'none';
+                extension.style.display = 'flex';
+            } else {
+                filterAny.style.display = 'block';
+            }
+        }
+        // show search box
+        function showSearchBox() {
+            document.getElementsByClassName('filterAfter')[0].style.display = 'block';
+            document.getElementsByClassName('search_extension')[0].style.display = 'none';
+        }
+
+        $(function () {
+            $('#searchButton').click(function () {
+
+                // searchText
+                // descripText
+                if ($('#searchText').val() === '' && $('#descripText').val() === '') {
+                    myAlert('warning', 'please fill sth!')
+                    return
+                }
+                else {
+                    // console.log($('input:radio:checked').val());
+                    const choice = $('input:radio:checked').val()
+                    let text;
+                    // title and description
+                    if (choice === 'title') text = $('#searchText').val()
+                    else text = $('#descripText').val()
+
+                    if (text === '') {
+                        myAlert('warning', 'please fill what you choiced!')
+                        return
+                    }
+                    searchResult();
+
+                    $.ajax({
+                        method: "GET",
+                        url: "http://localhost:8080/backend/PHP/api/search.php",
+                        data: { choice: choice, text: text }
+                    }).done((data) => {
+                        for (let index = 0; index < data.imgs.length; index++) {
+                            $('img').eq(index).attr('src', `http://localhost:8080/backend/travel-images/large/${data.imgs[index]}`);
+                        }
+                    }).fail((err) => {
+                        if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                        myAlert('error', JSON.parse(err.responseText).message);
+                    });
+                }
+
+                $('#searchText').val('')
+                $('#descripText').val('')
+            });
+
+        });
+    </script>
 </body>
 
 </html>
