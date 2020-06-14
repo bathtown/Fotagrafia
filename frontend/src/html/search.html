@@ -236,71 +236,69 @@
             document.getElementsByClassName('search_extension')[0].style.display = 'none';
         }
 
-        $(function () {
-            $('#searchButton').click(function () {
+        $('#searchButton').click(function () {
 
-                // searchText
-                // descripText
-                if ($('#searchText').val() === '' && $('#descripText').val() === '') {
-                    myAlert('warning', 'please fill sth!')
+            // searchText
+            // descripText
+            if ($('#searchText').val() === '' && $('#descripText').val() === '') {
+                myAlert('warning', 'please fill sth!')
+                return
+            }
+            else {
+                // console.log($('input:radio:checked').val());
+                const choice = $('input:radio:checked').val()
+                let text;
+                // title and description
+                if (choice === 'title') text = $('#searchText').val()
+                else text = $('#descripText').val()
+
+                if (text === '') {
+                    myAlert('warning', 'please fill what you choiced!')
                     return
                 }
-                else {
-                    // console.log($('input:radio:checked').val());
-                    const choice = $('input:radio:checked').val()
-                    let text;
-                    // title and description
-                    if (choice === 'title') text = $('#searchText').val()
-                    else text = $('#descripText').val()
+                searchResult();
 
-                    if (text === '') {
-                        myAlert('warning', 'please fill what you choiced!')
-                        return
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:8080/backend/PHP/api/search.php",
+                    data: { choice: choice, text: text }
+                }).done((data) => {
+
+                    // <section class="onePic">
+                    //     <div class="picContain">
+                    //         <img/>
+                    //     </div>
+                    //     <div class="message">
+                    //         <h1></h1>
+                    //         <p></p>
+                    //     </div>
+                    // </section>
+
+                    // description: "First time using HDR with 2 stop bracketing composed in PhotoMatix Pro 4.1"
+                    // id: "5"
+                    // src: "6114904363.jpg"
+                    // title: "Ascending Sulpher Mountain"
+
+                    for (let index = 0; index < data.imgs.length; index++) {
+                        $('img').eq(index).attr({
+                            'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
+                            'data-id': data.imgs[index].id
+                        });
+                        $('.message').eq(index).children('h1').eq(0).text(data.imgs[index].title);
+                        $('.message').eq(index).children('p').eq(0).text(data.imgs[index].description);
                     }
-                    searchResult();
+                }).fail((err) => {
+                    if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                    myAlert('error', JSON.parse(err.responseText).message);
+                });
+            }
 
-                    $.ajax({
-                        method: "GET",
-                        url: "http://localhost:8080/backend/PHP/api/search.php",
-                        data: { choice: choice, text: text }
-                    }).done((data) => {
+            $('#searchText').val('')
+            $('#descripText').val('')
 
-                        // <section class="onePic">
-                        //     <div class="picContain">
-                        //         <img/>
-                        //     </div>
-                        //     <div class="message">
-                        //         <h1></h1>
-                        //         <p></p>
-                        //     </div>
-                        // </section>
-
-                        console.log(data);
-
-                        // description: "First time using HDR with 2 stop bracketing composed in PhotoMatix Pro 4.1"
-                        // id: "5"
-                        // src: "6114904363.jpg"
-                        // title: "Ascending Sulpher Mountain"
-
-                        for (let index = 0; index < data.imgs.length; index++) {
-                            $('img').eq(index).attr({
-                                'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
-                                'data-id': data.imgs[index].id
-                            });
-                            $('.message').eq(index).children('h1').eq(0).text(data.imgs[index].title);
-                            $('.message').eq(index).children('p').eq(0).text(data.imgs[index].description);
-                        }
-                    }).fail((err) => {
-                        if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-                        myAlert('error', JSON.parse(err.responseText).message);
-                    });
-                }
-
-                $('#searchText').val('')
-                $('#descripText').val('')
-            });
-
+            ImgFitDiv(".picContain img", 16, 9);
         });
+
     </script>
 </body>
 

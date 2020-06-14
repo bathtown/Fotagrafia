@@ -152,9 +152,8 @@ main #search .result {
 main #search .result .onePic {
   height: 180px;
   display: flex;
-  padding: 20px 40px;
-  justify-content: center;
-  align-items: center;
+  padding: 40px 30px 0;
+  align-items: flex-start;
   width: 80%;
   background: white;
   margin: 40px auto;
@@ -163,23 +162,24 @@ main #search .result .onePic {
 }
 
 main #search .result .onePic .picContain {
-  height: 80%;
+  width: 25%;
+  background-color: gainsboro;
+
+  overflow: hidden;
   border-radius: 10px;
-  background-color: darkgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-main #search .result .onePic img {
-  height: 100%;
-  border-radius: 10px;
+main #search .result .onePic .picContain img {
+  cursor: pointer;
 }
 
 main #search .result .onePic .message {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  justify-content: center;
+  padding: 10px;
   cursor: auto;
+  text-align: left;
 }
 
 main #search .result .onePic .message h1 {
@@ -291,11 +291,14 @@ main #search .result .onePic .message p {
 
   main #search .result .onePic .picContain {
     width: 90%;
-    height: 0;
-    padding-bottom: 50.625%;
-    background-color: darkgray;
+    background-color: gainsboro;
     border-radius: 10px;
     overflow: hidden;
+
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   main #search .result .onePic img {

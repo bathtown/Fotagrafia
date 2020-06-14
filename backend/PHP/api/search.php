@@ -24,10 +24,10 @@
   for ($j = 0; $j < $img_rows; ++$j) {
     $img_row = $img_result->fetch_array(MYSQLI_ASSOC);
     array_push($imgs, [
-      'src' => htmlspecialchars($img_row['PATH']),
-      'id' => htmlspecialchars($img_row['ImageID']),
-      'title' => (htmlspecialchars($img_row['Title']) | 'null'),
-      'description' => (htmlspecialchars($img_row['Description']) | 'null')
+      'src' => $img_row['PATH'],
+      'id' => $img_row['ImageID'],
+      'title' => $img_row['Title'] == null ? 'null' : $img_row['Title'],
+      'description' => $img_row['Description'] == null ? 'null' : $img_row['Description']
     ]);
   }
   $img_result->close();
