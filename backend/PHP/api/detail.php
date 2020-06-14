@@ -23,12 +23,12 @@
     https(200);
     echo json_encode([
       'src' => htmlspecialchars($img_row['PATH']),
-      'title' => htmlspecialchars($img_row['Title']),
+      'title' => (htmlspecialchars($img_row['Title']) | 'null'),
       'author' => UID2UserName(htmlspecialchars($img_row['UID'])),
-      'description' => htmlspecialchars($img_row['Description']),
-      'content' => htmlspecialchars($img_row['Content']),
-      'country' => CountryRegionCodeISO2CountryRegionName(htmlspecialchars($img_row['Country_RegionCodeISO'])),
-      'city' => CityCode2CityName(htmlspecialchars($img_row['CityCode']))
+      'description' => ((htmlspecialchars($img_row['Description']) | 'null')),
+      'content' => (htmlspecialchars($img_row['Content']) | 'null'),
+      'country' => (CountryRegionCodeISO2CountryRegionName(htmlspecialchars($img_row['Country_RegionCodeISO'])) | 'null'),
+      'city' => (CityCode2CityName(htmlspecialchars($img_row['CityCode'])) | 'null')
     ]);
   }
   $img_result->close();

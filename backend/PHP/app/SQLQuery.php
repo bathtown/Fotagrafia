@@ -4,8 +4,6 @@
 
   function CityCode2CityName($CityCode)
   {
-    if ($CityCode === '') return 'null';
-
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -24,8 +22,6 @@
 
   function CityName2CityCode($CityName)
   {
-    if ($CityName === '') return 'null';
-
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -44,8 +40,6 @@
 
   function CountryRegionCodeISO2CountryRegionName($CountryRegionCodeISO)
   {
-    if ($CountryRegionCodeISO  === '') return 'null';
-
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -64,8 +58,6 @@
 
   function CountryRegionName2CountryRegionCodeISO($CountryRegionName)
   {
-    if ($CountryRegionName  === '') return 'null';
-
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -84,8 +76,6 @@
 
   function UID2UserName($UID)
   {
-    if ($UID === '') return 'null';
-
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
