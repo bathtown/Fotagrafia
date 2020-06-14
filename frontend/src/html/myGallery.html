@@ -28,12 +28,15 @@
                     method: "POST",
                     url: "http://localhost:8080/backend/PHP/api/token.php",
                     headers: { Authorization: sessionStorage.getItem("token") }
-                }).fail(() => {
-                    sessionStorage.clear();
-                    window.location.href = "../html/login.html";
                 })
             }
-            checkUserAuthority();
+            checkUserAuthority().catch((err) => {
+                if (err.status === 0) { myAlert('error', 'Connection refused!') }
+                if (err.status === 401) {
+                    sessionStorage.clear();
+                    window.location.href = "../html/login.html";
+                }
+            });
         }
     </script>
 </head>
