@@ -198,7 +198,21 @@ $(function () {
 
     // logout
     $('#logout').click(() => {
-        window.sessionStorage.clear();
+        $.confirm({
+            title: 'What\'s up?',
+            content: 'Are you sure that you wanna log out?',
+            buttons: {
+                ok: {
+                    text: "ok!",
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        window.sessionStorage.clear();
+                        window.location.href ='../html/login.html';
+                    }
+                },
+                cancel: {}
+            }
+        });
     })
 
     // im looking
