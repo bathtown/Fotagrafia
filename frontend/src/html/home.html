@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery.resizeend@latest/lib/jquery.resizeend.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/home.css">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
@@ -69,39 +70,39 @@
 
                 <section class="pin">
                     <div><img src="" onclick="openDetail(event)" /></div>
-                    <h1>Tittle</h1>
-                    <p>This is a beautiful pictures, would you...</p>
+                    <h1></h1>
+                    <p></p>
                 </section>
 
                 <section class="pin">
                     <div><img src="" onclick="openDetail(event)" /></div>
-                    <h1>Tittle</h1>
-                    <p>This is a beautiful pictures, would you...</p>
+                    <h1></h1>
+                    <p></p>
                 </section>
 
                 <section class="pin">
                     <div><img src="" onclick="openDetail(event)" /></div>
 
-                    <h1>Tittle</h1>
-                    <p>This is a beautiful pictures, would you...</p>
+                    <h1></h1>
+                    <p></p>
                 </section>
 
                 <section class="pin">
                     <div><img src="" onclick="openDetail(event)" /></div>
-                    <h1>Tittle</h1>
-                    <p>This is a beautiful pictures, would you...</p>
+                    <h1></h1>
+                    <p></p>
                 </section>
 
                 <section class="pin">
                     <div><img src="" onclick="openDetail(event)" /></div>
-                    <h1>Tittle</h1>
-                    <p>This is a beautiful pictures, would you...</p>
+                    <h1></h1>
+                    <p></p>
                 </section>
 
                 <section class="pin">
                     <div><img src="" onclick="openDetail(event)" /></div>
-                    <h1>Tittle</h1>
-                    <p>This is a beautiful pictures, would you...</p>
+                    <h1></h1>
+                    <p></p>
                 </section>
 
             </section>
@@ -136,7 +137,19 @@
 
         $(function () {
             getPhotos();
+            ImgsFit();
+
+            $(window).on('resizeend', function (e) {
+                ImgsFit();
+                console.log('as');
+            });
         });
+
+
+        function ImgsFit() {
+            ImgFitDiv(".pin img", 3, 4);
+            ImgFitDiv("#firstPic img", 16, 9);
+        }
 
         function getPhotos() {
             $.ajax({
@@ -153,12 +166,12 @@
                 }
                 // <section class="pin">
                 //     <div><img src="" onclick="openDetail(event)" /></div>
-                //     <h1>Tittle</h1>
-                //     <p>This is a beautiful pictures, would you...</p>
+                //     <h1></h1>
+                //     <p></p>
                 // </section>
                 for (let index = 1; index < imgs.length; index++) {
-                    $('.pin h1').eq(index).text(imgs[index].title);
-                    $('.pin p').eq(index).text(imgs[index].description);
+                    $('.pin h1').eq(index - 1).text(imgs[index].title);
+                    $('.pin p').eq(index - 1).text(imgs[index].description);
                 }
             }).fail((err) => {
                 console.log(err);

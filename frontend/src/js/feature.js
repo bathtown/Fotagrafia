@@ -227,3 +227,17 @@ function getQueryVariable (variable) {
     }
     return false;
 }
+
+// img fits div
+function ImgFitDiv (filter, width, height) {
+    $(filter).on('load', function () {
+        const divRatio = height / width;
+        const imgRatio = $(this)[0].naturalHeight / $(this)[0].naturalWidth;
+
+        if (imgRatio >= divRatio) $(this).css('width', '100%')
+        else $(this).css('height', '100%')
+
+        let parent = $(this).parent();
+        parent.css('height', parent[0].offsetWidth * divRatio);
+    });
+}

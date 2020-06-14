@@ -14,21 +14,27 @@
   $img_query = "SELECT * FROM travelimage WHERE ImageID='$imgID'";
 
   $img_result = $conn->query($img_query);
-  if (!$img_result) die("Fatal Error");
+  if (!$img_result->num_rows) {
+    https(404);
+    die("Picture not found!");
+  }
 
   $img_rows = $img_result->num_rows;
   for ($j = 0; $j < $img_rows; ++$j) {
     $img_row = $img_result->fetch_array(MYSQLI_ASSOC);
     // title athor description  content	country	city
+    $author = UID2UserName(($img_row['UID']));
+    $CountryRegionName = CountryRegionCodeISO2CountryRegionName($img_row['Country_RegionCodeISO']);
+    $CityName = CityCode2CityName(($img_row['CityCode']));
     https(200);
     echo json_encode([
-      'src' => htmlspecialchars($img_row['PATH']),
-      'title' => (htmlspecialchars($img_row['Title']) | 'null'),
-      'author' => UID2UserName(htmlspecialchars($img_row['UID'])),
-      'description' => ((htmlspecialchars($img_row['Description']) | 'null')),
-      'content' => (htmlspecialchars($img_row['Content']) | 'null'),
-      'country' => (CountryRegionCodeISO2CountryRegionName(htmlspecialchars($img_row['Country_RegionCodeISO'])) | 'null'),
-      'city' => (CityCode2CityName(htmlspecialchars($img_row['CityCode'])) | 'null')
+      'src' => $img_row['PATH'],
+      'title' => $img_row['Title'],
+      'author' => $author == null ? 'null' : $author,
+      'description' => $img_row['Description'] == null ? 'null' : $img_row['Description'],
+      'content' => $img_row['Content'] == null ? 'null' : $img_row['Content'],
+      'country' => $CountryRegionName == null ? 'null' : $CountryRegionName,
+      'city' => $CityName == null ? 'null' : $CityName,
     ]);
   }
   $img_result->close();
