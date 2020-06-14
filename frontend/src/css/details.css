@@ -20,20 +20,21 @@ main #Details .de_author {
   align-items: center;
 }
 
-main #Details .de_author img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  margin: 0.5rem;
-  background-color: gainsboro;
-}
-
 main #Details .de_author .headPic {
   flex-shrink: 2;
   display: flex;
   flex-direction: row;
   /* flex: 1; */
   align-items: center;
+}
+
+main #Details .de_author section {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin: 0.5rem;
+  background-color: gainsboro;
+  overflow: hidden;
 }
 
 main #Details .de_author .headPic .creator {
@@ -102,15 +103,17 @@ main #Details .de_author .likeShare #likedNumber {
 main #Details .de_mainPic {
   order: 2;
   width: 80%;
-  height: 0;
-  padding-bottom: 45%;
   background-color: gainsboro;
+
   overflow: hidden;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main #Details .de_mainPic img {
-  width: 100%;
+  cursor: pointer;
 }
 
 main #Details .de_message {

@@ -19,7 +19,6 @@ main #home #firstPic {
 }
 
 main #home #firstPic img {
-  width: 100%;
   cursor: pointer;
 }
 
