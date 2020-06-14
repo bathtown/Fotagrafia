@@ -11,4 +11,6 @@
     die("Please login first!");
   }
 
+  $username = Token::decode($headers['Authorization'])->username;
+  $userid = Token::decode($headers['Authorization'])->userid;
   ?>

@@ -9,7 +9,7 @@
     private static $key = 'FudanSs2020'; //key
 
     //签发Token
-    public static function lssue($username)
+    public static function lssue($username, $userid)
     {
       $time = time(); //当前时间
       $token = [
@@ -19,7 +19,8 @@
         'nbf' => $time, //(Not Before)：某个时间点后才能访问，比如设置time+30，表示当前时间30秒后才能使用
         'exp' => $time + 7200, //过期时间,这里设置2个小时
         'data' => [ //自定义信息，不要定义敏感信息
-          'username' => $username
+          'username' => $username,
+          'userid' => $userid
         ]
       ];
       return JWT::encode($token, self::$key); //输出Token
@@ -44,6 +45,11 @@
         return false;
       }
       return true;
+    }
+
+    public static function decode($jwt)
+    {
+      return JWT::decode($jwt, self::$key, ['HS256'])->data;
     }
   }
   ?>
