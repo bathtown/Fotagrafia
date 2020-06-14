@@ -88,6 +88,12 @@ main #home #showPic .pin h1 {
   font-size: 1.6rem;
   margin: 10px;
   cursor: default;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+  margin-left: 10%;
 }
 
 main #home #showPic .pin p {

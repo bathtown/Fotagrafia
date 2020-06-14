@@ -112,10 +112,6 @@ main #Details .de_mainPic {
   align-items: center;
 }
 
-main #Details .de_mainPic img {
-  cursor: pointer;
-}
-
 main #Details .de_message {
   order: 3;
   width: 80%;
@@ -123,6 +119,7 @@ main #Details .de_message {
   background-color: white;
   border-radius: 10px;
   overflow: auto;
+  min-height: 240px;
 }
 
 main #Details .de_message .de_message_choice {
@@ -154,6 +151,10 @@ main #Details .de_message .de_myWords {
   word-wrap: break-word;
   font-size: 1.25rem;
   line-height: 30px;
+}
+
+main #Details .de_message .de_content {
+  margin: 20px 10px;
 }
 
 main #Details .de_message .de_content .de_myProperties {
