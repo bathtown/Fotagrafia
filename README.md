@@ -49,7 +49,7 @@ Bonus 完成情况
 
 1. 🥱 TODO
    - [x] 🤜 前后端分离 ...
-   - ~~[ ] 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`~~
+   - [ ] 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
    - [x] 🤜 防 SQL 注入
 2. 👋 Doing
 3. 👌 Done
