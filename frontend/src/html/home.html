@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-    <!-- <script src="  https://cdn.rawgit.com/imsky/holder/master/holder.js"></script> -->
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/home.css">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
@@ -63,55 +62,44 @@
     <main>
         <article id="home">
             <section id="firstPic">
-                <img data-src="holder.js/1920x1080?auto=yes&random=yes&text=loading..." src="" />
+                <img src="" onclick="openDetail(event)" />
             </section>
 
             <section id="showPic">
 
                 <section class="pin">
-                    <a href="../html/details.html">
-                        <div><img data-src="holder.js/300x400?auto=yes&random=yes&text=loading..." src="" /></div>
-                    </a>
+                    <div><img src="" onclick="openDetail(event)" /></div>
                     <h1>Tittle</h1>
                     <p>This is a beautiful pictures, would you...</p>
                 </section>
 
                 <section class="pin">
-                    <a href="../html/details.html">
-                        <div><img data-src="holder.js/300x400?auto=yes&random=yes&text=loading..." src="" /></div>
-                    </a>
+                    <div><img src="" onclick="openDetail(event)" /></div>
                     <h1>Tittle</h1>
                     <p>This is a beautiful pictures, would you...</p>
                 </section>
 
                 <section class="pin">
-                    <a href="../html/details.html">
-                        <div><img data-src="holder.js/300x400?auto=yes&random=yes&text=loading..." src="" /></div>
-                    </a>
+                    <div><img src="" onclick="openDetail(event)" /></div>
+
                     <h1>Tittle</h1>
                     <p>This is a beautiful pictures, would you...</p>
                 </section>
 
                 <section class="pin">
-                    <a href="../html/details.html">
-                        <div><img data-src="holder.js/300x400?auto=yes&random=yes&text=loading..." src="" /></div>
-                    </a>
+                    <div><img src="" onclick="openDetail(event)" /></div>
                     <h1>Tittle</h1>
                     <p>This is a beautiful pictures, would you...</p>
                 </section>
 
                 <section class="pin">
-                    <a href="../html/details.html">
-                        <div><img data-src="holder.js/300x400?auto=yes&random=yes&text=loading..." src="" /></div>
-                    </a>
+                    <div><img src="" onclick="openDetail(event)" /></div>
                     <h1>Tittle</h1>
                     <p>This is a beautiful pictures, would you...</p>
                 </section>
 
                 <section class="pin">
-                    <a href="../html/details.html">
-                        <div><img data-src="holder.js/300x400?auto=yes&random=yes&text=loading..." src="" /></div>
-                    </a>
+                    <div><img src="" onclick="openDetail(event)" /></div>
                     <h1>Tittle</h1>
                     <p>This is a beautiful pictures, would you...</p>
                 </section>
@@ -140,24 +128,42 @@
     <!-- extension -->
     <div class="home_extension">
         <span class="fa fa-arrow-circle-up" onclick="goTop()"></span>
-        <span class="fa fa-refresh" onclick="refreshPic()"></span>
+        <span class="fa fa-refresh" onclick="getPhotos()"></span>
     </div>
 
     <script src="../js/feature.js" type="text/javascript"></script>
     <script>
 
         $(function () {
+            getPhotos();
+        });
+
+        function getPhotos() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/photoTest.php",
+                url: "http://localhost:8080/backend/PHP/api/home.php",
                 dataType: 'text',
             }).done((data) => {
-                $('#firstPic').find('img').eq(0).data('src', "");
-                $('#firstPic').find('img').eq(0).attr({ 'src': `http://localhost:8080/backend/PHP/api/${data.trim()}` });
+                imgs = JSON.parse(data)
+                for (let index = 0; index < imgs.length; index++) {
+                    $('img').eq(index).attr({
+                        'src': `http://localhost:8080/backend/travel-images/large/${imgs[index].src}`,
+                        'data-id': imgs[index].id,
+                    });
+                }
+                // <section class="pin">
+                //     <div><img src="" onclick="openDetail(event)" /></div>
+                //     <h1>Tittle</h1>
+                //     <p>This is a beautiful pictures, would you...</p>
+                // </section>
+                for (let index = 1; index < imgs.length; index++) {
+                    $('.pin h1').eq(index).text(imgs[index].title);
+                    $('.pin p').eq(index).text(imgs[index].description);
+                }
             }).fail((err) => {
                 console.log(err);
             });
-        });
+        }
 
     </script>
 </body>

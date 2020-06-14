@@ -10,12 +10,6 @@ function goTop () {
     });
 }
 
-// refresh pictures
-function refreshPic () {
-    // 刷新页面
-    location.reload();
-}
-
 // details page
 // heart++
 

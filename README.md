@@ -11,9 +11,9 @@
 ## 评分项
 
 1. 首页
-   - [x] [登录逻辑](frontend/src/html/home.html)
-   - [ ] 刷新逻辑
-   - [ ] 图片逻辑
+   - [x] [登录逻辑](frontend/src/js/feature.js#hintRegister)
+   - [x] [刷新逻辑](frontend/src/html/home.html#getPhotos)
+   - [x] [图片逻辑](backend/PHP/api/home.php)
 2. 浏览页
    - [x] [筛选逻辑](backend/PHP/api/browser.php)
    - [ ] 图片逻辑
