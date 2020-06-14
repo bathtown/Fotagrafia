@@ -10,24 +10,6 @@ function goTop () {
     });
 }
 
-// details page
-// heart++
-
-function likedPlus () {
-    const likedNumberObj = document.getElementById("likedNumber");
-    let num = likedNumberObj.textContent;
-    const heart = document.getElementById("liking");
-    if (heart.style.color === "rgb(255, 225, 225)" || heart.style.color === "") {
-        num++;
-        heart.style.color = "orangered";
-    } else {
-        num--;
-        heart.style.color = "rgb(255, 225, 225)";
-    }
-    likedNumberObj.innerHTML = num;
-    alert('This is my pj!');
-}
-
 // switch description and properties
 function switchDeAndPro () {
     document.getElementsByClassName("de_choice de_myProperties")[0].style.display = "none";

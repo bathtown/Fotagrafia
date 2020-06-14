@@ -74,8 +74,8 @@
 
                 <!-- 喜欢和分享 -->
                 <div class="likeShare">
-                    <span class="fa fa-heart" onclick="likedPlus()" id="liking" title="like it!"></span>
-                    <small id="likedNumber">99</small>
+                    <span class="fa fa-heart" onclick="likeImg()" id="liking" title="like it!"></span>
+                    <small id="likedNumber"></small>
                     <div class="shareList">
                         <span class="shareBtn fa fa-share-alt" title="share!"></span>
                         <div class="dropdown-content">
@@ -110,16 +110,7 @@
                     <span id="properties">Properties</span>
                 </p>
                 <div class="de_content">
-                    <p class="de_choice de_myWords" id="descriptionText">
-                        I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <p class="de_choice de_myWords" id="descriptionText"> </p>
                     <table class="de_choice de_myProperties">
                         <tr>
                             <th>Content</th>
@@ -127,9 +118,9 @@
                             <th>City</th>
                         </tr>
                         <tr>
-                            <td id="contentText">Scenery</td>
-                            <td id="countryText">China</td>
-                            <td id="cityText">Shanghai</td>
+                            <td id="contentText"></td>
+                            <td id="countryText"></td>
+                            <td id="cityText"></td>
                         </tr>
                     </table>
                 </div>
@@ -154,15 +145,21 @@
 
     <script src="../js/feature.js" type="text/javascript"></script>
     <script>
+        var imgID = getQueryVariable("id");
+
         $(function () {
-            const imgID = getQueryVariable("id");
+            getImgDetails();
+            getImgLikes();
+            // getLike();
+        })
+
+        function getImgDetails() {
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/detail.php",
+                headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID }
             }).done((data) => {
-                console.log(data);
-
                 $('img').eq(1).attr('src', `http://localhost:8080/backend/travel-images/large/${data.src}`);
                 $('.creator').eq(0).children('h1').eq(0).text(data.title);
                 $('#author').text(data.author);
@@ -170,14 +167,68 @@
                 $('#contentText').text(data.content)
                 $('#countryText').text(data.country)
                 $('#cityText').text(data.city)
+            }).fail((err) => {
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText).message);
+            });
+        }
 
+        function getImgLikes() {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/detailLikes.php",
+                data: { imgID: imgID }
+            }).done((data) => {
+                $('#likedNumber').text(data)
+            }).fail((err) => {
+                console.log(err.responseText);
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('warning', err.responseText);
+            });
+        }
+
+        function likeImg() {
+            const likedNumberObj = document.getElementById("likedNumber");
+            const heart = document.getElementById("liking");
+            if (heart.style.color === "rgb(255, 225, 225)" || heart.style.color === "") {
+                heart.style.color = "orangered";
+            } else {
+                heart.style.color = "rgb(255, 225, 225)";
+            }
+
+            // <span class="fa fa-heart" onclick="likeImg()" id="liking" title="like it!"></span>
+            // <small id="likedNumber"></small>
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8080/backend/PHP/api/detailLikes.php",
+                headers: { Authorization: sessionStorage.getItem("token") },
+                data: { imgID: imgID }
+            }).done((data) => {
+                $('#likedNumber').text(data)
             }).fail((err) => {
                 console.log(err.responseText);
 
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);
             });
-        })
+        }
+
+        // function getLike() {
+        //     $.ajax({
+        //         method: "GET",
+        //         url: "http://localhost:8080/backend/PHP/api/detailLikes.php",
+        //         headers: { Authorization: sessionStorage.getItem("token") },
+        //         data: { imgID: imgID }
+        //     }).done((data) => {
+        //         $('#likedNumber').text(data)
+        //     }).fail((err) => {
+        //         console.log(err.responseText);
+
+        //         if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+        //         myAlert('error', JSON.parse(err.responseText).message);
+        //     });
+        // }
     </script>
 
 </body>
