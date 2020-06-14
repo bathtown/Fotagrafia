@@ -1,4 +1,4 @@
-# 🗽 Fotagrafia
+# Fotagrafia 🗽
 
 > project 01 repository: **[bathtown.github.io](https://github.com/bathtown/bathtown.github.io)**
 
@@ -6,7 +6,7 @@
 
 1. 这是 fudan _19ss_web 基础课程\_Project_01_ 旅游照片分享平台（下）
 2. my page:
-3. my repository: **[Fotagrafia](https://github.com/bathtown/Fotagrafia)**
+3. my repository: **[Fotagrafia 🗽](https://github.com/bathtown/Fotagrafia)**
 
 ## 评分项
 
@@ -43,23 +43,15 @@
 
 Bonus 完成情况
 
-## Backend First
+## Backend
 
-### Backend TODO Lists
+### ToDo Lists
 
-1. 🥱 TODO
-   - [x] 🤜 前后端分离 ...
-   - [ ] 🤜 RESTful -> `$_SERVER['REQUEST_METHOD'];`
-   - [x] 🤜 防 SQL 注入
-2. 👋 Doing
-3. 👌 Done
-
-   - [x] 👉 [注册 | 密码加盐 | Ajax](backend/PHP/api/register.php)
-   - [x] 👉 [登录](backend/PHP/api/login.php)
-   - [x] 👉 [跨域](backend/PHP/app/CORS.php)
-   - [x] 👉 [错误码](backend/PHP/app/StatusCode.php)
-   - [x] 👉 [JWT](backend/PHP/app/Token.php)
-   - [x] 👉 [CORS](backend/PHP/app/CORS.php)
+- [ ] RESTful -> `$_SERVER['REQUEST_METHOD'];`
+- [x] [防 SQL 注入](backend/PHP/app/SQLConfig.php)
+- [x] [跨域](backend/PHP/app/CORS.php)
+- [x] [错误码](backend/PHP/app/StatusCode.php)
+- [x] [JWT](backend/PHP/app/Token.php)
 
 ### Trick Points 👻
 
@@ -84,12 +76,12 @@ Bonus 完成情况
 
 ### 前端框架使用
 
-- 🤙 [jQuery](https://jquery.com)
-- 🤙 [jquery-confirm](http://craftpip.github.io/jquery-confirm)
-- 🖖 ~~[Holder.js](https://github.com/imsky/holder)~~
-- 🖖 ~~[Bootstrap](https://getbootstrap.com)~~
-- 🖖 ~~[bulma](https://bulma.io)~~
-- 🖖 ~~[UIkit](https://getuikit.com) | [UIkit 中文网](http://www.getuikit.net)~~
+- [jQuery](https://jquery.com)
+- [jquery-confirm](http://craftpip.github.io/jquery-confirm)
+- ~~[Holder.js](https://github.com/imsky/holder)~~
+- ~~[Bootstrap](https://getbootstrap.com)~~
+- ~~[bulma](https://bulma.io)~~
+- ~~[UIkit](https://getuikit.com) | [UIkit 中文网](http://www.getuikit.net)~~
 
 - Tip: 头文件引入顺序
 
@@ -106,11 +98,8 @@ Bonus 完成情况
   <link rel="stylesheet" type="text/css" href="../css/register.css" />
   ```
 
-### Frontend TODO Lists
+### ToDo Lists
 
-1. 🥱 TODO
-2. 👋 Doing
-3. 👌 Done
-   - [x] 👉 [more friendly alert](frontend/src/html/register.html)
-   - [x] 👉 [前端登录拦截](frontend/src/html/home.html)
-   - [x] 👉 [sessionStorage + token](frontend/src/html/login.html)
+- [x] [more friendly alert](frontend/src/html/register.html)
+- [x] [前端登录拦截](frontend/src/html/myGallery.html)
+- [x] [sessionStorage + token](frontend/src/html/login.html)
