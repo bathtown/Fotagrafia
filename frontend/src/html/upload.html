@@ -46,7 +46,8 @@
                 <a class="myAccount">My Account <span class="fa fa-angle-down"></span></a>
                 <a class="my"><span class="fa fa-user"></span></a>
                 <ul>
-                    <li><a href="../html/upload.html" class="imlooking"><span class="fa fa-cloud-upload"></span> Upload</a></li>
+                    <li><a href="../html/upload.html" class="imlooking"><span class="fa fa-cloud-upload"></span>
+                            Upload</a></li>
                     <li><a href="../html/myGallery.html"><span class="fa fa-photo"></span> My Gallery</a></li>
                     <li><a href="../html/myHearts.html"><span class="fa fa-heart"></span> My Hearts</a></li>
                     <li> <a id="logout"><span class="fa fa-sign-out"></span> Log out</a> </li>
@@ -74,17 +75,33 @@
                     <label for="uploadTitle"></label>
                     <input type="text" id="uploadTitle" class="oneLine" placeholder="Title..." required />
 
-                    <label for="uploadNation"></label>
-                    <input type="text" id="uploadNation" class="oneLine" placeholder="Nation..." required />
+                    <!-- 类别限于【Scenery】【City】【People】【Animal】【Building】【Wonder】【Other】七个类别即可。 -->
 
-                    <label for="uploadCity"></label>
-                    <input type="text" id="uploadCity" class="oneLine" placeholder="City..." required />
+                    <select class="uploadSelect" id="content">
+                        <option value="" style="display: none;">Filter by Content</option>
+                        <option value="Scenery">Scenery</option>
+                        <option value="City">City</option>
+                        <option value="People">People</option>
+                        <option value="Animal">Animal</option>
+                        <option value="Building">Building</option>
+                        <option value="Wonder">Wonder</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <select class="uploadSelect" id="country"
+                        onchange="countrysCity('#country option:selected','#city')">
+                        <option value="" style="display: none;">Filter by Country</option>
+                    </select>
+
+                    <select class="uploadSelect" id="city">
+                        <option value="" style="display: none;">Filter by City</option>
+                    </select>
 
                     <label for="uploadDescription"></label>
                     <textarea type="text" id="uploadDescription" class="moreLine" placeholder="Description..."
                         required></textarea>
 
-                    <input type="submit" onclick="window.open('../html/myGallery.html', '_self')" value="submit" />
+                    <button type="button" id="submitButton">submit</button>
                 </form>
             </div>
 
@@ -107,6 +124,23 @@
     </footer>
 
     <script src="../js/feature.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            getCountries('#country');
+            $('#submitButton').click(submitImg)
+        });
+
+        function submitImg() {
+            const title = $('#uploadTitle').val()
+            const content = $('#content').val()
+            const contry = $('#country').val();
+            const city = $('#city').val();
+            const description = $('#uploadDescription').val()
+
+            if (!title || !content || !city || !contry || !description)
+                myAlert('warning', 'Please fill in the form 😎');
+        }
+    </script>
 
 </body>
 

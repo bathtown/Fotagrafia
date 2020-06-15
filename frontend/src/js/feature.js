@@ -207,7 +207,7 @@ $(function () {
                     btnClass: 'btn-blue',
                     action: function () {
                         window.sessionStorage.clear();
-                        window.location.href ='../html/login.html';
+                        window.location.href = '../html/login.html';
                     }
                 },
                 cancel: {}
@@ -253,5 +253,39 @@ function ImgFitDiv (filter, width, height) {
 
         let parent = $(this).parent();
         parent.css('height', parent[0].offsetWidth * divRatio);
+    });
+}
+
+function getCountries (filter) {
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/backend/PHP/api/country.php",
+    }).done((data) => {
+        for (let index = 0; index < data.countries.length; index++) {
+            let newOption = $(`<option value="${data.countries[index]}">${data.countries[index]}</option>`);
+            $(filter).append(newOption)
+        }
+    }).fail((err) => {
+        if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+        myAlert('error', JSON.parse(err.responseText).message);
+    });
+}
+
+function countrysCity (countryFilter, cityFilter) {
+    $(cityFilter).empty();
+
+    // console.log(country.options[country.selectedIndex].text);
+    $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/backend/PHP/api/city.php",
+        data: { country: $(countryFilter).val() }
+    }).done((data) => {
+        for (let index = 0; index < data.cities.length; index++) {
+            let newOption = $(`<option value="${data.cities[index]}">${data.cities[index]}</option>`);
+            $(cityFilter).append(newOption)
+        }
+    }).fail((err) => {
+        if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+        myAlert('error', JSON.parse(err.responseText).message);
     });
 }

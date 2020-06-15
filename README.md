@@ -31,7 +31,7 @@
    - [ ] 展示逻辑
    - [ ] 删除逻辑
 8. 上传页面
-   - [ ] 合法性校验
+   - [x] [合法性校验](frontend/src/html/upload.html#submitImg)
    - [ ] 修改逻辑
 9. 详细图片页面
    - [x] [信息展示](backend/PHP/api/detail.php)

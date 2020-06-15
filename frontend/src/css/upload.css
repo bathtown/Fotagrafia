@@ -58,6 +58,22 @@ main #upload .pic .uploadBtn input {
   display: none;
 }
 
+main #upload .uploadSelect {
+  width: 80%;
+  border: none;
+  line-height: 40px;
+  height: 40px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  color: #444444;
+  font-size: 1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  padding: 5px 15px;
+  margin: 10px auto;
+}
+
 main #upload .pic div {
   display: none;
   align-items: center;
@@ -123,16 +139,24 @@ main #upload .info .picInfo textarea[class='moreLine'] {
   line-height: 20px;
 }
 
-main #upload .info .picInfo input[type='submit'] {
-  background: grey;
+main #upload .info .picInfo button {
+  background-color: grey;
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  height: 55px;
+  height: 40px;
   box-sizing: content-box;
   font-size: 1.4rem;
+  width: 80%;
+  border: none;
+  line-height: 40px;
+  height: 40px;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  padding: 5px 15px;
+  margin: 10px auto;
 }
 
-main #upload .info .picInfo input[type='submit']:hover {
+main #upload .info .picInfo button:hover {
   background-color: #444444;
   color: #fafafa;
 }
@@ -208,7 +232,7 @@ main #upload .info .picInfo input[type='submit']:hover {
     resize: none;
   }
 
-  main #upload .info .picInfo input[type='submit'] {
+  main #upload .info .picInfo button {
     background-color: #444444;
     color: #fafafa;
     height: 40px;
