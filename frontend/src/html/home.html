@@ -129,7 +129,7 @@
     <!-- extension -->
     <div class="home_extension">
         <span class="fa fa-arrow-circle-up" onclick="goTop()"></span>
-        <span class="fa fa-refresh" onclick="getPhotos()"></span>
+        <span class="fa fa-refresh" onclick="getRadomPhotos()"></span>
     </div>
 
     <script src="../js/feature.js" type="text/javascript"></script>
@@ -154,10 +154,11 @@
         function getPhotos() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/home.php",
+                url: "http://localhost:8080/backend/PHP/api/imgHot.php",
                 dataType: 'text',
             }).done((data) => {
-                imgs = JSON.parse(data)
+                var imgs = JSON.parse(data)
+
                 $('img').eq(0).attr({
                     'src': `http://localhost:8080/backend/travel-images/large/${imgs[0].src}`,
                     'data-id': imgs[0].id,
@@ -167,6 +168,31 @@
                 //     <h1></h1>
                 //     <p></p>
                 // </section>
+                for (let index = 1; index < imgs.length; index++) {
+                    $('img').eq(index).attr({
+                        'src': `http://localhost:8080/backend/travel-images/small/${imgs[index].src}`,
+                        'data-id': imgs[index].id,
+                    });
+                    $('.pin h1').eq(index - 1).text(imgs[index].title);
+                    $('.pin p').eq(index - 1).text(imgs[index].description);
+                }
+            }).fail((err) => {
+                console.log(err);
+            });
+        }
+
+        function getRadomPhotos() {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
+                dataType: 'text',
+                data: { num: 7 }
+            }).done((data) => {
+                var imgs = JSON.parse(data)
+                $('img').eq(0).attr({
+                    'src': `http://localhost:8080/backend/travel-images/large/${imgs[0].src}`,
+                    'data-id': imgs[0].id,
+                });
                 for (let index = 1; index < imgs.length; index++) {
                     $('img').eq(index).attr({
                         'src': `http://localhost:8080/backend/travel-images/small/${imgs[index].src}`,
