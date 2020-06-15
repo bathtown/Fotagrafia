@@ -35,19 +35,17 @@
    - [ ] 修改逻辑
 9. 详细图片页面
    - [x] [信息展示](backend/PHP/api/detail.php)
-   - [ ] 收藏功能
+   - [x] [收藏功能](backend/PHP/api/like.php)
 10. Bonus
     - [x] [密码加盐](backend/PHP/api/register.php)
     - [x] [前端框架](#前端框架使用)
     - [ ] 部署服务器
 
-Bonus 完成情况
-
 ## Backend
 
 ### ToDo Lists
 
-- [ ] RESTful -> `$_SERVER['REQUEST_METHOD'];`
+- [x] [RESTful](backend/PHP/api/like.php)
 - [x] [防 SQL 注入](backend/PHP/app/SQLConfig.php)
 - [x] [跨域](backend/PHP/app/CORS.php)
 - [x] [错误码](backend/PHP/app/StatusCode.php)
@@ -61,6 +59,7 @@ Bonus 完成情况
 2. [headers](backend/PHP/app/CORS.php)
    - preflight request 要额外注意
    - 学习: [same-origin](https://wangdoc.com/javascript/bom/same-origin.html)
+3. RESTful 使用 `$_SERVER['REQUEST_METHOD']` 实现
 
 ### 参考资料
 
