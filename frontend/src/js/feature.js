@@ -230,7 +230,8 @@ $(function () {
 function openDetail (event) {
     // console.log(event.target.getAttribute('data-id'));
     const id = event.target.getAttribute('data-id');
-    window.open(`../html/details.html?id=${id}`)
+    // window.open(`../html/details.html?id=${id}`)
+    window.location.href = `../html/details.html?id=${id}`;
 }
 function getQueryVariable (variable) {
     var query = window.location.search.substring(1);

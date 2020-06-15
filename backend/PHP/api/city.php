@@ -13,7 +13,7 @@
   $country_result = $conn->query($country_query);
   if (!$country_result) die("Fatal Error");
   $country_row = $country_result->fetch_array(MYSQLI_ASSOC);
-  $countryiso = htmlspecialchars($country_row['ISO']);
+  $countryiso = $country_row['ISO'];
   $country_result->close();
 
   // get cities array
@@ -25,7 +25,7 @@
   $cities = array();
   for ($j = 0; $j < $city_rows; ++$j) {
     $city_row = $city_result->fetch_array(MYSQLI_ASSOC);
-    array_push($cities, htmlspecialchars($city_row['AsciiName']));
+    array_push($cities, $city_row['AsciiName']);
   }
 
   https(200);

@@ -17,7 +17,7 @@
 
   for ($j = 0; $j < $rows; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
-    array_push($countries, htmlspecialchars($row['Country_RegionName']));
+    array_push($countries, $row['Country_RegionName']);
   }
 
   https(200);

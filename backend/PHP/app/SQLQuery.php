@@ -4,6 +4,9 @@
 
   function CityCode2CityName($CityCode)
   {
+
+    if ($CityCode === null) return 'null';
+
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -12,7 +15,7 @@
     $city_result = $conn->query($city_query);
     if (!$city_result) die("Fatal Error");
     $city_row = $city_result->fetch_array(MYSQLI_ASSOC);
-    $CityName = htmlspecialchars($city_row['AsciiName']);
+    $CityName = $city_row['AsciiName'];
 
     $city_result->close();
     $conn->close();
@@ -22,6 +25,9 @@
 
   function CityName2CityCode($CityName)
   {
+
+    if ($CityName === null) return 'null';
+
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -30,7 +36,7 @@
     $city_result = $conn->query($city_query);
     if (!$city_result) die("Fatal Error");
     $city_row = $city_result->fetch_array(MYSQLI_ASSOC);
-    $CityCode = htmlspecialchars($city_row['GeoNameID']);
+    $CityCode = $city_row['GeoNameID'];
 
     $city_result->close();
     $conn->close();
@@ -40,6 +46,9 @@
 
   function CountryRegionCodeISO2CountryRegionName($CountryRegionCodeISO)
   {
+
+    if ($CountryRegionCodeISO === null) return 'null';
+
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -48,7 +57,7 @@
     $country_result = $conn->query($country_query);
     if (!$country_result) die("Fatal Error");
     $country_row = $country_result->fetch_array(MYSQLI_ASSOC);
-    $CountryRegionName = htmlspecialchars($country_row['Country_RegionName']);
+    $CountryRegionName = $country_row['Country_RegionName'];
 
     $country_result->close();
     $conn->close();
@@ -58,6 +67,9 @@
 
   function CountryRegionName2CountryRegionCodeISO($CountryRegionName)
   {
+
+    if ($CountryRegionName === null) return 'null';
+
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -66,7 +78,7 @@
     $country_result = $conn->query($country_query);
     if (!$country_result) die("Fatal Error");
     $country_row = $country_result->fetch_array(MYSQLI_ASSOC);
-    $CountryRegionCodeISO = htmlspecialchars($country_row['ISO']);
+    $CountryRegionCodeISO = $country_row['ISO'];
 
     $country_result->close();
     $conn->close();
@@ -76,6 +88,9 @@
 
   function UID2UserName($UID)
   {
+
+    if ($UID === null) return 'null';
+
     global $hn, $un, $pw, $db;
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
@@ -84,7 +99,7 @@
     $country_result = $conn->query($country_query);
     if (!$country_result) die("Fatal Error");
     $country_row = $country_result->fetch_array(MYSQLI_ASSOC);
-    $UserName = htmlspecialchars($country_row['UserName']);
+    $UserName = $country_row['UserName'];
 
     $country_result->close();
     $conn->close();
