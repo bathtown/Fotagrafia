@@ -7,8 +7,8 @@
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  $choice = mysql_entities_fix_string($conn, $_GET['choice']);
-  $text = '%' . mysql_entities_fix_string($conn, $_GET['text']) . '%';
+  $choice = mysql_entities_fix_string($_GET['choice']);
+  $text = '%' . mysql_entities_fix_string($_GET['text']) . '%';
 
   // get imgs array
   if ($choice === 'title')

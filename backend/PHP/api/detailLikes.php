@@ -17,7 +17,7 @@
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  $imgID = mysql_entities_fix_string($conn, $_GET['imgID']);
+  $imgID = mysql_entities_fix_string($_GET['imgID']);
 
   $img_query = "SELECT COUNT(ImageID) FROM travelimagefavor WHERE ImageID='$imgID'";
 

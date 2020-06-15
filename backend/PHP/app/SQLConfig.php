@@ -4,13 +4,16 @@
   $un = 'testuser'; // username
   $pw = 'mypassword'; // password
 
-  function mysql_entities_fix_string($conn, $string)
+  function mysql_entities_fix_string($string)
   {
-    return htmlentities(mysql_fix_string($conn, $string));
+    global $hn, $un, $pw, $db;
+    $conn = new mysqli($hn, $un, $pw, $db);
+    if ($conn->connect_error) die("Fatal Error");
+
+    $pureString = htmlentities(($conn->real_escape_string($string)));
+
+    $conn->close();
+    return $pureString;
   }
 
-  function mysql_fix_string($conn, $string)
-  {
-    return $conn->real_escape_string($string);
-  }
   ?>

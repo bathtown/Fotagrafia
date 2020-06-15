@@ -33,7 +33,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $imgID = mysql_entities_fix_string($conn, $_POST['imgID']);
+    $imgID = mysql_entities_fix_string($_POST['imgID']);
     // $userid
 
     $img_query = "SELECT * FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";
@@ -63,7 +63,7 @@
   // get whether I like
   else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    $imgID = mysql_entities_fix_string($conn, $_GET['imgID']);
+    $imgID = mysql_entities_fix_string($_GET['imgID']);
     // $userid
 
     $img_query = "SELECT * FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";

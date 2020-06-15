@@ -9,14 +9,14 @@
   if ($conn->connect_error) die("Fatal Error");
 
   // get Country_RegionCodeISO
-  $country = mysql_entities_fix_string($conn, $_GET['country']);
+  $country = mysql_entities_fix_string($_GET['country']);
   $countryiso = CountryRegionName2CountryRegionCodeISO($country);
 
   // get CityCode
-  $city = mysql_entities_fix_string($conn, $_GET['city']);
+  $city = mysql_entities_fix_string($_GET['city']);
   $cityCode = CityName2CityCode($city);
 
-  $content = mysql_entities_fix_string($conn, $_GET['content']);
+  $content = mysql_entities_fix_string($_GET['content']);
 
   // get imgs array
   $img_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content'";

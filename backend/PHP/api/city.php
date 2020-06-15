@@ -8,7 +8,7 @@
   if ($conn->connect_error) die("Fatal Error");
 
   // get Country_RegionCodeISO
-  $country = mysql_entities_fix_string($conn, $_GET['country']);
+  $country = mysql_entities_fix_string($_GET['country']);
   $country_query = "SELECT ISO FROM geocountries_regions WHERE Country_RegionName='$country'";
   $country_result = $conn->query($country_query);
   if (!$country_result) die("Fatal Error");

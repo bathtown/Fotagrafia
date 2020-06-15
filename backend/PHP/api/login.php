@@ -9,8 +9,8 @@
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  $user = mysql_entities_fix_string($conn, $_POST['username']);
-  $pass = mysql_entities_fix_string($conn, $_POST['password']); // abcd1234
+  $user = mysql_entities_fix_string($_POST['username']);
+  $pass = mysql_entities_fix_string($_POST['password']); // abcd1234
 
   $sql = "SELECT Pass, UID From traveluser where UserName='$user'";
   $result = mysqli_query($conn, $sql);

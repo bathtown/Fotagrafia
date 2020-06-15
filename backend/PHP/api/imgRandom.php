@@ -5,9 +5,8 @@
   require_once '../app/SQLConfig.php';
   require_once '../app/SQLQuery.php';
 
-  $imgID = mysql_entities_fix_string($_GET['imgID']);;
+  $num = mysql_entities_fix_string($_GET['num']);
 
   https(200);
-  echo json_encode(ImgId2ImgDataDetail($imgID));
-
+  echo json_encode(getRadomImg($num));
   ?>
