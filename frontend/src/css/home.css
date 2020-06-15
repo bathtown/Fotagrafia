@@ -12,10 +12,6 @@ main #home #firstPic {
   width: 100%;
   overflow: hidden;
   background-color: gainsboro;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 main #home #firstPic img {
@@ -69,10 +65,6 @@ main #home #showPic .pin div {
   /* padding-bottom: 133.3%; */
   overflow: hidden;
   background-color: gainsboro;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 main #home #showPic .pin img {

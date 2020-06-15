@@ -114,9 +114,6 @@ main #Details .de_mainPic {
 
   overflow: hidden;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 main #Details .de_message {

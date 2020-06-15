@@ -249,11 +249,28 @@ function ImgFitDiv (filter, width, height) {
         const divRatio = height / width;
         const imgRatio = $(this)[0].naturalHeight / $(this)[0].naturalWidth;
 
-        if (imgRatio >= divRatio) $(this).css('width', '100%')
-        else $(this).css('height', '100%')
-
         let parent = $(this).parent();
-        parent.css('height', parent[0].offsetWidth * divRatio);
+        let parentWidth = parent[0].offsetWidth;
+        let paretHeight = parentWidth * divRatio
+        parent.css('height', paretHeight);
+
+        let imgWidth = $(this)[0].naturalWidth * (paretHeight) / $(this)[0].naturalHeight
+        let imgHeight = $(this)[0].naturalHeight * (parentWidth) / $(this)[0].naturalWidth
+
+        if (imgRatio >= divRatio) {
+            $(this).css({
+                'width': '100%',
+                "position": 'relative',
+                "bottom": `${(imgHeight - paretHeight) / 2}px`
+            })
+        }
+        else {
+            $(this).css({
+                'height': '100%',
+                "position": 'relative',
+                "right": `${(imgWidth - parentWidth) / 2}px`
+            })
+        }
     });
 }
 
