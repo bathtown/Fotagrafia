@@ -153,7 +153,6 @@ main #browser .browserResult .mainPic .picContain {
   /* 3:4 */
   width: 20%;
   height: 0;
-  padding-bottom: 26.67%;
   background-color: gainsboro;
   border-radius: 10px;
   overflow: hidden;
@@ -345,7 +344,6 @@ main #browser .browserResult .mainPic .picContain img {
     /* 3:4 */
     width: 40%;
     height: 0;
-    padding-bottom: 53.2%;
     background-color: gainsboro;
     border-radius: 10px;
     overflow: hidden;

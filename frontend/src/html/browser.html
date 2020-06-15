@@ -121,35 +121,35 @@
 
                 <div class="mainPic">
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                     <div class="picContain">
-                        <img src="" onclick="window.open('../html/details.html', '_self')" />
+                        <img src="" onclick="openDetail(event)" />
                     </div>
 
                 </div>
@@ -183,6 +183,8 @@
     <script>
         $(function () {
             getCountries('#country');
+            ImgFitDiv(".picContain img", 3, 4);
+            getRadomImg()
         });
 
         $('#linkageFilter').click(function () {
@@ -201,12 +203,15 @@
             }
 
             $.ajax({
-                method: "POST",
+                method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/browser.php",
                 data: { content: content, city: city, country: country }
             }).done((data) => {
                 for (let index = 0; index < data.imgs.length; index++) {
-                    $('img').eq(index).attr('src', `http://localhost:8080/backend/travel-images/small/${data.imgs[index]}`);
+                    $('img').eq(index).attr({
+                        'src': `http://localhost:8080/backend/travel-images/small/${data.imgs[index].src}`,
+                        'data-id': data.imgs[index].id,
+                    });
                 }
             }).fail((err) => {
                 console.log(err);
@@ -215,6 +220,27 @@
                 myAlert('error', JSON.parse(err.responseText).message);
             });
         })
+
+        function getRadomImg() {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/randomImg.php",
+            }).done((data) => {
+                console.log(data);
+
+                // for (let index = 0; index < data.imgs.length; index++) {
+                //     $('img').eq(index).attr({
+                //         'src': `http://localhost:8080/backend/travel-images/small/${data.imgs[index].src}`,
+                //         'data-id': data.imgs[index].id,
+                //     });
+                // }
+            }).fail((err) => {
+                console.log(err);
+
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText).message);
+            });
+        }
     </script>
 
 </body>
