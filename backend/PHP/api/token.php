@@ -1,5 +1,15 @@
   <?php
 
+  /* This is to check
+    whether token is available 
+    and get who you are
+
+    require: $headers['Authorization']
+    publicity: private
+
+    return: :(
+  */
+
   require_once '../app/CORS.php';
   require_once '../app/StatusCode.php';
   require_once '../app/Token.php';

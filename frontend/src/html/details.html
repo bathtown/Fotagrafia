@@ -149,7 +149,8 @@
         $(function () {
             getImgDetails();
             getImgLikes();
-            // getLike();
+            if (sessionStorage.getItem("token"))
+                getMYLike();
             ImgFitDiv(".de_mainPic img", 16, 9);
         })
 
@@ -187,48 +188,44 @@
             });
         }
 
+        // <span class="fa fa-heart" onclick="likeImg()" id="liking" title="like it!"></span>
+        // <small id="likedNumber"></small>
+
         function likeImg() {
-            const likedNumberObj = document.getElementById("likedNumber");
-            const heart = document.getElementById("liking");
-            if (heart.style.color === "rgb(255, 225, 225)" || heart.style.color === "") {
-                heart.style.color = "orangered";
-            } else {
-                heart.style.color = "rgb(255, 225, 225)";
+            if (!sessionStorage.getItem("token")) {
+                myAlert('warning', 'Please login first :)')
+                return
             }
-
-            // <span class="fa fa-heart" onclick="likeImg()" id="liking" title="like it!"></span>
-            // <small id="likedNumber"></small>
-
             $.ajax({
                 method: "POST",
-                url: "http://localhost:8080/backend/PHP/api/detailLikes.php",
+                url: "http://localhost:8080/backend/PHP/api/like.php",
+                headers: { Authorization: sessionStorage.getItem("token") },
+                data: { imgID: imgID },
+            }).done((data) => {
+                myAlert('success', data.message);
+                getMYLike()
+                getImgLikes()
+            }).fail((err) => {
+                console.log(err.responseText);
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText));
+            });
+        }
+
+        function getMYLike() {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/like.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID }
             }).done((data) => {
-                $('#likedNumber').text(data)
+                if (data) $('#liking').css('color', 'orangered')
+                else $('#liking').css('color', "rgb(255, 225, 225)")
             }).fail((err) => {
-                console.log(err.responseText);
-
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);
             });
         }
-
-        // function getLike() {
-        //     $.ajax({
-        //         method: "GET",
-        //         url: "http://localhost:8080/backend/PHP/api/detailLikes.php",
-        //         headers: { Authorization: sessionStorage.getItem("token") },
-        //         data: { imgID: imgID }
-        //     }).done((data) => {
-        //         $('#likedNumber').text(data)
-        //     }).fail((err) => {
-        //         console.log(err.responseText);
-
-        //         if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-        //         myAlert('error', JSON.parse(err.responseText).message);
-        //     });
-        // }
     </script>
 
 </body>
