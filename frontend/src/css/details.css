@@ -26,6 +26,7 @@ main #Details .de_author .headPic {
   flex-direction: row;
   /* flex: 1; */
   align-items: center;
+  max-width: 60%;
 }
 
 main #Details .de_author section {
@@ -42,12 +43,18 @@ main #Details .de_author .headPic .creator {
   flex-direction: column;
   text-align: left;
   padding-left: 5px;
+  max-width: 60%;
 }
 
 main #Details .de_author .headPic .creator > h1 {
   line-height: 30px;
   font-size: 1.5rem;
   display: inline-block;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
 }
 
 main #Details .de_author .headPic .creator > p {
@@ -187,7 +194,6 @@ main #Details .de_message .de_content .de_myProperties {
     order: 1;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%;
     border-radius: 0;
   }
 

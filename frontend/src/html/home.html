@@ -158,18 +158,20 @@
                 dataType: 'text',
             }).done((data) => {
                 imgs = JSON.parse(data)
-                for (let index = 0; index < imgs.length; index++) {
-                    $('img').eq(index).attr({
-                        'src': `http://localhost:8080/backend/travel-images/large/${imgs[index].src}`,
-                        'data-id': imgs[index].id,
-                    });
-                }
+                $('img').eq(0).attr({
+                    'src': `http://localhost:8080/backend/travel-images/large/${imgs[0].src}`,
+                    'data-id': imgs[0].id,
+                });
                 // <section class="pin">
                 //     <div><img src="" onclick="openDetail(event)" /></div>
                 //     <h1></h1>
                 //     <p></p>
                 // </section>
                 for (let index = 1; index < imgs.length; index++) {
+                    $('img').eq(index).attr({
+                        'src': `http://localhost:8080/backend/travel-images/small/${imgs[index].src}`,
+                        'data-id': imgs[index].id,
+                    });
                     $('.pin h1').eq(index - 1).text(imgs[index].title);
                     $('.pin p').eq(index - 1).text(imgs[index].description);
                 }

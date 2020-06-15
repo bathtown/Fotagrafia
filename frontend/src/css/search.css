@@ -147,12 +147,13 @@ main #search .filterAfter #searchFilter label {
 main #search .result {
   display: none;
   padding-top: 120px;
+  width: 100vw;
 }
 
 main #search .result .onePic {
-  height: 180px;
+  height: 160px;
   display: flex;
-  padding: 40px 30px 0;
+  padding: 25px 30px 0;
   align-items: flex-start;
   width: 80%;
   background: white;
@@ -180,6 +181,7 @@ main #search .result .onePic .message {
   padding: 10px;
   cursor: auto;
   text-align: left;
+  width: 75%;
 }
 
 main #search .result .onePic .message h1 {

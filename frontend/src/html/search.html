@@ -280,7 +280,7 @@
 
                     for (let index = 0; index < data.imgs.length; index++) {
                         $('img').eq(index).attr({
-                            'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
+                            'src': `http://localhost:8080/backend/travel-images/small/${data.imgs[index].src}`,
                             'data-id': data.imgs[index].id
                         });
                         $('.message').eq(index).children('h1').eq(0).text(data.imgs[index].title);
