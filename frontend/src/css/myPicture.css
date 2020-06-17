@@ -9,39 +9,37 @@ main #myHearts {
 
 main #myGallery .onePic,
 main #myHearts .onePic {
-  height: 180px;
-  display: flex;
-  padding: 20px 40px;
-  justify-content: center;
-  align-items: center;
+  padding: 25px;
   width: 80%;
   background: white;
-  margin: 20px auto;
+  margin: 40px auto;
   border-radius: 20px;
+  display: flex;
+}
+
+main #myGallery .onePic img,
+main #myHearts .onePic img {
   cursor: pointer;
 }
 
 main #myGallery .onePic .picContain,
 main #myHearts .onePic .picContain {
-  height: 80%;
-  border-radius: 10px;
-  background-color: darkgrey;
-}
+  width: 25%;
+  max-width: 250px;
 
-main #myGallery .onePic .picContain img,
-main #myHearts .onePic .picContain img {
-  height: 100%;
+  display: inline-block;
+  background-color: gainsboro;
+
+  overflow: hidden;
   border-radius: 10px;
 }
 
 main #myGallery .onePic .message,
 main #myHearts .onePic .message {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  justify-content: center;
-  cursor: auto;
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+  padding: 10px;
 }
 
 main #myGallery .onePic .message h1,
@@ -62,6 +60,7 @@ main #myHearts .onePic .message p {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   margin: 0 auto 10px;
+  height: 80px;
 }
 
 main #myGallery .onePic .message div div,
