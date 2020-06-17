@@ -8,7 +8,8 @@
     <meta name="COPYRIGHT" content="Fotagrafia">
     <meta name="description" content="upload page">
     <!-- jQuery -->
-    <script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- jquery-confirm -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
@@ -60,14 +61,14 @@
         <article id="upload">
 
             <div class="pic">
+                <div id="uploadPicBox">
+                    <img id="uploadPic" src="" alt="loading..." />
+                </div>
                 <form class="uploadBtn">
                     <p>No picture now...</p>
                     <label for="picFile">Upload a picture <span class="fa fa-cloud-upload"></span></label>
                     <input type="file" onchange="show(this)" id="picFile" />
                 </form>
-                <div id="uploadPicBox">
-                    <img id="uploadPic" src="" alt="loading..." />
-                </div>
             </div>
 
             <div class="info">
@@ -127,18 +128,68 @@
     <script>
         $(function () {
             getCountries('#country');
-            $('#submitButton').click(submitImg)
+            $('#submitButton').click(uploadImg)
         });
 
-        function submitImg() {
+        function show(file) {
+            const reader = new FileReader();
+            const img = document.getElementById('uploadPic');
+
+            reader.onload = function (evt) {
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file.files[0]);
+
+            $('#uploadPicBox').css('display', 'flex')
+            $('.uploadBtn p').hide()
+            $('.uploadBtn label').text('change picture')
+        }
+
+        function uploadImg() {
             const title = $('#uploadTitle').val()
             const content = $('#content').val()
             const contry = $('#country').val();
             const city = $('#city').val();
             const description = $('#uploadDescription').val()
 
-            if (!title || !content || !city || !contry || !description)
+            if (!title || !content || !city || !contry || !description || !$("#picFile").val()) {
                 myAlert('warning', 'Please fill in the form 😎');
+                return
+            }
+
+            file = $("#picFile")[0].files[0]
+
+            if (file.type !== 'image/png' && file.type !== 'image/jpeg') {
+                myAlert('warning', 'Picture form can only be .png, .jpg or .jpeg!');
+                return
+            }
+
+            if (file.size > 16777216) {
+                myAlert('warning', 'Picture\'s size must be less than 2M!');
+                return
+            }
+
+            var formData = new FormData();
+            formData.append('file', file);
+
+            // $.ajax({
+            //     url: "${pageContext.request.contextPath}/system/uploadPhoto",
+            //     type: "post",
+            //     data: formData,
+            //     contentType: false,
+            //     processData: false,
+            //     success: function (data) {
+            //         if (data.type == "success") {
+            //             $("#preview_photo").attr("src", data.filepath + data.filename);
+            //             $("#productImg").val(data.filename);
+            //         } else {
+            //             alert(data.msg);
+            //         }
+            //     },
+            //     error: function (data) {
+            //         alert("上传失败")
+            //     }
+            // });
         }
     </script>
 

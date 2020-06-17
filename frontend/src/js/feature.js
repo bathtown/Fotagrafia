@@ -37,20 +37,6 @@ if (document.getElementsByClassName("de_choice de_myProperties")[0]) {
     switchDeAndPro();
 }
 
-// upload page
-// show picture
-function show (file) {
-    const reader = new FileReader();
-    const img = document.getElementById('uploadPic');
-
-    reader.onload = function (evt) {
-        img.src = evt.target.result;
-    };
-    reader.readAsDataURL(file.files[0]);
-    document.getElementById("uploadPicBox").style.display = "flex";
-    document.getElementsByClassName("uploadBtn")[0].style.display = "none";
-}
-
 //my hearts & my gallery pages
 // make del & modify buttons appear
 function buttonAppear () {
