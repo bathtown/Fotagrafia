@@ -29,37 +29,37 @@
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  // add or delete like
   $method = $_SERVER['REQUEST_METHOD'];
 
   switch ($method) {
-    case 'POST': {
-        $imgID = mysql_entities_fix_string($_POST['imgID']);
-        // $userid
+    case 'PUT': {
+        // add like
+        parse_str(file_get_contents('php://input'), $_PUT);
 
-        $img_query = "SELECT * FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";
-        $img_result = $conn->query($img_query);
-        if (!$img_result) die("Fatal Error");
+        $imgID = mysql_entities_fix_string($_PUT['imgID']);
 
-        $rows = $img_result->num_rows;
-        if ($rows === 0) {
-          // add like
-          $add_query = "INSERT INTO travelimagefavor VALUES(NULL, '$userid', '$imgID')";
-          $add_result = $conn->query($add_query);
-          if (!$add_result) die("Fatal Error");
+        $put_query = "INSERT INTO travelimagefavor VALUES(NULL, '$userid', '$imgID')";
+        $put_result = $conn->query($put_query);
+        if (!$put_result) die("Fatal Error");
 
-          https(200);
-          echo json_encode(array("message" => "Now you like it! :)"));
-        } else {
-          // delete like
-          $delete_query = "DELETE FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";
-          $delete_result = $conn->query($delete_query);
-          if (!$delete_result) die("Database access failed");
+        https(200);
+        echo json_encode(array("message" => "Now you like it! :)"));
 
-          https(200);
-          echo json_encode(array("message" => "Now you drop like of it! :)"));
-        }
-        $img_result->close();
+        break;
+      }
+    case 'DELETE': {
+        // delete like
+        parse_str(file_get_contents('php://input'), $_DELETE);
+
+        $imgID = mysql_entities_fix_string($_DELETE['imgID']);
+
+        $delete_query = "DELETE FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";
+        $delete_result = $conn->query($delete_query);
+        if (!$delete_result) die("Database access failed");
+
+        https(200);
+        echo json_encode(array("message" => "Now you drop like of it! :)"));
+
         break;
       }
     case 'GET': {
