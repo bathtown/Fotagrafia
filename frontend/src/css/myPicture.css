@@ -5,6 +5,7 @@ main #myHearts {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
 main #myGallery .onePic,
@@ -60,7 +61,7 @@ main #myHearts .onePic .message p {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   margin: 0 auto 10px;
-  height: 80px;
+  height: 60px;
 }
 
 main #myGallery .onePic .message div div,
@@ -115,7 +116,6 @@ main #myGallery .onePic .message div .modifyPic {
   main #myGallery .onePic .picContain {
     width: 90%;
     height: 0;
-    padding-bottom: 50.625%;
     background-color: darkgray;
     border-radius: 10px;
     overflow: hidden;
@@ -123,9 +123,7 @@ main #myGallery .onePic .message div .modifyPic {
 
   main #myHearts .onePic .picContain img,
   main #myGallery .onePic .picContain img {
-    width: 100%;
     cursor: pointer;
-    height: auto;
   }
 
   main #myHearts .onePic .message,
@@ -148,10 +146,6 @@ main #myGallery .onePic .message div .modifyPic {
 
   main #myHearts .onePic .message p,
   main #myGallery .onePic .message p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
     display: none;
   }
 
