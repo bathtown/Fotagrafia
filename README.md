@@ -29,7 +29,7 @@
    - [ ] 删除逻辑
 7. 我的收藏
    - [ ] 展示逻辑
-   - [ ] 删除逻辑
+   - [x] [删除逻辑](frontend/src/html/myHearts.html#deleteHeart)
 8. 上传页面
    - [x] [合法性校验](frontend/src/html/upload.html#submitImg)
    - [ ] 修改逻辑
