@@ -211,16 +211,12 @@
         }
 
         function deleteHeart(imgID) {
-            console.log(imgID);
-
             $.ajax({
                 method: "POST",
                 url: "http://localhost:8080/backend/PHP/api/myHeart.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID },
             }).done((data) => {
-                console.log(data);
-
                 myAlert('success', data.message);
                 getMyHearts();
             }).fail((err) => {

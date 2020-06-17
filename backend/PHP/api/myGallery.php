@@ -33,26 +33,42 @@
   $method = $_SERVER['REQUEST_METHOD'];
 
   switch ($method) {
-    case 'POST':
-      # code...
-      break;
-    case 'GET':
-      $img_query = "SELECT ImageID FROM `travelimage` WHERE UID='$userid'";
-      $img_result = $conn->query($img_query);
-      if (!$img_result) die("Fatal Error");
+    case 'POST': {
+        $imgID = mysql_entities_fix_string($_POST['imgID']);
+        // $userid
 
-      $img_rows = $img_result->num_rows;
-      $imgs = array();
-      for ($j = 0; $j < $img_rows; ++$j) {
-        $img_row = $img_result->fetch_array(MYSQLI_ASSOC);
-        array_push($imgs, ImgId2ImgDataAbstract($img_row['ImageID']));
+        $delete_query = "DELETE FROM travelimage WHERE ImageID='$imgID' AND UID='$userid'";
+        $delete_result = $conn->query($delete_query);
+
+        //TODO: also delete the file
+
+        if (!$delete_result) {
+          https(405);
+          echo json_encode(array("message" => "Delete fail, please try again 😶"));
+        } else {
+          https(200);
+          echo json_encode(array("message" => "Now you delete this picture! :)"));
+        }
+        break;
       }
+    case 'GET': {
+        $img_query = "SELECT ImageID FROM `travelimage` WHERE UID='$userid'";
+        $img_result = $conn->query($img_query);
+        if (!$img_result) die("Fatal Error");
 
-      https(200);
-      echo json_encode($imgs);
+        $img_rows = $img_result->num_rows;
+        $imgs = array();
+        for ($j = 0; $j < $img_rows; ++$j) {
+          $img_row = $img_result->fetch_array(MYSQLI_ASSOC);
+          array_push($imgs, ImgId2ImgDataAbstract($img_row['ImageID']));
+        }
 
-      $img_result->close();
-      break;
+        https(200);
+        echo json_encode($imgs);
+
+        $img_result->close();
+        break;
+      }
   }
 
   $conn->close();
