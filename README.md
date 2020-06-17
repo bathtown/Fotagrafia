@@ -45,7 +45,7 @@
 
 ### ToDo Lists
 
-- [x] [RESTful](backend/PHP/api/like.php)
+- [x] [RESTful](backend/PHP/api/myHeart.php)
 - [x] [防 SQL 注入](backend/PHP/app/SQLConfig.php)
 - [x] [跨域](backend/PHP/app/CORS.php)
 - [x] [错误码](backend/PHP/app/StatusCode.php)
