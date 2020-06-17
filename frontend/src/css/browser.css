@@ -168,7 +168,6 @@ main #browser .browserResult .mainPic .picContain:hover {
 
 main #browser .browserResult .mainPic .picContain img {
   cursor: pointer;
-  width: 100%;
 }
 
 @media screen and (max-width: 830px) {
@@ -354,10 +353,5 @@ main #browser .browserResult .mainPic .picContain img {
   main #browser .browserResult .mainPic .picContain:hover {
     transform: none;
     filter: none;
-  }
-
-  main #browser .browserResult .mainPic .picContain img {
-    cursor: pointer;
-    width: 100%;
   }
 }
