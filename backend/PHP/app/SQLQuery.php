@@ -32,7 +32,7 @@
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
 
-    $city_query = "SELECT GeoNameID FROM geocities WHERE AsciiName='$CityName'";
+    $city_query = "SELECT GeoNameID FROM geocities WHERE AsciiName=\"$CityName\"";
     $city_result = $conn->query($city_query);
     if (!$city_result) die("Fatal Error");
     $city_row = $city_result->fetch_array(MYSQLI_ASSOC);
@@ -74,7 +74,7 @@
     $conn = new mysqli($hn, $un, $pw, $db);
     if ($conn->connect_error) die("Fatal Error");
 
-    $country_query = "SELECT ISO FROM geocountries_regions WHERE Country_RegionName='$CountryRegionName'";
+    $country_query = "SELECT ISO FROM geocountries_regions WHERE Country_RegionName=\"$CountryRegionName\"";
     $country_result = $conn->query($country_query);
     if (!$country_result) die("Fatal Error");
     $country_row = $country_result->fetch_array(MYSQLI_ASSOC);

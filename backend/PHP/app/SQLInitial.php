@@ -16,5 +16,10 @@
   $img_result = $conn->query($img_query);
   if (!$img_result) die("Database access failed");
 
+  // auto increase
+  $auto_query = "ALTER TABLE travelimage CHANGE ImageID ImageID INT(11) NOT NULL AUTO_INCREMENT";
+  $auto_result = $conn->query($auto_query);
+  if (!$auto_result) die("Database access failed");
+
   $conn->close();
   ?>

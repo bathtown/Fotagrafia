@@ -18,6 +18,7 @@
 
   if (!isset($headers['Authorization'])  || !Token::verification(trim($headers['Authorization']))) {
     https(401);
+    header("location:http://127.0.0.1:5500/frontend/src/html/login.html");
     die("Please login first!");
   }
 
