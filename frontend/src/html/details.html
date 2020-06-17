@@ -198,7 +198,7 @@
             }
             $.ajax({
                 method: "POST",
-                url: "http://localhost:8080/backend/PHP/api/like.php",
+                url: "http://localhost:8080/backend/PHP/api/myHeart.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID },
             }).done((data) => {
@@ -215,7 +215,7 @@
         function getMYLike() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/like.php",
+                url: "http://localhost:8080/backend/PHP/api/myHeart.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID }
             }).done((data) => {

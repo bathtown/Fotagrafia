@@ -85,19 +85,11 @@
             <header class="hinter">My Gallery</header>
             <section class="onePic">
                 <div class="picContain">
-                    <img src="" />
+                    <img src="" onclick="openDetail(event)" />
                 </div>
                 <div class="message">
-                    <h1>The Greatest Web River</h1>
-                    <p>I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <h1></h1>
+                    <p></p>
                     <div>
                         <button class="modifyPic" onclick="window.open('../html/upload.html', '_self')">Modify</button>
                         <button class="delPic">Delete</button>
@@ -106,19 +98,11 @@
             </section>
             <section class="onePic">
                 <div class="picContain">
-                    <img src="" />
+                    <img src="" onclick="openDetail(event)" />
                 </div>
                 <div class="message">
-                    <h1>The Greatest Web River</h1>
-                    <p>I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <h1></h1>
+                    <p></p>
                     <div>
                         <button class="modifyPic" onclick="window.open('../html/upload.html', '_self')">Modify</button>
                         <button class="delPic">Delete</button>
@@ -127,19 +111,11 @@
             </section>
             <section class="onePic">
                 <div class="picContain">
-                    <img src="" />
+                    <img src="" onclick="openDetail(event)" />
                 </div>
                 <div class="message">
-                    <h1>The Greatest Web River</h1>
-                    <p>I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <h1></h1>
+                    <p></p>
                     <div>
                         <button class="modifyPic" onclick="window.open('../html/upload.html', '_self')">Modify</button>
                         <button class="delPic">Delete</button>
@@ -148,19 +124,11 @@
             </section>
             <section class="onePic">
                 <div class="picContain">
-                    <img src="" />
+                    <img src="" onclick="openDetail(event)" />
                 </div>
                 <div class="message">
-                    <h1>The Greatest Web River</h1>
-                    <p>I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <h1></h1>
+                    <p></p>
                     <div>
                         <button class="modifyPic" onclick="window.open('../html/upload.html', '_self')">Modify</button>
                         <button class="delPic">Delete</button>
@@ -169,19 +137,11 @@
             </section>
             <section class="onePic">
                 <div class="picContain">
-                    <img src="" />
+                    <img src="" onclick="openDetail(event)" />
                 </div>
                 <div class="message">
-                    <h1>The Greatest Web River</h1>
-                    <p>I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <h1></h1>
+                    <p></p>
                     <div>
                         <button class="modifyPic" onclick="window.open('../html/upload.html', '_self')">Modify</button>
                         <button class="delPic">Delete</button>
@@ -190,19 +150,11 @@
             </section>
             <section class="onePic">
                 <div class="picContain">
-                    <img src="" />
+                    <img src="" onclick="openDetail(event)" />
                 </div>
                 <div class="message">
-                    <h1>The Greatest Web River</h1>
-                    <p>I loved you, and I probably still do,
-                        And for a while the feeling may remain...
-                        But let my love no longer trouble you,
-                        I do not wish to cause you any pain.
-                        I loved you; and the hopelessness I knew,
-                        The jealousy, the shyness - though in vain -
-                        Made up a love so tender and so true
-                        As may God grant you to be loved again.
-                    </p>
+                    <h1></h1>
+                    <p></p>
                     <div>
                         <button class="modifyPic" onclick="window.open('../html/upload.html', '_self')">Modify</button>
                         <button class="delPic">Delete</button>
@@ -261,6 +213,12 @@
                     $('.message h1').eq(index).text(imgs[index].title);
                     $('.message p').eq(index).text(imgs[index].description);
                 }
+
+                $('img').each(
+                    function () {
+                        if ($(this).attr('src') === '') $(this).parents('.onePic').hide()
+                    }
+                )
             }).fail((err) => {
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);
