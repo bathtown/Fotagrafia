@@ -33,22 +33,38 @@
   $method = $_SERVER['REQUEST_METHOD'];
 
   switch ($method) {
-    case 'POST': {
-        $imgID = mysql_entities_fix_string($_POST['imgID']);
-        // $userid
+    case 'DELETE': {
+        parse_str(file_get_contents('php://input'), $_DELETE);
 
-        $delete_query = "DELETE FROM travelimage WHERE ImageID='$imgID' AND UID='$userid'";
-        $delete_result = $conn->query($delete_query);
+        $imgID = mysql_entities_fix_string($_DELETE['imgID']);
+
+        $conn->autocommit(false);
+
+        $conn->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+
+        // $delete_query1 = "DELETE FROM travelimage WHERE ImageID='$imgID' AND UID='$userid'";
+        // $delete_query2 = "DELETE FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";
+
+        $delete_query1 = "DELETE FROM travelimage WHERE ImageID='$imgID' AND UID='$userid'";
+        $delete_query2 = "DELETE FROM travelimagefavor WHERE ImageID='$imgID' AND UID='$userid'";
 
         //TODO: also delete the file
 
-        if (!$delete_result) {
-          https(405);
+        $conn->query($delete_query1);
+        $delete_result1 =  $conn->affected_rows;
+        $conn->query($delete_query2);
+        $delete_result2 =  $conn->affected_rows;
+
+        if (!$delete_result1 || !$delete_result2) {
+          $conn->rollback();
+          https(400);
           echo json_encode(array("message" => "Delete fail, please try again 😶"));
         } else {
+          $conn->commit();
           https(200);
           echo json_encode(array("message" => "Now you delete this picture! :)"));
         }
+
         break;
       }
     case 'GET': {
@@ -68,6 +84,10 @@
 
         $img_result->close();
         break;
+      }
+    case 'PUT': {
+      }
+    case 'POST': {
       }
   }
 

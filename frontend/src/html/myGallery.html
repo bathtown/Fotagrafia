@@ -237,7 +237,7 @@
                         btnClass: 'btn-blue',
                         action: function () {
                             $.ajax({
-                                method: "POST",
+                                method: "DELETE",
                                 url: "http://localhost:8080/backend/PHP/api/myGallery.php",
                                 headers: { Authorization: sessionStorage.getItem("token") },
                                 data: { imgID: imgID },
@@ -245,9 +245,8 @@
                                 myAlert('success', data.message);
                                 getMyGallery();
                             }).fail((err) => {
-                                console.log(err.responseText);
                                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-                                myAlert('error', JSON.parse(err.responseText));
+                                myAlert('error', JSON.parse(err.responseText).message);
                             });
                         }
                     },
