@@ -439,6 +439,7 @@ footer p {
 .shareList:active .dropdown-content {
   display: flex;
   position: absolute;
+  z-index: 99;
 }
 
 .shareList ul {
