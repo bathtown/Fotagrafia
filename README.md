@@ -56,10 +56,12 @@
 1. token
    - 原想用单例模式实现 token 储存，但是 PHP 页面没有常驻内存，被销毁了，每次都是新的……
    - 最后实现方法：token 自验证
-2. [headers](backend/PHP/app/CORS.php)
+2. [CORS](backend/PHP/app/CORS.php)
    - preflight request 要额外注意
    - 学习: [same-origin](https://wangdoc.com/javascript/bom/same-origin.html)
-3. RESTful 使用 `$_SERVER['REQUEST_METHOD']` 实现
+3. RESTful
+   - `$_SERVER['REQUEST_METHOD']` 实现
+   - 没有内置 `$_PUT` `$_DELETE` 超级全局变量，要用 `file_get_contents('php://input')` 获取，一点都不优雅
 
 ### 参考资料
 
