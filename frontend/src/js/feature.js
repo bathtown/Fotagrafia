@@ -237,25 +237,16 @@ function ImgFitDiv (filter, width, height) {
 
         let parent = $(this).parent();
         let parentWidth = parent[0].offsetWidth;
-        let paretHeight = parentWidth * divRatio
+        let paretHeight = parseInt(parentWidth * divRatio)
         parent.css('height', paretHeight);
 
         let imgWidth = ($(this)[0].naturalWidth * paretHeight) / $(this)[0].naturalHeight
         let imgHeight = ($(this)[0].naturalHeight * parentWidth) / $(this)[0].naturalWidth
 
         if (imgRatio >= divRatio) {
-            $(this).css({
-                'width': '100%',
-                "position": 'relative',
-                "bottom": `${(imgHeight - paretHeight) / 2}px`
-            })
-        }
-        else {
-            $(this).css({
-                'height': '100%',
-                "position": 'relative',
-                "right": `${(imgWidth - parentWidth) / 2}px`
-            })
+            $(this).css({ width: '100%', position: 'relative', bottom: `${(imgHeight - paretHeight) / 2}px`, height: 'auto', right: 0 })
+        } else {
+            $(this).css({ height: '100%', position: 'relative', right: `${(imgWidth - parentWidth) / 2}px`, width: 'auto', bottom: 0 })
         }
     });
 }
