@@ -1,0 +1,539 @@
+@charset "utf-8";
+@import 'reset.css';
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+html {
+  font-size: 12px;
+  height: 100vh;
+}
+
+body {
+  /* basic font */
+  font-family: Nunito, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+  text-align: center;
+  color: black;
+  background-color: #fafafa;
+  /* position */
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* 解决safari圆角问题 */
+input[type='submit'],
+input[type='button'] {
+  -webkit-appearance: none;
+}
+
+/* header */
+header {
+  background-color: #444444;
+  width: 100%;
+  position: fixed;
+  float: left;
+  clear: both;
+  top: 0;
+  left: 0;
+  transform: translateZ(10px);
+  z-index: 3;
+}
+
+header ul {
+  list-style: none;
+  width: 100%;
+  display: flex;
+}
+
+header ul li {
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  float: left;
+}
+
+header ul #bar {
+  display: contents;
+}
+
+header ul #bar > a {
+  display: none;
+}
+
+header ul #barlist {
+  display: contents;
+}
+
+header ul #logo {
+  order: -1;
+}
+
+header ul .account {
+  margin-left: auto;
+}
+
+header ul li a,
+header ul li p {
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: gainsboro;
+  display: block;
+  width: 160px;
+  transition-duration: 0.2s;
+  text-align: left;
+  padding-left: 20%;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+header ul li p {
+  cursor: default;
+  overflow: hidden;
+  width: 160px;
+}
+
+header ul li a:hover,
+header ul li a:active {
+  color: #fafafa;
+}
+
+header ul li ul li {
+  float: none;
+  background-color: #444444;
+  overflow: hidden;
+}
+
+header ul li ul {
+  position: absolute;
+  display: none;
+  box-shadow: 3px 0 3px #444444, -3px 0 3px #444444, 0 3px 3px #444444;
+}
+
+header ul li:hover ul,
+header ul li:active ul {
+  display: block;
+}
+
+header .my {
+  display: none;
+}
+
+@media screen and (max-width: 830px) {
+  header {
+    display: block;
+    background-color: #444444;
+    width: 100%;
+    position: fixed;
+    float: left;
+    clear: both;
+    top: 0;
+    left: 0;
+    transform: translateZ(100px);
+    z-index: 3;
+  }
+
+  header .myAccount {
+    display: none;
+  }
+
+  header .my {
+    display: block;
+  }
+
+  header ul {
+    list-style: none;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  header ul li {
+    width: inherit;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    float: left;
+    height: 40px;
+  }
+
+  header ul #bar,
+  header ul #logo,
+  header ul .account {
+    text-align: center;
+    height: 40px;
+  }
+
+  header ul #logo {
+    order: 0;
+    width: 60px;
+    margin: auto;
+  }
+
+  header ul #logo > a {
+    padding-left: 0;
+    width: 60px;
+    text-align: center;
+  }
+
+  header ul #bar {
+    width: 160px;
+    margin-left: 0;
+  }
+
+  header ul .account {
+    width: 160px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  header ul .account > a {
+    padding-right: 20%;
+    text-align: right;
+  }
+
+  header ul #bar {
+    display: block;
+  }
+
+  header ul #bar > a {
+    display: block;
+  }
+
+  header ul li a,
+  header ul li li {
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: gainsboro;
+    display: block;
+    transition-duration: 0.2s;
+    text-align: left;
+  }
+
+  header ul #barlist {
+    display: none;
+  }
+
+  header ul li li {
+    cursor: default;
+  }
+
+  header ul li a:hover,
+  header ul li a:active {
+    color: #fafafa;
+  }
+
+  header ul li ul li {
+    float: none;
+    background-color: #444444;
+  }
+
+  header ul li ul {
+    position: absolute;
+    display: none;
+    box-shadow: 3px 0 3px #444444, -3px 0 3px #444444, 0 3px 3px #444444;
+  }
+
+  header ul li:hover ul,
+  header ul li:hover #barlist {
+    display: block;
+  }
+}
+
+/* The page I'm looking */
+.imlooking {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+.imlooking:hover,
+.imlooking:active {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+/* main */
+main {
+  width: 100%;
+  /* to insure footer is under */
+  height: 100%;
+  flex: 1;
+  display: flex;
+}
+
+/* page number */
+.pageNum {
+  width: 100%;
+}
+
+.pageNum p {
+  width: 80%;
+  color: darkgrey;
+  font-size: 1.6rem;
+  padding: 20px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.pageNum p span {
+  color: #444444;
+}
+
+/* hinter */
+.hinter {
+  background-color: #555555;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  height: 40px;
+  top: 40px;
+  left: 0;
+  line-height: 40px;
+  color: #fafafa;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transform: translateZ(8px);
+  z-index: 2;
+}
+
+/* footer */
+footer {
+  background-color: whitesmoke;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+footer section {
+  text-align: center;
+  line-height: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer section #copyright {
+  text-align: center;
+  cursor: default;
+}
+
+footer section div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+footer section a {
+  font-size: 1rem;
+  /* width: 80px; */
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  color: grey;
+}
+
+footer section a:hover,
+footer section a:active {
+  color: #444444;
+}
+
+footer section span {
+  color: grey;
+  cursor: default;
+}
+
+footer p {
+  line-height: 30px;
+  font-size: 1rem;
+  text-align: center;
+  color: grey;
+  cursor: default;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+/* home extension part */
+.home_extension {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateZ(8px);
+  z-index: 2;
+}
+
+.home_extension .fa {
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(68, 68, 68, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.home_extension .fa:hover,
+.home_extension .fa:active {
+  color: white;
+  background-color: #444444;
+}
+
+/* search extension part */
+.search_extension {
+  position: fixed;
+  display: none;
+  bottom: 60px;
+  right: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateZ(10px);
+}
+
+.search_extension .fa {
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(68, 68, 68, 0.8);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.search_extension .fa:hover,
+.search_extension .fa:active {
+  color: white;
+  background-color: #444444;
+}
+
+/* share element */
+.shareList {
+  width: fit-content;
+  float: right;
+  cursor: pointer;
+}
+
+.shareList .dropdown-content {
+  display: none;
+}
+
+.shareList:hover .dropdown-content,
+.shareList:active .dropdown-content {
+  display: flex;
+  position: absolute;
+}
+
+.shareList ul {
+  list-style: none;
+  position: relative;
+  top: 45px;
+}
+
+.shareList ul a {
+  text-decoration: none;
+}
+
+.shareList .fa,
+main #NotFound > .socialIcon .fa {
+  /*icons size*/
+  font-size: 1.5rem;
+  /*icons circle size*/
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  /* to insure it's round */
+  border-radius: 50%;
+  margin: 5px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  transition-duration: 0.5s;
+  display: inline-block;
+}
+
+.shareList .fa:hover,
+.shareList .fa:active {
+  color: white;
+  transform: translateY(-5px);
+}
+
+.shareList .fa-dribbble {
+  background-color: #f46899;
+}
+
+.shareList .fa-facebook {
+  background-color: #3c599f;
+}
+
+.shareList .fa-github {
+  background-color: #444444;
+}
+
+.shareList .fa-instagram {
+  background-color: rgba(243, 91, 32, 1);
+}
+
+.shareList .fa-pinterest {
+  background-color: rgba(197, 7, 14, 1);
+}
+
+.shareList .fa-twitter {
+  background-color: #32ccfe;
+}
+
+.shareList .fa-weibo {
+  background-color: #d72b2b;
+}
+
+.shareList .fa-grav {
+  background-color: #333333;
+}
+
+.shareList .shareBtn {
+  background-color: rgba(0, 0, 0, 0);
+  color: #444444;
+  cursor: pointer;
+  font-weight: 100;
+  float: right;
+  /* cursor: pointer; */
+  transform: none;
+}
+
+.shareList .shareBtn:hover,
+.shareList .shareBtn:active {
+  color: #444444;
+  transform: none;
+}
+
+/* fix bugs :(*/
+.jconfirm-holder {
+  width: 300px;
+  margin: auto;
+}
+
+.jconfirm-content {
+  font-size: 16px;
+  line-height: 2;
+}
+
+/* textarea */
+textarea {
+  font-family: Arial;
+}

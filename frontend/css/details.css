@@ -1,0 +1,205 @@
+/* article=details */
+main #Details {
+  width: 80%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main #Details .de_author {
+  order: 1;
+  width: 80%;
+  margin: 4rem auto 2rem auto;
+  justify-content: space-between;
+  /* padding: 20px 0; */
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
+
+main #Details .de_author .headPic {
+  flex-shrink: 2;
+  display: flex;
+  flex-direction: row;
+  /* flex: 1; */
+  align-items: center;
+  max-width: 60%;
+}
+
+main #Details .de_author section {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin: 0.5rem;
+  background-color: gainsboro;
+  overflow: hidden;
+}
+
+main #Details .de_author .headPic .creator {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 5px;
+  max-width: 60%;
+}
+
+main #Details .de_author .headPic .creator > h1 {
+  line-height: 30px;
+  font-size: 1.5rem;
+  display: inline-block;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
+main #Details .de_author .headPic .creator > p {
+  line-height: 20px;
+  display: inline;
+}
+
+main #Details .de_author .headPic .creator > p > span {
+  color: grey;
+  cursor: pointer;
+  padding: 5px;
+}
+
+main #Details .de_author .headPic .creator > p > span:hover,
+main #Details .de_author .headPic .creator > p > span:active {
+  color: #444444;
+}
+
+main #Details .de_author .likeShare {
+  flex-shrink: 1;
+  display: flex;
+}
+
+main #Details .de_author .likeShare #liking {
+  font-size: 1.5rem;
+  line-height: 45px;
+  border-radius: 50%;
+  margin: 5px;
+  text-align: center;
+  color: rgba(255, 69, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+main #Details .de_author .likeShare #liking:hover,
+main #Details .de_author .likeShare #liking:active {
+  color: orangered;
+  transform: scale(1.2);
+}
+
+main #Details .de_author .likeShare #likedNumber {
+  top: 5px;
+  right: 24px;
+  color: orangered;
+  width: 20px;
+  cursor: default;
+  margin-top: 6px;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+main #Details .de_mainPic {
+  order: 2;
+  width: 80%;
+  background-color: gainsboro;
+
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+main #Details .de_message {
+  order: 3;
+  width: 80%;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow: auto;
+  min-height: 240px;
+}
+
+main #Details .de_message .de_message_choice {
+  width: 100%;
+  display: flex;
+  margin: 20px auto 0 auto;
+  justify-content: space-around;
+}
+
+main #Details .de_message .de_message_choice span {
+  font-size: 1.4rem;
+  line-height: 40px;
+  border: none;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  cursor: pointer;
+}
+
+main #Details .de_message .de_message_choice .selected {
+  border-bottom: 2px solid grey;
+}
+
+main #Details .de_message .de_myWords {
+  width: 80%;
+  text-align: justify;
+  margin: 20px auto;
+  word-wrap: break-word;
+  font-size: 1.25rem;
+  line-height: 30px;
+}
+
+main #Details .de_message .de_content {
+  margin: 20px 10px;
+}
+
+main #Details .de_message .de_content .de_myProperties {
+  display: none;
+  text-align: center;
+  margin: auto;
+  width: 90%;
+  line-height: 50px;
+  font-size: 1.25rem;
+}
+
+@media screen and (max-width: 840px) {
+  #Details {
+    background-color: white;
+  }
+
+  main #Details {
+    width: 100%;
+    height: auto;
+  }
+
+  main #Details .de_author {
+    order: 2;
+    width: 100%;
+    margin: 0 auto;
+    /* overflow: hidden; */
+  }
+
+  main #Details .de_mainPic {
+    order: 1;
+    width: 100%;
+    height: 0;
+    border-radius: 0;
+  }
+
+  main #Details .de_mainPic img {
+    border-radius: 0;
+  }
+
+  main #Details .de_message {
+    order: 3;
+    width: 100%;
+  }
+}
