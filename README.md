@@ -11,8 +11,8 @@
 ## 评分项
 
 1. 首页
-   - [x] [登录逻辑](frontend/src/js/feature.js#hintRegister)
-   - [x] [刷新逻辑](frontend/src/html/home.html#getPhotos)
+   - [x] [登录逻辑](frontend/js/feature.js#hintRegister)
+   - [x] [刷新逻辑](frontend/html/home.html#getPhotos)
    - [x] [图片逻辑](backend/PHP/api/home.php)
 2. 浏览页
    - [x] [筛选逻辑](backend/PHP/api/browser.php)
@@ -29,10 +29,10 @@
    - [x] [删除逻辑](backend/PHP/api/myGallery.php)
 7. 我的收藏
    - [ ] 展示逻辑
-   - [x] [删除逻辑](frontend/src/html/myHearts.html#deleteHeart)
+   - [x] [删除逻辑](frontend/html/myHearts.html#deleteHeart)
 8. 上传页面
-   - [x] [合法性校验](frontend/src/html/upload.html#submitImg)
-   - [x] [修改逻辑](frontend/src/html/upload.html)
+   - [x] [合法性校验](frontend/html/upload.html#submitImg)
+   - [x] [修改逻辑](frontend/html/upload.html)
 9. 详细图片页面
    - [x] [信息展示](backend/PHP/api/detail.php)
    - [x] [收藏功能](backend/PHP/api/like.php)
@@ -47,8 +47,8 @@
 
 - [x] [RESTful](backend/PHP/api/myHeart.php)
 - [x] [防 SQL 注入](backend/PHP/app/SQLConfig.php)
-- [x] [跨域](backend/PHP/app/CORS.php)
-- [x] [错误码](backend/PHP/app/StatusCode.php)
+- [x] [CORS](backend/PHP/app/CORS.php)
+- [x] [HTTP Status Codes](backend/PHP/app/StatusCode.php)
 - [x] [JWT](backend/PHP/app/Token.php)
 
 ### Trick Points 👻
@@ -58,7 +58,7 @@
    - 最后实现方法：token 自验证
 2. [CORS](backend/PHP/app/CORS.php)
    - preflight request 要额外注意
-   - 学习: [same-origin](https://wangdoc.com/javascript/bom/same-origin.html)
+   - [same-origin policy](https://wangdoc.com/javascript/bom/same-origin.html)
 3. RESTful
    - `$_SERVER['REQUEST_METHOD']` 实现
    - 没有内置 `$_PUT` `$_DELETE` 超级全局变量，要用 `file_get_contents('php://input')` 获取，一点都不优雅
@@ -67,13 +67,16 @@
 
 1. [密码加盐](https://www.cnblogs.com/makai/p/11130703.html)
 2. [ajax 请求跨域](https://segmentfault.com/a/1190000012469713)
-3. [same-origin](https://wangdoc.com/javascript/bom/same-origin.html)
-4. [firebase/php-jwt](https://github.com/firebase/php-jwt) | [firebase/php-jwt token 使用](https://www.cnblogs.com/yehuisir/p/11521165.html)
-5. [PHP 实现 RESTful 风格的 API](https://www.jianshu.com/p/f784ad32bf7f)
-6. [PHP 实现 RESTful 风格的 API 实例](https://www.cnblogs.com/luyucheng/p/6016801.html)
-7. [caoym/phpboot](https://github.com/caoym/phpboot)
+3. [firebase/php-jwt](https://github.com/firebase/php-jwt)
+4. [firebase/php-jwt token 使用](https://www.cnblogs.com/yehuisir/p/11521165.html)
 
 ## Frontend
+
+### ToDo Lists
+
+- [x] [more friendly alert](frontend/html/register.html)
+- [x] [前端登录拦截](frontend/html/myGallery.html)
+- [x] [sessionStorage + token](frontend/html/login.html)
 
 ### 前端框架使用
 
@@ -98,9 +101,3 @@
   <link rel="stylesheet" type="text/css" href="../css/general.css" />
   <link rel="stylesheet" type="text/css" href="../css/register.css" />
   ```
-
-### ToDo Lists
-
-- [x] [more friendly alert](frontend/src/html/register.html)
-- [x] [前端登录拦截](frontend/src/html/myGallery.html)
-- [x] [sessionStorage + token](frontend/src/html/login.html)
