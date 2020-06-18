@@ -2,7 +2,7 @@
 
   /* This is to get my uploads 
 
-    _POST: 
+    POST: 
     upload/change my upload 
 
     require: token, title, description, city, country, file, content
@@ -10,7 +10,7 @@
 
     return: a message
 
-    _DELETE:
+    DELETE:
     delete my upload
 
     require: token, imgID
@@ -18,7 +18,15 @@
 
     return: a message
 
-    _GET: 
+    PUT:
+    update my upload !! bad :(
+
+    require: token, title, description, city, country, file, content
+    publicity: private
+
+    return: a message
+
+    GET: 
     get my uploads 
 
     require: token
@@ -145,6 +153,31 @@
           https(400);
           echo json_encode(array("message" => "Upload failed!"));
         }
+
+        break;
+      }
+    case 'PUT': {
+        parse_str(file_get_contents('php://input'), $_PUT);
+
+        $title = mysql_entities_fix_string($_PUT['title']);
+        $contry = CountryRegionName2CountryRegionCodeISO(mysql_entities_fix_string($_PUT['contry']));
+        $city = CityName2CityCode(mysql_entities_fix_string($_PUT['city']));
+        $content = mysql_entities_fix_string($_PUT['content']);
+        $description = mysql_entities_fix_string($_PUT['description']);
+        $imgID = mysql_entities_fix_string($_PUT['imgID']);
+
+        $query = "UPDATE travelimage SET Title='$title', Description='$description', CityCode='$city', Country_RegionCodeISO='$contry', Content='$content' WHERE ImageID='$imgID' AND UID='$userid'";
+        $result = $conn->query($query);
+        if (!$result) {
+          https(400);
+          echo json_encode(array("message" => "Update failed!"));
+          die();
+        } else {
+          https(200);
+          echo json_encode(array("message" => "Update successfully!"));
+        }
+
+        break;
       }
   }
 
