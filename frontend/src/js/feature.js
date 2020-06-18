@@ -279,7 +279,7 @@ function countrysCity (countryFilter, cityFilter) {
     $(cityFilter).empty();
 
     // console.log(country.options[country.selectedIndex].text);
-    $.ajax({
+    return $.ajax({
         method: "GET",
         url: "http://localhost:8080/backend/PHP/api/city.php",
         data: { country: $(countryFilter).val() }
