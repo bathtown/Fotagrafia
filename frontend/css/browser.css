@@ -71,6 +71,7 @@ main #browser .browserAside .hotList a {
   font-size: 1.2rem;
   line-height: 40px;
   padding-left: 10%;
+  cursor: pointer;
 }
 
 main #browser .browserAside .hotList a:hover {

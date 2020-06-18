@@ -66,32 +66,29 @@
             <aside class="browserAside">
 
                 <form class="searchBox">
-                    <input type="text" placeholder="Search by Title..." />
-                    <button type="button"><span class="fa fa-search"></span></button>
+                    <input id="searchBoxText" type="text" placeholder="Search by Title..." />
+                    <button id="searchBoxButton" type="button"><span class="fa fa-search"></span></button>
                 </form>
 
                 <h1>Hot Country</h1>
                 <ul class="hotList hotCountry">
-                    <li><a href="../html/china.html">China</a></li>
-                    <li><a href="../html/japan.html">Japan</a></li>
-                    <li><a href="../html/italy.html">Italy</a></li>
+                    <li><a>Canada</a></li>
+                    <li><a>United Kingdom</a></li>
+                    <li><a>Italy</a></li>
                 </ul>
 
                 <h1>Hot City</h1>
                 <ul class="hotList hotCity">
-                    <li><a href="../html/Chengdu.html">Chengdu</a></li>
-                    <li><a href="../html/Shanghai.html">Shanghai</a></li>
-                    <li><a href="../html/NewYork.html">New York</a></li>
-                    <!-- <li><a href="../html/London.html" >London</a></li> -->
+                    <li><a>London</a></li>
+                    <li><a>Firenze</a></li>
+                    <li><a>Roma</a></li>
                 </ul>
 
                 <h1>Hot Content</h1>
                 <ul class="hotList hotContent">
-                    <li><a href="../html/scenery.html">Scenery</a></li>
-                    <li><a href="../html/city.html">City</a></li>
-                    <li><a href="../html/people.html">People</a></li>
-                    <!-- <li><a href="../html/animal.html" >Animal</a></li> -->
-                    <!-- <li><a href="../html/building.html" >Building</a></li> -->
+                    <li><a>Scenery</a></li>
+                    <li><a>City</a></li>
+                    <li><a>People</a></li>
                 </ul>
 
             </aside>
@@ -189,6 +186,10 @@
             getCountries('#country');
             ImgFitDiv(".picContain img", 3, 4);
             getRadomImg()
+            $('#searchBoxButton').click(function () { browserGetImg('title', $('#searchBoxText').val()) })
+            $('.hotCountry a').click(function () { browserGetImg('country', $(this).text()) })
+            $('.hotCity a').click(function () { browserGetImg('city', $(this).text()) })
+            $('.hotContent a').click(function () { browserGetImg('content', $(this).text()) })
         });
 
         $('#linkageFilter').click(function () {
@@ -228,9 +229,6 @@
                 url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
                 data: { num: 8 }
             }).done((data) => {
-                // 85屏幕截图(2).png
-                console.log(data);
-
                 for (let index = 0; index < data.length; index++) {
                     $('img').eq(index).attr({
                         'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
@@ -238,11 +236,21 @@
                     });
                 }
             }).fail((err) => {
-                console.log(err);
-
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);
             });
+        }
+
+        function browserGetImg(choice, text) {
+            searchImg(choice, text)
+                .then(function (data) {
+                    for (let index = 0; index < data.length; index++) {
+                        $('img').eq(index).attr({
+                            'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
+                            'data-id': data[index].id,
+                        });
+                    }
+                })
         }
     </script>
 

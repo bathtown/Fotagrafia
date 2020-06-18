@@ -64,15 +64,15 @@
             <div class="filter">
                 <form name="searchFilter" id="searchFilter">
                     <div>
-                        <input type="radio" name="choice" id="title" value="title" checked>
+                        <input type="radio" name="choice" id="title" value="Title" checked>
                         <label for="title">Title</label>
                     </div>
-                    <input type="text" id="searchText">
+                    <input type="text" id="searchTitle">
                     <div>
-                        <input type="radio" name="choice" id="description" value="description">
+                        <input type="radio" name="choice" id="description" value="Description">
                         <label for="description">Description</label>
                     </div>
-                    <textarea type="texarea" id="descripText"></textarea>
+                    <textarea type="texarea" id="searchDescription"></textarea>
                     <input type="button" id="searchButton" value="submit" />
                 </form>
             </div>
@@ -82,16 +82,8 @@
                         <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
-                        <h1>The Greatest Web River</h1>
-                        <p>I loved you, and I probably still do,
-                            And for a while the feeling may remain...
-                            But let my love no longer trouble you,
-                            I do not wish to cause you any pain.
-                            I loved you; and the hopelessness I knew,
-                            The jealousy, the shyness - though in vain -
-                            Made up a love so tender and so true
-                            As may God grant you to be loved again.
-                        </p>
+                        <h1></h1>
+                        <p></p>
                     </div>
                 </section>
                 <section class="onePic">
@@ -99,16 +91,8 @@
                         <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
-                        <h1>The Greatest Web River</h1>
-                        <p>I loved you, and I probably still do,
-                            And for a while the feeling may remain...
-                            But let my love no longer trouble you,
-                            I do not wish to cause you any pain.
-                            I loved you; and the hopelessness I knew,
-                            The jealousy, the shyness - though in vain -
-                            Made up a love so tender and so true
-                            As may God grant you to be loved again.
-                        </p>
+                        <h1></h1>
+                        <p></p>
                     </div>
                 </section>
                 <section class="onePic">
@@ -116,16 +100,8 @@
                         <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
-                        <h1>The Greatest Web River</h1>
-                        <p>I loved you, and I probably still do,
-                            And for a while the feeling may remain...
-                            But let my love no longer trouble you,
-                            I do not wish to cause you any pain.
-                            I loved you; and the hopelessness I knew,
-                            The jealousy, the shyness - though in vain -
-                            Made up a love so tender and so true
-                            As may God grant you to be loved again.
-                        </p>
+                        <h1></h1>
+                        <p></p>
                     </div>
                 </section>
                 <section class="onePic">
@@ -133,16 +109,8 @@
                         <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
-                        <h1>The Greatest Web River</h1>
-                        <p>I loved you, and I probably still do,
-                            And for a while the feeling may remain...
-                            But let my love no longer trouble you,
-                            I do not wish to cause you any pain.
-                            I loved you; and the hopelessness I knew,
-                            The jealousy, the shyness - though in vain -
-                            Made up a love so tender and so true
-                            As may God grant you to be loved again.
-                        </p>
+                        <h1></h1>
+                        <p></p>
                     </div>
                 </section>
                 <section class="onePic">
@@ -150,16 +118,8 @@
                         <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
-                        <h1>The Greatest Web River</h1>
-                        <p>I loved you, and I probably still do,
-                            And for a while the feeling may remain...
-                            But let my love no longer trouble you,
-                            I do not wish to cause you any pain.
-                            I loved you; and the hopelessness I knew,
-                            The jealousy, the shyness - though in vain -
-                            Made up a love so tender and so true
-                            As may God grant you to be loved again.
-                        </p>
+                        <h1></h1>
+                        <p></p>
                     </div>
                 </section>
                 <section class="onePic">
@@ -167,16 +127,8 @@
                         <img src="" onclick="openDetail(event)" />
                     </div>
                     <div class="message">
-                        <h1>The Greatest Web River</h1>
-                        <p>I loved you, and I probably still do,
-                            And for a while the feeling may remain...
-                            But let my love no longer trouble you,
-                            I do not wish to cause you any pain.
-                            I loved you; and the hopelessness I knew,
-                            The jealousy, the shyness - though in vain -
-                            Made up a love so tender and so true
-                            As may God grant you to be loved again.
-                        </p>
+                        <h1></h1>
+                        <p></p>
                     </div>
                 </section>
                 <section class="pageNum">
@@ -238,60 +190,19 @@
 
         $('#searchButton').click(function () {
 
-            // searchText
-            // descripText
-            if ($('#searchText').val() === '' && $('#descripText').val() === '') {
-                myAlert('warning', 'please fill sth!')
-                return
-            }
-            else {
-                // console.log($('input:radio:checked').val());
-                const choice = $('input:radio:checked').val()
-                let text;
-                // title and description
-                if (choice === 'title') text = $('#searchText').val()
-                else text = $('#descripText').val()
+            searchResult();
 
-                if (text === '') {
-                    myAlert('warning', 'please fill what you choiced!')
-                    return
-                }
-                searchResult();
-
-                $.ajax({
-                    method: "GET",
-                    url: "http://localhost:8080/backend/PHP/api/search.php",
-                    data: { choice: choice, text: text }
-                }).done((data) => {
-
-                    // <section class="onePic">
-                    //     <div class="picContain">
-                    //         <img/>
-                    //     </div>
-                    //     <div class="message">
-                    //         <h1></h1>
-                    //         <p></p>
-                    //     </div>
-                    // </section>
-
-                    // description: "First time using HDR with 2 stop bracketing composed in PhotoMatix Pro 4.1"
-                    // id: "5"
-                    // src: "6114904363.jpg"
-                    // title: "Ascending Sulpher Mountain"
-
-                    for (let index = 0; index < data.imgs.length; index++) {
+            searchImg($('input:radio:checked').val(), $(`#search${$('input:radio:checked').val()}`).val())
+                .then(function (data) {
+                    for (let index = 0; index < data.length; index++) {
                         $('img').eq(index).attr({
-                            'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
-                            'data-id': data.imgs[index].id
+                            'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
+                            'data-id': data[index].id
                         });
-                        $('.message').eq(index).children('h1').eq(0).text(data.imgs[index].title);
-                        $('.message').eq(index).children('p').eq(0).text(data.imgs[index].description);
+                        $('.message').eq(index).children('h1').eq(0).text(data[index].title);
+                        $('.message').eq(index).children('p').eq(0).text(data[index].description);
                     }
-                }).fail((err) => {
-                    if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-                    myAlert('error', JSON.parse(err.responseText).message);
-                });
-            }
+                }).catch(err => console.log(err))
 
             $('#searchText').val('')
             $('#descripText').val('')

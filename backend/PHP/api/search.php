@@ -3,18 +3,24 @@
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';
+  require_once '../app/SQLQuery.php';
 
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  $choice = mysql_entities_fix_string($_GET['choice']);
-  $text = '%' . mysql_entities_fix_string($_GET['text']) . '%';
+  $choice = ucfirst(mysql_entities_fix_string($_GET['choice']));
+  $text = mysql_entities_fix_string($_GET['text']);
 
-  // get imgs array
-  if ($choice === 'title')
-    $img_query = "SELECT * FROM travelimage WHERE Title LIKE '$text'";
-  else
-    $img_query = "SELECT * FROM travelimage WHERE Description LIKE '$text'";
+  if ($choice === 'City') {
+    $text = CityName2CityCode($text);
+    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text'";
+  } else if ($choice === 'Country') {
+    $text = CountryRegionName2CountryRegionCodeISO($text);
+    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text'";
+  } else {
+    $text = '%' . $text . '%';
+    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text'";
+  }
 
   $img_result = $conn->query($img_query);
   if (!$img_result) die("Fatal Error");
@@ -33,7 +39,7 @@
   $img_result->close();
 
   https(200);
-  echo json_encode(array("imgs" => $imgs));
+  echo json_encode($imgs);
 
   $conn->close();
 

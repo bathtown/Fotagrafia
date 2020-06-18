@@ -38,7 +38,7 @@ main #search .filter #searchFilter input {
   font-size: 1.2rem;
 }
 
-main #search .filter #searchFilter #descripText {
+main #search .filter #searchFilter #searchDescription {
   height: 80px;
   background-color: #eaeaea;
   width: 300px;
@@ -110,7 +110,7 @@ main #search .filterAfter #searchFilter input {
   font-size: 1.2rem;
 }
 
-main #search .filterAfter #searchFilter #descripText {
+main #search .filterAfter #searchFilter #searchDescription {
   height: 30px;
   background-color: #fafafa;
   width: 250px;
@@ -241,7 +241,7 @@ main #search .result .onePic .message p {
     font-size: 1.2rem;
   }
 
-  main #search .filterAfter #searchFilter #descripText {
+  main #search .filterAfter #searchFilter #searchDescription {
     height: 70px;
     background-color: #eaeaea;
     width: 240px;

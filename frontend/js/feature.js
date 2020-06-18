@@ -284,3 +284,21 @@ function countrysCity (countryFilter, cityFilter) {
         myAlert('error', JSON.parse(err.responseText).message);
     });
 }
+
+function searchImg (choice, text) {
+    if (!text) {
+        myAlert('warning', `Please fill in ${choice}!`)
+        return
+    }
+
+    return $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/backend/PHP/api/search.php",
+        data: { choice: choice, text: text }
+    }).done((data) => {
+        return data;
+    }).fail((err) => {
+        if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+        myAlert('error', JSON.parse(err.responseText).message);
+    });
+}
