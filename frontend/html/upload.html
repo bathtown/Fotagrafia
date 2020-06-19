@@ -270,6 +270,7 @@
                     },
                     headers: { Authorization: sessionStorage.getItem("token") },
                 }).done((data) => {
+                    window.location.reload()
                     myAlert('success', data.message);
                 }).fail((err) => {
                     console.log(err);

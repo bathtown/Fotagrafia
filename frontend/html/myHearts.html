@@ -192,7 +192,11 @@
         });
 
         function getMyHearts() {
-            if (!getQueryVariable('page')) window.location.href += '?page=1'
+            if (!getQueryVariable('page')) {
+                window.location.href += '?page=1'
+                return
+            }
+
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/pageMyHeart.php",

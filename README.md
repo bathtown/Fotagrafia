@@ -25,10 +25,10 @@
 5. 注册页面
    - [x] [注册逻辑](backend/PHP/api/pageRegister.php)
 6. 我的照片
-   - [ ] 图片逻辑
+   - [x] [图片逻辑](frontend/html/myGallery.html)
    - [x] [删除逻辑](backend/PHP/api/pageMyGallery.php)
 7. 我的收藏
-   - [ ] 展示逻辑
+   - [x] [展示逻辑](frontend/html/myHearts.html)
    - [x] [删除逻辑](backend/PHP/api/pageMyHeart.php)
 8. 上传页面
    - [x] [合法性校验](frontend/html/upload.html)
