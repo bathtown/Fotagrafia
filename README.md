@@ -21,9 +21,9 @@
    - [x] [搜索逻辑](backend/PHP/api/imgSearch.php)
    - [x] [图片逻辑](frontend/html/search.html)
 4. 登录页面
-   - [x] [登录逻辑](backend/PHP/api/login.php)
+   - [x] [登录逻辑](backend/PHP/api/pageLogin.php)
 5. 注册页面
-   - [x] [注册逻辑](backend/PHP/api/register.php)
+   - [x] [注册逻辑](backend/PHP/api/pageRegister.php)
 6. 我的照片
    - [ ] 图片逻辑
    - [x] [删除逻辑](backend/PHP/api/pageMyGallery.php)
@@ -37,7 +37,7 @@
    - [x] [信息展示](backend/PHP/api/imgDetail.php)
    - [x] [收藏功能](backend/PHP/api/imgLikes.php)
 10. Bonus
-    - [x] [密码加盐](backend/PHP/api/register.php)
+    - [x] [密码加盐](backend/PHP/api/pageRegister.php)
     - [x] [前端框架](#前端框架使用)
     - [ ] 部署服务器
 
