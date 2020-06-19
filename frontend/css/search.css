@@ -149,6 +149,7 @@ main #search .result {
   display: none;
   padding-top: 120px;
   width: 100vw;
+  min-height: 100%;
 }
 
 main #search .result .onePic {
