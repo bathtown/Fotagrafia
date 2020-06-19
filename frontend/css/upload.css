@@ -20,6 +20,7 @@ main #upload .pic {
 }
 
 main #upload .pic .uploadBtn {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -86,7 +87,7 @@ main #upload .pic div {
 main #upload .pic div img {
   border-radius: 10px;
   overflow: hidden;
-  max-width: 40%;
+  max-width: 36%;
   max-height: 80%;
   position: absolute;
 }
@@ -108,7 +109,9 @@ main #upload .info .picInfo {
 }
 
 main #upload .info .picInfo label {
-  margin: auto;
+  width: 85%;
+  text-align: left;
+  color: grey;
 }
 
 main #upload .info .picInfo input {
@@ -163,7 +166,6 @@ main #upload .info .picInfo button:hover {
 
 @media screen and (max-width: 830px) {
   main #upload {
-    height: 90vh;
     display: flex;
     flex-direction: column;
   }
@@ -202,7 +204,6 @@ main #upload .info .picInfo button:hover {
 
   main #upload .info {
     width: 100%;
-    height: 50%;
   }
 
   main #upload .info .picInfo {

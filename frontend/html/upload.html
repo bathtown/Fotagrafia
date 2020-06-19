@@ -75,11 +75,12 @@
 
             <div class="info">
                 <form class="picInfo">
-                    <label for="uploadTitle"></label>
+                    <label for="uploadTitle">Title</label>
                     <input type="text" id="uploadTitle" class="oneLine" placeholder="Title..." required />
 
                     <!-- 类别限于【Scenery】【City】【People】【Animal】【Building】【Wonder】【Other】七个类别即可。 -->
 
+                    <label for="content">Content</label>
                     <select class="uploadSelect" id="content">
                         <option value="" style="display: none;">Filter by Content</option>
                         <option value="scenery">scenery</option>
@@ -91,16 +92,18 @@
                         <option value="other">other</option>
                     </select>
 
+                    <label for="country">Country</label>
                     <select class="uploadSelect" id="country"
                         onchange="countrysCity('#country option:selected','#city')">
                         <option value="" style="display: none;">Filter by Country</option>
                     </select>
 
+                    <label for="city">City</label>
                     <select class="uploadSelect" id="city">
                         <option value="" style="display: none;">Filter by City</option>
                     </select>
 
-                    <label for="uploadDescription"></label>
+                    <label for="uploadDescription">Description</label>
                     <textarea type="text" id="uploadDescription" class="moreLine" placeholder="Description..."
                         required></textarea>
 
@@ -270,7 +273,7 @@
                     myAlert('success', data.message);
                 }).fail((err) => {
                     console.log(err);
-                    
+
                     if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                     myAlert('error', JSON.parse(err.responseText).message);
                 });

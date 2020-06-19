@@ -41,6 +41,12 @@
     - [x] [前端框架](#前端框架使用)
     - [ ] 部署服务器
 
+## Drawbacks
+
+1. 未使用缩略图
+2. Log in 和 My Account 显示闪烁
+3. 分页逻辑不优雅
+
 ## Backend
 
 ### ToDo Lists

@@ -213,7 +213,22 @@
                     });
                     $('.message h1').eq(index).text(imgs[index].title);
                     $('.message p').eq(index).text(imgs[index].description);
-                    $('.message div .delPic').eq(index).click(function () { deleteMyUpload(imgID) });
+                    $('.message div .delPic').eq(index).click(function () {
+                        $.confirm({
+                            title: 'What\'s up?',
+                            content: 'Are you sure that you wanna delete this picture?',
+                            buttons: {
+                                Sure: {
+                                    text: "Sure",
+                                    btnClass: 'btn-blue',
+                                    action: function () {
+                                        deleteMyUpload(imgID)
+                                    }
+                                },
+                                cancel: {}
+                            }
+                        });
+                    });
                     $('.message div .modifyPic').eq(index).click(function () { window.location.href = `../html/upload.html?id=${imgID}`; });
                 }
 

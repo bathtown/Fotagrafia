@@ -188,8 +188,8 @@ $(function () {
             title: 'What\'s up?',
             content: 'Are you sure that you wanna log out?',
             buttons: {
-                ok: {
-                    text: "ok!",
+                Sure: {
+                    text: "Sure",
                     btnClass: 'btn-blue',
                     action: function () {
                         window.sessionStorage.clear();
@@ -203,6 +203,10 @@ $(function () {
 
     // im looking
     $('.imlooking').removeAttr('href');
+    $('.imlooking').click(function () {
+        if (window.location.href.includes('upload.html?id='))
+            window.location.href = '../html/upload.html';
+    });
 
     // hinter
     if ($(".onePic") && document.body.clientWidth <= 830) {
