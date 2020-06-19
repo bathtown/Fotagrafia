@@ -192,17 +192,31 @@
         });
 
         function getMyHearts() {
+            if (!getQueryVariable('page')) window.location.href += '?page=1'
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/pageMyHeart.php",
-                headers: { Authorization: sessionStorage.getItem("token") }, data: { page: 1 }
+                headers: { Authorization: sessionStorage.getItem("token") },
+                data: { page: getQueryVariable('page') || 1 }
             }).done((data) => {
                 if (data.pageNum === 0) {
-                    myAlert('success', 'No data yet, Why don\'t you upload some picture? 😉')
+                    $.dialog({ title: 'Hey there', content: 'No data yet, Why don\'t you see some picture and collect them? 😉', type: 'green', backgroundDismiss: true });
                     $('.pageNum').hide()
                     $('.onePic').hide()
                     return
                 }
+
+                $('.pageNum p').empty();
+                $('.pageNum p').append('<span><<</span>')
+                $('.pageNum p').append('<span id="before"><</span>')
+                $('.pageNum p').append('<span>></span>')
+                $('.pageNum p').append('<span>>></span>')
+
+                // show pageNum
+                showPageNum(data.pageNum)
+                pageNumClick(data.pageNum)
+
+                if (!getQueryVariable('page')) $("span:contains('1')").attr('class', 'current')
 
                 imgs = data.imgs;
                 // <div class="picContain">

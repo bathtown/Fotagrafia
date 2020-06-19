@@ -216,17 +216,25 @@
         });
 
         function getMyGallery() {
+            if (!getQueryVariable('page')) window.location.href += '?page=1'
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
-                data: { page: 1 }
+                data: { page: getQueryVariable('page') }
             }).done((data) => {
                 if (data.pageNum === 0) {
-                    myAlert('success', 'No data yet, Why don\'t you upload some picture? 😉')
+                    $.dialog({ title: 'Hey there', content: 'No data yet, Why don\'t you upload some picture? 😉', type: 'green', backgroundDismiss: true });
                     $('.pageNum').hide()
+                    $('.onePic').hide()
                     return
                 }
+
+                $('.pageNum p').empty();
+                $('.pageNum p').append('<span><<</span>')
+                $('.pageNum p').append('<span id="before"><</span>')
+                $('.pageNum p').append('<span>></span>')
+                $('.pageNum p').append('<span>>></span>')
 
                 // show pageNum
                 showPageNum(data.pageNum)
@@ -248,22 +256,7 @@
                     });
                     $('.message h1').eq(index).text(imgs[index].title);
                     $('.message p').eq(index).text(imgs[index].description);
-                    $('.message div .delPic').eq(index).click(function () {
-                        $.confirm({
-                            title: 'What\'s up?',
-                            content: 'Are you sure that you wanna delete this picture?',
-                            buttons: {
-                                Sure: {
-                                    text: "Sure",
-                                    btnClass: 'btn-blue',
-                                    action: function () {
-                                        deleteMyUpload(imgID)
-                                    }
-                                },
-                                cancel: {}
-                            }
-                        });
-                    });
+                    $('.message div .delPic').eq(index).click(function () { deleteMyUpload(imgID) });
                     $('.message div .modifyPic').eq(index).click(function () { window.location.href = `../html/upload.html?id=${imgID}`; });
 
                 }
