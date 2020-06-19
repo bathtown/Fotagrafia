@@ -1,6 +1,6 @@
 # Fotagrafia 🗽
 
-> project 01 repository: **[bathtown.github.io](https://github.com/bathtown/bathtown.github.io)**
+> project 01 repository: **[Fotagrafia-frontend](https://github.com/bathtown/Fotagrafia-frontend)**
 
 ## 说明
 
