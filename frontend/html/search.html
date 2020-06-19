@@ -166,10 +166,9 @@
     <script>
 
         $(function () {
-            if (getQueryVariable('p')) {
-                // r-choice, w-text, p-page
-                $(`#search${$('input:radio:checked').val()}`).val(getQueryVariable('w'))
-                searchImg(getQueryVariable('r'), getQueryVariable('w'), getQueryVariable('p'))
+            if (getQueryVariable('page')) {
+                $(`#search${$('input:radio:checked').val()}`).val(getQueryVariable('text'))
+                searchImg(getQueryVariable('choice'), getQueryVariable('text'), getQueryVariable('page'))
                     .then(function (data) {
                         showImg(data)
                     }).catch(err => console.log(err))
@@ -219,7 +218,7 @@
 
             // show pageNum
             for (let index = data.pageNum; index > 0; index--) {
-                if (index == getQueryVariable('p')) $('#before').after(`<span class="current">${index}</span>`);
+                if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
                 else $('#before').after(`<span>${index}</span>`);
             }
 
@@ -227,7 +226,7 @@
                 const choice = $('input:radio:checked').val();
                 const text = $(`#search${$('input:radio:checked').val()}`).val();
                 const page = event.currentTarget.innerText;
-                window.location.href = window.location.origin + window.location.pathname + `?p=${page}&r=${choice}&w=${text}`
+                window.location.href = window.location.origin + window.location.pathname + `?page=${page}&choice=${choice}&text=${text}`
             })
 
             $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })
@@ -236,7 +235,7 @@
         }
 
         $('#searchButton').click(function () {
-            window.location.href = window.location.origin + window.location.pathname + `?p=1&r=${$('input:radio:checked').val()}&w=${$(`#search${$('input:radio:checked').val()}`).val()}`
+            window.location.href = window.location.origin + window.location.pathname + `?page=1&choice=${$('input:radio:checked').val()}&text=${$(`#search${$('input:radio:checked').val()}`).val()}`
         });
 
     </script>

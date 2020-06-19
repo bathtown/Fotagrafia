@@ -17,17 +17,19 @@
   if ($conn->connect_error) die("Fatal Error");
 
   $choice = ucfirst(mysql_entities_fix_string($_GET['choice']));
-  $text = mysql_entities_fix_string($_GET['text']);
-  $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
+  $text = mysql_entities_fix_string(urldecode($_GET['text']));
   // each page has 8 imgs
+  $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
   $end = $start + 8;
 
   if ($choice === 'City') {
     $text = CityName2CityCode($text);
-    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text'";
+    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text' LIMIT $start, $end";
+    $page_query = "SELECT * FROM travelimage WHERE CityCode='$text'";
   } else if ($choice === 'Country') {
     $text = CountryRegionName2CountryRegionCodeISO($text);
-    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text'";
+    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text' LIMIT $start, $end";
+    $page_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text'";
   } else {
     $text = '%' . $text . '%';
     $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' LIMIT $start, $end";

@@ -16,5 +16,5 @@
   $num = mysql_entities_fix_string($_GET['num']);
 
   https(200);
-  echo json_encode(getRadomImg($num));
+  echo json_encode(array('imgs' => getRadomImg($num)));
   ?>

@@ -223,11 +223,12 @@ function openDetail (event) {
     // window.open(`../html/details.html?id=${id}`)
     window.location.href = `../html/details.html?id=${id}`;
 }
+
 function getQueryVariable (variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
+    const query = window.location.search.substring(1);
+    const vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+        let pair = vars[i].split("=");
         if (pair[0] == variable) { return pair[1]; }
     }
     return false;

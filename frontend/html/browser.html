@@ -81,7 +81,7 @@
                 <ul class="hotList hotCity">
                     <li><a>London</a></li>
                     <li><a>Firenze</a></li>
-                    <li><a>Roma</a></li>
+                    <li><a>Calgary</a></li>
                 </ul>
 
                 <h1>Hot Content</h1>
@@ -157,7 +157,8 @@
 
                 <section class="pageNum">
                     <p>
-                        &#60; <span>1</span> 2 3 4 5 6 ... 9 &#62;
+                        <span id="before"> &#60; </span>
+                        <span> &#62; </span>
                     </p>
                 </section>
 
@@ -185,72 +186,116 @@
         $(function () {
             getCountries('#country');
             ImgFitDiv(".picContain img", 3, 4);
-            getRadomImg()
-            $('#searchBoxButton').click(function () { browserGetImg('title', $('#searchBoxText').val()) })
-            $('.hotCountry a').click(function () { browserGetImg('country', $(this).text()) })
-            $('.hotCity a').click(function () { browserGetImg('city', $(this).text()) })
-            $('.hotContent a').click(function () { browserGetImg('content', $(this).text()) })
+            if (!getQueryVariable('page')) {
+                getRadomImg().then(function (data) { browserShow(data) })
+            } else if (getQueryVariable('choice')) {
+                browserGetImg().then(function (data) { browserShow(data) })
+            } else {
+                browserGetFilterImg().then(function (data) { browserShow(data) })
+            }
+
+            $('#searchBoxButton').click(function () {
+                window.location.href = window.location.origin + window.location.pathname + `?page=1&choice=title&text=${$('#searchBoxText').val()}`
+            })
+            $('.hotCountry a').click(function () {
+                window.location.href = window.location.origin + window.location.pathname + `?page=1&choice=country&text=${$(this).text()}`
+            })
+            $('.hotCity a').click(function () {
+                window.location.href = window.location.origin + window.location.pathname + `?page=1&choice=city&text=${$(this).text()}`
+            })
+            $('.hotContent a').click(function () {
+                window.location.href = window.location.origin + window.location.pathname + `?page=1&choice=content&text=${$(this).text()}`
+            })
         });
 
         $('#linkageFilter').click(function () {
-
             // scenery Canada Calgary
             let content = $('#content option:selected').val();
             let city = $('#city  option:selected').val();
             let country = $('#country option:selected').val();
 
-            if (!content && !city && !country) {
+            if (!content || !city || !country) {
                 myAlert('warning', 'Please select!');
                 return;
+            } else {
+                window.location.href = window.location.origin + window.location.pathname + `?page=1&content=${content}&city=${city}&country=${country}`
             }
-
-            $.ajax({
-                method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/pageBrowser.php",
-                data: { content: content, city: city, country: country }
-            }).done((data) => {
-                for (let index = 0; index < data.imgs.length; index++) {
-                    $('img').eq(index).attr({
-                        'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
-                        'data-id': data.imgs[index].id,
-                    });
-                }
-            }).fail((err) => {
-                console.log(err);
-
-                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
-                myAlert('error', JSON.parse(err.responseText).message);
-            });
         })
 
-        function getRadomImg() {
-            $.ajax({
+        function browserGetFilterImg() {
+            const content = getQueryVariable('content');
+            const city = getQueryVariable('city');
+            const country = getQueryVariable('country');
+            const page = getQueryVariable('page');
+
+            return $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
-                data: { num: 8 }
+                url: "http://localhost:8080/backend/PHP/api/pageBrowser.php",
+                data: { content: content, city: city, country: country, page: page }
             }).done((data) => {
-                for (let index = 0; index < data.length; index++) {
-                    $('img').eq(index).attr({
-                        'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
-                        'data-id': data[index].id,
-                    });
-                }
+                return data
             }).fail((err) => {
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);
             });
         }
 
-        function browserGetImg(choice, text) {
-            searchImg(choice, text)
+        function getRadomImg() {
+            return $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
+                data: { num: 8 }
+            }).done((data) => {
+                return data;
+            }).fail((err) => {
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText).message);
+            });
+        }
+
+        function browserGetImg() {
+            const choice = getQueryVariable('choice')
+            const text = getQueryVariable('text')
+            const page = getQueryVariable('page')
+
+            return searchImg(choice, text, page)
                 .then(function (data) {
-                    for (let index = 0; index < data.length; index++) {
-                        $('img').eq(index).attr({
-                            'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
-                            'data-id': data[index].id,
-                        });
-                    }
-                })
+                    return data;
+                }).catch((err) => {
+                    console.log(err);
+
+                    if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                    myAlert('error', JSON.parse(err.responseText).message);
+                });
+        }
+
+        function browserShow(data) {
+            for (let index = 0; index < data.imgs.length; index++) {
+                $('img').eq(index).attr({
+                    'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
+                    'data-id': data.imgs[index].id,
+                });
+            }
+
+            $('.pageNum p').empty();
+            $('.pageNum p').append('<span id="before"> &#60; </span>')
+            $('.pageNum p').append('<span> &#62; </span>')
+
+            // show pageNum
+            for (let index = data.pageNum; index > 0; index--) {
+                if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                else $('#before').after(`<span>${index}</span>`);
+            }
+
+            $('.pageNum span').click(function (event) {
+                const page = event.currentTarget.innerText;
+                window.location.href = window.location.href.replace(/=[0-9]*/, '=' + page)
+            })
+
+            $('img').each(function () {
+                if ($(this).attr('src') === '') $(this).parents('.picContain').hide()
+                else $(this).parents('.picContain').show()
+            })
         }
     </script>
 

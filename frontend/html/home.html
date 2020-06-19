@@ -181,10 +181,9 @@
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
-                dataType: 'text',
                 data: { num: 7 }
             }).done((data) => {
-                var imgs = JSON.parse(data)
+                var imgs = data.imgs
                 $('img').eq(0).attr({
                     'src': `http://localhost:8080/backend/travel-images/large/${imgs[0].src}`,
                     'data-id': imgs[0].id,
