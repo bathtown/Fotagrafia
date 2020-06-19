@@ -11,14 +11,14 @@
 ## 评分项
 
 1. 首页
-   - [x] [登录逻辑](frontend/js/feature.js#hintRegister)
-   - [x] [刷新逻辑](frontend/html/home.html#getPhotos)
-   - [x] [图片逻辑](backend/PHP/api/home.php)
+   - [x] [登录逻辑](frontend/js/feature.js)
+   - [x] [刷新逻辑](frontend/html/home.html)
+   - [x] [图片逻辑](backend/PHP/api/imgHot.php)
 2. 浏览页
-   - [x] [筛选逻辑](backend/PHP/api/browser.php)
-   - [ ] 图片逻辑
+   - [x] [筛选逻辑](backend/PHP/api/pageBrowser.php)
+   - [x] [图片逻辑](frontend/html/browser.html)
 3. 搜索页
-   - [x] [搜索逻辑](backend/PHP/api/search.php)
+   - [x] [搜索逻辑](backend/PHP/api/imgSearch.php)
    - [x] [图片逻辑](frontend/html/search.html)
 4. 登录页面
    - [x] [登录逻辑](backend/PHP/api/login.php)
@@ -26,16 +26,16 @@
    - [x] [注册逻辑](backend/PHP/api/register.php)
 6. 我的照片
    - [ ] 图片逻辑
-   - [x] [删除逻辑](backend/PHP/api/myGallery.php)
+   - [x] [删除逻辑](backend/PHP/api/pageMyGallery.php)
 7. 我的收藏
    - [ ] 展示逻辑
-   - [x] [删除逻辑](frontend/html/myHearts.html#deleteHeart)
+   - [x] [删除逻辑](backend/PHP/api/pageMyHeart.php)
 8. 上传页面
-   - [x] [合法性校验](frontend/html/upload.html#submitImg)
-   - [x] [修改逻辑](frontend/html/upload.html)
+   - [x] [合法性校验](frontend/html/upload.html)
+   - [x] [修改逻辑](backend/PHP/api/pageMyGallery.php)
 9. 详细图片页面
-   - [x] [信息展示](backend/PHP/api/detail.php)
-   - [x] [收藏功能](backend/PHP/api/like.php)
+   - [x] [信息展示](backend/PHP/api/imgDetail.php)
+   - [x] [收藏功能](backend/PHP/api/imgLikes.php)
 10. Bonus
     - [x] [密码加盐](backend/PHP/api/register.php)
     - [x] [前端框架](#前端框架使用)
@@ -51,7 +51,7 @@
 
 ### ToDo Lists
 
-- [x] [RESTful](backend/PHP/api/myHeart.php)
+- [x] [RESTful](backend/PHP/api/pageMyHeart.php)
 - [x] [防 SQL 注入](backend/PHP/app/SQLConfig.php)
 - [x] [CORS](backend/PHP/app/CORS.php)
 - [x] [HTTP Status Codes](backend/PHP/app/StatusCode.php)
