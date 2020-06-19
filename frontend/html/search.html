@@ -135,9 +135,7 @@
                 </section>
                 <section class="pageNum">
                     <p>
-                        <span> &#60; </span>
-                        <span>1</span>
-                        <span>2</span>
+                        <span id="before"> &#60; </span>
                         <span> &#62; </span>
                     </p>
                 </section>
@@ -176,17 +174,6 @@
                         showImg(data)
                     }).catch(err => console.log(err))
             }
-
-            $('.pageNum span').each(function () {
-                if ($(this).text() === getQueryVariable('p')) $(this).attr('class', 'current')
-            })
-
-            $('.pageNum span').click(function (event) {
-                const choice = $('input:radio:checked').val();
-                const text = $(`#search${$('input:radio:checked').val()}`).val();
-                const page = event.currentTarget.innerText;
-                window.location.href = window.location.origin + window.location.pathname + `?p=${page}&r=${choice}&w=${text}`
-            })
         });
 
         // show search result
@@ -220,14 +207,28 @@
             searchResult();
 
             console.log(data);
-            for (let index = 0; index < data.length; index++) {
+            // show img
+            for (let index = 0; index < data.imgs.length; index++) {
                 $('img').eq(index).attr({
-                    'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
-                    'data-id': data[index].id
+                    'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
+                    'data-id': data.imgs[index].id
                 });
-                $('.message').eq(index).children('h1').eq(0).text(data[index].title);
-                $('.message').eq(index).children('p').eq(0).text(data[index].description);
+                $('.message').eq(index).children('h1').eq(0).text(data.imgs[index].title);
+                $('.message').eq(index).children('p').eq(0).text(data.imgs[index].description);
             }
+
+            // show pageNum
+            for (let index = data.pageNum; index > 0; index--) {
+                if (index == getQueryVariable('p')) $('#before').after(`<span class="current">${index}</span>`);
+                else $('#before').after(`<span>${index}</span>`);
+            }
+
+            $('.pageNum span').click(function (event) {
+                const choice = $('input:radio:checked').val();
+                const text = $(`#search${$('input:radio:checked').val()}`).val();
+                const page = event.currentTarget.innerText;
+                window.location.href = window.location.origin + window.location.pathname + `?p=${page}&r=${choice}&w=${text}`
+            })
 
             $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })
 

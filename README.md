@@ -19,7 +19,7 @@
    - [ ] 图片逻辑
 3. 搜索页
    - [x] [搜索逻辑](backend/PHP/api/search.php)
-   - [ ] 图片逻辑
+   - [x] [图片逻辑](frontend/html/search.html)
 4. 登录页面
    - [x] [登录逻辑](backend/PHP/api/login.php)
 5. 注册页面

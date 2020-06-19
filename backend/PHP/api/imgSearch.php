@@ -31,7 +31,11 @@
   } else {
     $text = '%' . $text . '%';
     $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' LIMIT $start, $end";
+    $page_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text'";
   }
+
+  $page_result = $conn->query($page_query);
+  $pageNum = (int) ($page_result->num_rows / 8) + 1;
 
   $img_result = $conn->query($img_query);
   if (!$img_result) {
@@ -52,9 +56,10 @@
     ]);
   }
   $img_result->close();
+  $page_result->close();
 
   https(200);
-  echo json_encode($imgs);
+  echo json_encode(array('imgs' => $imgs, 'pageNum' => $pageNum));
 
   $conn->close();
 
