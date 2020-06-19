@@ -1,5 +1,13 @@
   <?php
 
+  /* This is to get imgs for browser page
+
+    require: country, city, content
+    publicity: public
+
+    return: fail message/img array
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';

@@ -1,5 +1,13 @@
   <?php
 
+  /* This is to get random imgs
+
+    require: num
+    publicity: public
+
+    return: a message/img array
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';

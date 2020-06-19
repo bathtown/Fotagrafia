@@ -159,7 +159,7 @@
         function getImgDetails() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/detail.php",
+                url: "http://localhost:8080/backend/PHP/api/imgDetail.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID }
             }).done((data) => {
@@ -179,7 +179,7 @@
         function getImgLikes() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/detailLikes.php",
+                url: "http://localhost:8080/backend/PHP/api/imgLikes.php",
                 data: { imgID: imgID }
             }).done((data) => {
                 $('#likedNumber').text(data)
@@ -203,7 +203,7 @@
             else method = "PUT"
             $.ajax({
                 method: method,
-                url: "http://localhost:8080/backend/PHP/api/myHeart.php",
+                url: "http://localhost:8080/backend/PHP/api/pageMyHeart.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID },
             }).done((data) => {
@@ -222,7 +222,7 @@
         function getMYLike() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/myHeart.php",
+                url: "http://localhost:8080/backend/PHP/api/pageMyHeart.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID }
             }).done((data) => {

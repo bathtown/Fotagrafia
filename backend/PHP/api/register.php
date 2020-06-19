@@ -1,5 +1,13 @@
   <?php
 
+  /* This is to register
+
+    require: username, password, email
+    publicity: public
+
+    return: a message
+  */
+
   require_once '../app/PBKDF2.php';
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
@@ -9,17 +17,17 @@
   $password = trim($_POST['password']);
   $email = trim($_POST['email']);
 
-  // 密码加盐
+  // add salt
   $hashPassword =  create_hash($password);
 
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die("Fatal Error");
 
-  // 数据库查询，查询是否存在该用户
+  // username whether exist
   $row = mysqli_num_rows(mysqli_query($conn, "SELECT UserName from traveluser where UserName='$username'"));
 
   if ($row > 0) {
-    // 重名
+    // username exists
     https(400);
     echo json_encode(array("message" => 'Username has been registered!'));
   } else {

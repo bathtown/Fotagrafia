@@ -258,7 +258,7 @@ function ImgFitDiv (filter, width, height) {
 function getCountries (filter) {
     $.ajax({
         method: "GET",
-        url: "http://localhost:8080/backend/PHP/api/country.php",
+        url: "http://localhost:8080/backend/PHP/api/JSONCountry.php",
     }).done((data) => {
         for (let index = 0; index < data.countries.length; index++) {
             let newOption = $(`<option value="${data.countries[index]}">${data.countries[index]}</option>`);
@@ -276,7 +276,7 @@ function countrysCity (countryFilter, cityFilter) {
     // console.log(country.options[country.selectedIndex].text);
     return $.ajax({
         method: "GET",
-        url: "http://localhost:8080/backend/PHP/api/city.php",
+        url: "http://localhost:8080/backend/PHP/api/JSONCity.php",
         data: { country: $(countryFilter).val() }
     }).done((data) => {
         for (let index = 0; index < data.cities.length; index++) {
@@ -297,7 +297,7 @@ function searchImg (choice, text) {
 
     return $.ajax({
         method: "GET",
-        url: "http://localhost:8080/backend/PHP/api/search.php",
+        url: "http://localhost:8080/backend/PHP/api/imgSearch.php",
         data: { choice: choice, text: text }
     }).done((data) => {
         return data;

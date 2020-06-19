@@ -176,7 +176,11 @@
     $img_query = "SELECT * FROM travelimage ORDER BY rand() LIMIT $num";
 
     $img_result = $conn->query($img_query);
-    if (!$img_result) die("Fatal Error");
+    if (!$img_result) {
+      https(401);
+      echo 'request failed :(';
+      die();
+    }
 
     $img_rows = $img_result->num_rows;
     $imgs = array();

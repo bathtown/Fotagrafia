@@ -194,7 +194,7 @@
         function getMyGallery() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/myGallery.php",
+                url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
                 headers: { Authorization: sessionStorage.getItem("token") },
             }).done((data) => {
                 imgs = data;
@@ -254,7 +254,7 @@
                         action: function () {
                             $.ajax({
                                 method: "DELETE",
-                                url: "http://localhost:8080/backend/PHP/api/myGallery.php",
+                                url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
                                 headers: { Authorization: sessionStorage.getItem("token") },
                                 data: { imgID: imgID },
                             }).done((data) => {

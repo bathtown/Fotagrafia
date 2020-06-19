@@ -206,7 +206,7 @@
 
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/browser.php",
+                url: "http://localhost:8080/backend/PHP/api/pageBrowser.php",
                 data: { content: content, city: city, country: country }
             }).done((data) => {
                 for (let index = 0; index < data.imgs.length; index++) {

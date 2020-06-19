@@ -1,5 +1,13 @@
   <?php
 
+  /* This is to login
+
+    require: username, password
+    publicity: public
+
+    return: fail message/success message+token
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/PBKDF2.php';
   require_once '../app/CORS.php';

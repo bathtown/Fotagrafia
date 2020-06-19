@@ -1,5 +1,13 @@
   <?php
 
+  /* Get country JSON
+
+     require: 
+     publicity: public
+
+     return: country JSON
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';

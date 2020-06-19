@@ -2,12 +2,12 @@
 
   /* This is to check
     whether token is available 
-    and get who you are
+    and get to know who you are
 
     require: $headers['Authorization']
     publicity: private
 
-    return: :(
+    return: jump to login page if verification failed
   */
 
   require_once '../app/CORS.php';

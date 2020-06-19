@@ -1,5 +1,13 @@
   <?php
 
+  /* This is search picture
+
+    require: choice-Content/City/Country/Description/Title
+    publicity: public
+
+    return: img arrages or fail message
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';
@@ -23,7 +31,11 @@
   }
 
   $img_result = $conn->query($img_query);
-  if (!$img_result) die("Fatal Error");
+  if (!$img_result) {
+    https(401);
+    echo 'request failed :(';
+    die();
+  }
 
   $img_rows = $img_result->num_rows;
   $imgs = array();

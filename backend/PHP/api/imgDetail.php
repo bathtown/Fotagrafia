@@ -1,5 +1,13 @@
   <?php
 
+  /* This is to a img's detail
+
+     require: imgID
+     publicity: public
+
+     return: a img's detail
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';

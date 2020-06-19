@@ -1,5 +1,13 @@
   <?php
 
+  /* Get city JSON
+
+     require: country
+     publicity: public
+
+     return: city JSON
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';

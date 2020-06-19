@@ -1,5 +1,13 @@
   <?php
 
+  /* This is to get hot imgs showed in home page
+
+    require: num = 7
+    publicity: public
+
+    return: a message/img array
+  */
+
   require_once '../app/StatusCode.php';
   require_once '../app/CORS.php';
   require_once '../app/SQLConfig.php';
@@ -9,7 +17,7 @@
   if ($conn->connect_error) die("Fatal Error");
 
   // get imgs array
-  // Select * From 表 order By rand() Limit n
+  // Select * From tablename order By rand() Limit num
   $img_query = "SELECT ImageID, count( ImageID ) AS count FROM travelimagefavor GROUP BY ImageID ORDER BY count DESC LIMIT 7";
 
   $img_result = $conn->query($img_query);
