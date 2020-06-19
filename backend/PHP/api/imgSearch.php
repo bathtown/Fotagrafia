@@ -39,7 +39,7 @@
   $pageNum = ceil($page_result->num_rows / 8);
 
   $img_result = $conn->query($img_query);
-  if (!$img_result) {
+  if (!$img_result || !$page_result) {
     https(401);
     echo 'request failed :(';
     die();

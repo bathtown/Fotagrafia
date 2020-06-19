@@ -308,3 +308,56 @@ function searchImg (choice, text, page = 1) {
         myAlert('error', JSON.parse(err.responseText).message);
     });
 }
+
+function showPageNum (pageNum) {
+    if (getQueryVariable('page') == 1 && pageNum >= 5)
+        for (let index = 5; index > 0; index--) {
+            if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+            else $('#before').after(`<span>${index}</span>`);
+        }
+    else if ((Number)(getQueryVariable('page')) > 1 && pageNum - (Number)(getQueryVariable('page')) >= 4)
+        for (let index = (Number)(getQueryVariable('page')) + 3; index > (Number)(getQueryVariable('page')) - 2; index--) {
+            if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+            else $('#before').after(`<span>${index}</span>`);
+        }
+    else if (pageNum - (Number)(getQueryVariable('page')) < 4 && pageNum >= 5)
+        for (let index = pageNum; index > pageNum - 5; index--) {
+            if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+            else $('#before').after(`<span>${index}</span>`);
+        }
+    else
+        for (let index = pageNum; index > 0; index--) {
+            if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+            else $('#before').after(`<span>${index}</span>`);
+        }
+}
+
+function pageNumClick (pageNum) {
+    $('.pageNum span').click(function (event) {
+        const page = event.currentTarget.innerText;
+        switch (page) {
+            case '<': {
+                if ((getQueryVariable('page') == 1)) myAlert('warning', 'It\'s the first page 🙄')
+                else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                break;
+            }
+            case '<<': {
+                window.location.href = window.location.href.replace(/=[0-9]*/, '=' + 1)
+                break;
+            }
+            case '>': {
+                if ((getQueryVariable('page') == pageNum)) myAlert('warning', 'It\'s the last page 🙄')
+                else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                break;
+            }
+            case '>>': {
+                window.location.href = window.location.href.replace(/=[0-9]*/, '=' + pageNum)
+                break;
+            }
+            default: {
+                window.location.href = window.location.href.replace(/=[0-9]*/, '=' + page)
+                break;
+            }
+        }
+    })
+}

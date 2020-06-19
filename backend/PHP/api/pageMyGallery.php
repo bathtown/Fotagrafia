@@ -93,9 +93,16 @@
         break;
       }
     case 'GET': {
-        $img_query = "SELECT ImageID FROM `travelimage` WHERE UID='$userid'";
+        $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
+
+        $img_query = "SELECT ImageID FROM `travelimage` WHERE UID='$userid' LIMIT $start, 8";
+        $page_query = "SELECT ImageID FROM `travelimage` WHERE UID='$userid'";
+
         $img_result = $conn->query($img_query);
-        if (!$img_result) die("Fatal Error");
+        $page_result = $conn->query($page_query);
+
+        if (!$img_result || !$page_result) die("Fatal Error");
+        $pageNum = ceil($page_result->num_rows / 8);
 
         $img_rows = $img_result->num_rows;
         $imgs = array();
@@ -105,7 +112,7 @@
         }
 
         https(200);
-        echo json_encode($imgs);
+        echo json_encode(array('imgs' => $imgs, 'pageNum' => $pageNum));
 
         $img_result->close();
         break;

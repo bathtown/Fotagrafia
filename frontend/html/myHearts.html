@@ -142,11 +142,29 @@
                     <div> <button class="delPic">Delete</button> </div>
                 </div>
             </section>
+            <section class="onePic">
+                <div class="picContain">
+                    <img src="" onclick="openDetail(event)" />
+                </div>
+                <div class="message">
+                    <h1></h1>
+                    <p></p>
+                    <div> <button class="delPic">Delete</button> </div>
+                </div>
+            </section>
+            <section class="onePic">
+                <div class="picContain">
+                    <img src="" onclick="openDetail(event)" />
+                </div>
+                <div class="message">
+                    <h1></h1>
+                    <p></p>
+                    <div> <button class="delPic">Delete</button> </div>
+                </div>
+            </section>
+
             <section class="pageNum">
-                <p>
-                    &#60;<span>1</span>
-                    2 3 4 5 6 ... 9 &#62;
-                </p>
+                <p> </p>
             </section>
         </article>
     </main>
@@ -177,9 +195,16 @@
             $.ajax({
                 method: "GET",
                 url: "http://localhost:8080/backend/PHP/api/pageMyHeart.php",
-                headers: { Authorization: sessionStorage.getItem("token") },
+                headers: { Authorization: sessionStorage.getItem("token") }, data: { page: 1 }
             }).done((data) => {
-                imgs = data;
+                if (data.pageNum === 0) {
+                    myAlert('success', 'No data yet, Why don\'t you upload some picture? 😉')
+                    $('.pageNum').hide()
+                    $('.onePic').hide()
+                    return
+                }
+
+                imgs = data.imgs;
                 // <div class="picContain">
                 //     <img src=""  />
                 // </div>
@@ -202,6 +227,8 @@
 
 
             }).fail((err) => {
+                console.log(err);
+
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);
             });
