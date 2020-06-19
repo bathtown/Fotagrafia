@@ -61,7 +61,7 @@
     <main>
 
         <article id="browser">
-            <header class="hinter"> try "👆→" | Browser | try "←👆"</header>
+            <header class="hinter"> </header>
 
             <aside class="browserAside">
 
@@ -156,10 +156,7 @@
                 </div>
 
                 <section class="pageNum">
-                    <p>
-                        <span id="before"> &#60; </span>
-                        <span> &#62; </span>
-                    </p>
+                    <p> </p>
                 </section>
 
             </section>
@@ -188,10 +185,18 @@
             ImgFitDiv(".picContain img", 3, 4);
             if (!getQueryVariable('page')) {
                 getRadomImg().then(function (data) { browserShow(data) })
+                $('.pageNum').hide()
             } else if (getQueryVariable('choice')) {
                 browserGetImg().then(function (data) { browserShow(data) })
             } else {
                 browserGetFilterImg().then(function (data) { browserShow(data) })
+                $(`#content option[value=${getQueryVariable('content')}]`).attr("selected", true);
+                getCountries('#country').then(function () {
+                    $(`#country option[value=${getQueryVariable('country')}]`).attr("selected", true);
+                    countrysCity('#country option:selected', '#city').then(function () {
+                        $(`#city option[value=${getQueryVariable('city')}]`).attr("selected", true);
+                    })
+                })
             }
 
             $('#searchBoxButton').click(function () {
@@ -270,6 +275,12 @@
         }
 
         function browserShow(data) {
+            if (data.pageNum === 0) {
+                myAlert('success', 'No data yet 🤗')
+                $('.pageNum').hide()
+                return
+            }
+
             for (let index = 0; index < data.imgs.length; index++) {
                 $('img').eq(index).attr({
                     'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
@@ -278,18 +289,59 @@
             }
 
             $('.pageNum p').empty();
-            $('.pageNum p').append('<span id="before"> &#60; </span>')
-            $('.pageNum p').append('<span> &#62; </span>')
+            $('.pageNum p').append('<span><<</span>')
+            $('.pageNum p').append('<span id="before"><</span>')
+            $('.pageNum p').append('<span>></span>')
+            $('.pageNum p').append('<span>>></span>')
 
             // show pageNum
-            for (let index = data.pageNum; index > 0; index--) {
-                if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
-                else $('#before').after(`<span>${index}</span>`);
-            }
+            if (getQueryVariable('page') == 1 && data.pageNum >= 5)
+                for (let index = 5; index > 0; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
+            else if ((Number)(getQueryVariable('page')) > 1 && data.pageNum - (Number)(getQueryVariable('page')) >= 4)
+                for (let index = (Number)(getQueryVariable('page')) + 3; index > (Number)(getQueryVariable('page')) - 2; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
+            else if (data.pageNum - (Number)(getQueryVariable('page')) < 4 && data.pageNum >= 5)
+                for (let index = data.pageNum; index > data.pageNum - 5; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
+            else
+                for (let index = data.pageNum; index > 0; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
 
             $('.pageNum span').click(function (event) {
                 const page = event.currentTarget.innerText;
-                window.location.href = window.location.href.replace(/=[0-9]*/, '=' + page)
+                switch (page) {
+                    case '<': {
+                        if ((getQueryVariable('page') == 1)) myAlert('warning', 'It\'s the first page 🙄')
+                        else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                        break;
+                    }
+                    case '<<': {
+                        window.location.href = window.location.href.replace(/=[0-9]*/, '=' + 1)
+                        break;
+                    }
+                    case '>': {
+                        if ((getQueryVariable('page') == data.pageNum)) myAlert('warning', 'It\'s the last page 🙄')
+                        else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                        break;
+                    }
+                    case '>>': {
+                        window.location.href = window.location.href.replace(/=[0-9]*/, '=' + data.pageNum)
+                        break;
+                    }
+                    default: {
+                        window.location.href = window.location.href.replace(/=[0-9]*/, '=' + page)
+                        break;
+                    }
+                }
             })
 
             $('img').each(function () {

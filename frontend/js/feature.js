@@ -211,8 +211,9 @@ $(function () {
     // hinter
     if ($(".onePic") && document.body.clientWidth <= 830) {
         buttonAppear();
-        if ($(".myHearts")) $(".hinter").text("My Hearts | try ←👆");
-        if ($(".myGallery")) $(".hinter").text("My Gallery | try ←👆");
+        if ($("#myHearts").length) $(".hinter").text("My Hearts | try ←👆");
+        if ($("#myGallery").length) $(".hinter").text("My Gallery | try ←👆");
+        if ($('#browser').length) $(".hinter").text(" try 👆→ | Browser | try ←👆");
     }
 })
 
@@ -257,7 +258,7 @@ function ImgFitDiv (filter, width, height) {
 }
 
 function getCountries (filter) {
-    $.ajax({
+    return $.ajax({
         method: "GET",
         url: "http://localhost:8080/backend/PHP/api/JSONCountry.php",
     }).done((data) => {

@@ -134,10 +134,7 @@
                     </div>
                 </section>
                 <section class="pageNum">
-                    <p>
-                        <span id="before"> &#60; </span>
-                        <span> &#62; </span>
-                    </p>
+                    <p> </p>
                 </section>
             </div>
         </article>
@@ -167,6 +164,7 @@
 
         $(function () {
             if (getQueryVariable('page')) {
+                $(`input:radio[value=${getQueryVariable('choice')}]`).attr('checked', true)
                 $(`#search${$('input:radio:checked').val()}`).val(getQueryVariable('text'))
                 searchImg(getQueryVariable('choice'), getQueryVariable('text'), getQueryVariable('page'))
                     .then(function (data) {
@@ -205,7 +203,13 @@
         function showImg(data) {
             searchResult();
 
-            console.log(data);
+            if (data.pageNum === 0) {
+                myAlert('success', 'No data yet 🤗')
+                $('.pageNum').hide()
+                $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })
+                return
+            }
+
             // show img
             for (let index = 0; index < data.imgs.length; index++) {
                 $('img').eq(index).attr({
@@ -216,17 +220,60 @@
                 $('.message').eq(index).children('p').eq(0).text(data.imgs[index].description);
             }
 
+            $('.pageNum p').empty();
+            $('.pageNum p').append('<span><<</span>')
+            $('.pageNum p').append('<span id="before"><</span>')
+            $('.pageNum p').append('<span>></span>')
+            $('.pageNum p').append('<span>>></span>')
+
             // show pageNum
-            for (let index = data.pageNum; index > 0; index--) {
-                if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
-                else $('#before').after(`<span>${index}</span>`);
-            }
+            if (getQueryVariable('page') == 1 && data.pageNum >= 5)
+                for (let index = 5; index > 0; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
+            else if ((Number)(getQueryVariable('page')) > 1 && data.pageNum - (Number)(getQueryVariable('page')) >= 4)
+                for (let index = (Number)(getQueryVariable('page')) + 3; index > (Number)(getQueryVariable('page')) - 2; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
+            else if (data.pageNum - (Number)(getQueryVariable('page')) < 4 && data.pageNum >= 5)
+                for (let index = data.pageNum; index > data.pageNum - 5; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
+            else
+                for (let index = data.pageNum; index > 0; index--) {
+                    if (index == getQueryVariable('page')) $('#before').after(`<span class="current">${index}</span>`);
+                    else $('#before').after(`<span>${index}</span>`);
+                }
 
             $('.pageNum span').click(function (event) {
-                const choice = $('input:radio:checked').val();
-                const text = $(`#search${$('input:radio:checked').val()}`).val();
                 const page = event.currentTarget.innerText;
-                window.location.href = window.location.origin + window.location.pathname + `?page=${page}&choice=${choice}&text=${text}`
+                switch (page) {
+                    case '<': {
+                        if ((getQueryVariable('page') == 1)) myAlert('warning', 'It\'s the first page 🙄')
+                        else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                        break;
+                    }
+                    case '<<': {
+                        window.location.href = window.location.href.replace(/=[0-9]*/, '=' + 1)
+                        break;
+                    }
+                    case '>': {
+                        if ((getQueryVariable('page') == data.pageNum)) myAlert('warning', 'It\'s the last page 🙄')
+                        else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                        break;
+                    }
+                    case '>>': {
+                        window.location.href = window.location.href.replace(/=[0-9]*/, '=' + data.pageNum)
+                        break;
+                    }
+                    default: {
+                        window.location.href = window.location.href.replace(/=[0-9]*/, '=' + page)
+                        break;
+                    }
+                }
             })
 
             $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })

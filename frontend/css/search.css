@@ -13,6 +13,7 @@ main #search .filter {
   border-radius: 10px;
   height: fit-content;
   padding: 20px;
+  margin: auto;
 }
 
 main #search .filter #searchFilter {
@@ -203,7 +204,7 @@ main #search .result .onePic .message p {
   main #search {
     background: white;
   }
-  
+
   main #search .filterAfter {
     background-color: white;
     border-radius: 10px;

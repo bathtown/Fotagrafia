@@ -26,14 +26,13 @@
 
   $content = mysql_entities_fix_string($_GET['content']);
   $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
-  $end = $start + 8;
 
   // get imgs array
-  $img_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content' LIMIT $start, $end";
+  $img_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content' LIMIT $start, 8";
   $page_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content'";
 
   $page_result = $conn->query($page_query);
-  $pageNum = (int) ($page_result->num_rows / 8) + 1;
+  $pageNum = ceil($page_result->num_rows / 8);
 
   $img_result = $conn->query($img_query);
   if (!$img_result) die("Fatal Error");

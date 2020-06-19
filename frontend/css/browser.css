@@ -277,6 +277,7 @@ main #browser .browserResult .mainPic .picContain img {
     box-shadow: 1px 0 3px gainsboro, -1px 0 3px gainsboro, 0 1px 3px gainsboro, 0 -1px 3px gainsboro;
     transform: translateX(1000px);
     transition-duration: 0.2s;
+    z-index: 99;
   }
 
   main #browser .browserResult .filter div {

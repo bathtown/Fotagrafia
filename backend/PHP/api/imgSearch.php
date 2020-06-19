@@ -20,24 +20,23 @@
   $text = mysql_entities_fix_string(urldecode($_GET['text']));
   // each page has 8 imgs
   $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
-  $end = $start + 8;
 
   if ($choice === 'City') {
     $text = CityName2CityCode($text);
-    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text' LIMIT $start, $end";
+    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text' LIMIT $start, 8";
     $page_query = "SELECT * FROM travelimage WHERE CityCode='$text'";
   } else if ($choice === 'Country') {
     $text = CountryRegionName2CountryRegionCodeISO($text);
-    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text' LIMIT $start, $end";
+    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text' LIMIT $start, 8";
     $page_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text'";
   } else {
     $text = '%' . $text . '%';
-    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' LIMIT $start, $end";
+    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' LIMIT $start, 8";
     $page_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text'";
   }
 
   $page_result = $conn->query($page_query);
-  $pageNum = (int) ($page_result->num_rows / 8) + 1;
+  $pageNum = ceil($page_result->num_rows / 8);
 
   $img_result = $conn->query($img_query);
   if (!$img_result) {
