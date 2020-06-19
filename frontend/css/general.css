@@ -278,10 +278,15 @@ main {
   font-size: 1.6rem;
   padding: 20px;
   margin: auto;
-  cursor: pointer;
+  cursor: auto;
 }
 
 .pageNum p span {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.pageNum p span.current {
   color: #444444;
 }
 

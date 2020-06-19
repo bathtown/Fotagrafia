@@ -45,7 +45,7 @@
 
 1. 未使用缩略图
 2. Log in 和 My Account 显示闪烁
-3. 分页逻辑不优雅
+3. search page 亮晶晶
 
 ## Backend
 

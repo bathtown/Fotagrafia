@@ -2,7 +2,7 @@
 
   /* This is search picture
 
-    require: choice-Content/City/Country/Description/Title
+    require: choice-Content/City/Country/Description/Title, text, page
     publicity: public
 
     return: img arrages or fail message
@@ -18,6 +18,9 @@
 
   $choice = ucfirst(mysql_entities_fix_string($_GET['choice']));
   $text = mysql_entities_fix_string($_GET['text']);
+  $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
+  // each page has 8 imgs
+  $end = $start + 8;
 
   if ($choice === 'City') {
     $text = CityName2CityCode($text);
@@ -27,7 +30,7 @@
     $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text'";
   } else {
     $text = '%' . $text . '%';
-    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text'";
+    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' LIMIT $start, $end";
   }
 
   $img_result = $conn->query($img_query);

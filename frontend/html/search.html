@@ -78,54 +78,56 @@
             </div>
             <div class="result">
                 <section class="onePic">
-                    <div class="picContain">
-                        <img src="" onclick="openDetail(event)" />
-                    </div>
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
                     <div class="message">
                         <h1></h1>
                         <p></p>
                     </div>
                 </section>
                 <section class="onePic">
-                    <div class="picContain">
-                        <img src="" onclick="openDetail(event)" />
-                    </div>
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
                     <div class="message">
                         <h1></h1>
                         <p></p>
                     </div>
                 </section>
                 <section class="onePic">
-                    <div class="picContain">
-                        <img src="" onclick="openDetail(event)" />
-                    </div>
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
                     <div class="message">
                         <h1></h1>
                         <p></p>
                     </div>
                 </section>
                 <section class="onePic">
-                    <div class="picContain">
-                        <img src="" onclick="openDetail(event)" />
-                    </div>
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
                     <div class="message">
                         <h1></h1>
                         <p></p>
                     </div>
                 </section>
                 <section class="onePic">
-                    <div class="picContain">
-                        <img src="" onclick="openDetail(event)" />
-                    </div>
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
                     <div class="message">
                         <h1></h1>
                         <p></p>
                     </div>
                 </section>
                 <section class="onePic">
-                    <div class="picContain">
-                        <img src="" onclick="openDetail(event)" />
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
+                    <div class="message">
+                        <h1></h1>
+                        <p></p>
                     </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
+                    <div class="message">
+                        <h1></h1>
+                        <p></p>
+                    </div>
+                </section>
+                <section class="onePic">
+                    <div class="picContain"> <img src="" onclick="openDetail(event)" /> </div>
                     <div class="message">
                         <h1></h1>
                         <p></p>
@@ -133,8 +135,10 @@
                 </section>
                 <section class="pageNum">
                     <p>
-                        &#60;<span>1</span>
-                        2 3 4 5 6 ... 9 &#62;
+                        <span> &#60; </span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span> &#62; </span>
                     </p>
                 </section>
             </div>
@@ -162,6 +166,29 @@
     <script src="../js/feature.js" type="text/javascript"></script>
 
     <script>
+
+        $(function () {
+            if (getQueryVariable('p')) {
+                // r-choice, w-text, p-page
+                $(`#search${$('input:radio:checked').val()}`).val(getQueryVariable('w'))
+                searchImg(getQueryVariable('r'), getQueryVariable('w'), getQueryVariable('p'))
+                    .then(function (data) {
+                        showImg(data)
+                    }).catch(err => console.log(err))
+            }
+
+            $('.pageNum span').each(function () {
+                if ($(this).text() === getQueryVariable('p')) $(this).attr('class', 'current')
+            })
+
+            $('.pageNum span').click(function (event) {
+                const choice = $('input:radio:checked').val();
+                const text = $(`#search${$('input:radio:checked').val()}`).val();
+                const page = event.currentTarget.innerText;
+                window.location.href = window.location.origin + window.location.pathname + `?p=${page}&r=${choice}&w=${text}`
+            })
+        });
+
         // show search result
         function searchResult() {
             document.getElementsByClassName('result')[0].style.display = 'block';
@@ -182,32 +209,33 @@
                 filterAny.style.display = 'block';
             }
         }
+
         // show search box
         function showSearchBox() {
             document.getElementsByClassName('filterAfter')[0].style.display = 'block';
             document.getElementsByClassName('search_extension')[0].style.display = 'none';
         }
 
-        $('#searchButton').click(function () {
-
+        function showImg(data) {
             searchResult();
 
-            searchImg($('input:radio:checked').val(), $(`#search${$('input:radio:checked').val()}`).val())
-                .then(function (data) {
-                    for (let index = 0; index < data.length; index++) {
-                        $('img').eq(index).attr({
-                            'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
-                            'data-id': data[index].id
-                        });
-                        $('.message').eq(index).children('h1').eq(0).text(data[index].title);
-                        $('.message').eq(index).children('p').eq(0).text(data[index].description);
-                    }
-                }).catch(err => console.log(err))
+            console.log(data);
+            for (let index = 0; index < data.length; index++) {
+                $('img').eq(index).attr({
+                    'src': `http://localhost:8080/backend/travel-images/large/${data[index].src}`,
+                    'data-id': data[index].id
+                });
+                $('.message').eq(index).children('h1').eq(0).text(data[index].title);
+                $('.message').eq(index).children('p').eq(0).text(data[index].description);
+            }
 
-            $('#searchText').val('')
-            $('#descripText').val('')
+            $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })
 
             ImgFitDiv(".picContain img", 16, 9);
+        }
+
+        $('#searchButton').click(function () {
+            window.location.href = window.location.origin + window.location.pathname + `?p=1&r=${$('input:radio:checked').val()}&w=${$(`#search${$('input:radio:checked').val()}`).val()}`
         });
 
     </script>

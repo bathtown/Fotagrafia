@@ -232,11 +232,7 @@
                     $('.message div .modifyPic').eq(index).click(function () { window.location.href = `../html/upload.html?id=${imgID}`; });
                 }
 
-                $('img').each(
-                    function () {
-                        if ($(this).attr('src') === '') $(this).parents('.onePic').hide()
-                    }
-                )
+                $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })
             }).fail((err) => {
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
                 myAlert('error', JSON.parse(err.responseText).message);

@@ -198,11 +198,8 @@
                     $('.message div button').eq(index).click(function () { deleteHeart(imgID) });
                 }
 
-                $('img').each(
-                    function () {
-                        if ($(this).attr('src') === '') $(this).parents('.onePic').hide()
-                    }
-                )
+                $('img').each(function () { if ($(this).attr('src') === '') $(this).parents('.onePic').hide() })
+
 
             }).fail((err) => {
                 if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }

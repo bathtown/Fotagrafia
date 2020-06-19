@@ -289,7 +289,7 @@ function countrysCity (countryFilter, cityFilter) {
     });
 }
 
-function searchImg (choice, text) {
+function searchImg (choice, text, page = 1) {
     if (!text) {
         myAlert('warning', `Please fill in ${choice}!`)
         return
@@ -298,7 +298,7 @@ function searchImg (choice, text) {
     return $.ajax({
         method: "GET",
         url: "http://localhost:8080/backend/PHP/api/imgSearch.php",
-        data: { choice: choice, text: text }
+        data: { choice: choice, text: text, page: page }
     }).done((data) => {
         return data;
     }).fail((err) => {
