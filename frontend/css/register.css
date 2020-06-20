@@ -59,6 +59,16 @@ main #register form input {
   background-color: #fafafa;
 }
 
+main #register form #username + p {
+  display: none;
+}
+
+main #register form #username:focus + p {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
 main #register form #password1 + p {
   display: none;
 }
