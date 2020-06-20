@@ -23,15 +23,15 @@
 
   if ($choice === 'City') {
     $text = CityName2CityCode($text);
-    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text' LIMIT $start, 8";
+    $img_query = "SELECT * FROM travelimage WHERE CityCode='$text' ORDER BY ImageID LIMIT $start, 8";
     $page_query = "SELECT * FROM travelimage WHERE CityCode='$text'";
   } else if ($choice === 'Country') {
     $text = CountryRegionName2CountryRegionCodeISO($text);
-    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text' LIMIT $start, 8";
+    $img_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text' ORDER BY ImageID LIMIT $start, 8";
     $page_query = "SELECT * FROM travelimage WHERE Country_RegionCodeISO='$text'";
   } else {
     $text = '%' . $text . '%';
-    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' LIMIT $start, 8";
+    $img_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text' ORDER BY ImageID LIMIT $start, 8";
     $page_query = "SELECT * FROM travelimage WHERE $choice LIKE '$text'";
   }
 

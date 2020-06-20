@@ -88,7 +88,7 @@ main #upload .pic div img {
   border-radius: 10px;
   overflow: hidden;
   max-width: 36%;
-  max-height: 80%;
+  max-height: 40%;
   position: absolute;
 }
 

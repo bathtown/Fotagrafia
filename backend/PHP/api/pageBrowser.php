@@ -17,14 +17,14 @@
   if ($conn->connect_error) die("Fatal Error");
 
   // get Country_RegionCodeISO
-  $country = mysql_entities_fix_string($_GET['country']);
+  $country = mysql_entities_fix_string(urldecode($_GET['country']));
   $countryiso = CountryRegionName2CountryRegionCodeISO($country);
 
   // get CityCode
-  $city = mysql_entities_fix_string($_GET['city']);
+  $city = mysql_entities_fix_string(urldecode($_GET['city']));
   $cityCode = CityName2CityCode($city);
 
-  $content = mysql_entities_fix_string($_GET['content']);
+  $content = mysql_entities_fix_string(urldecode($_GET['content']));
   $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
 
   // get imgs array

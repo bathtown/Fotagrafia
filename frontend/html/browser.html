@@ -183,10 +183,12 @@
         $(function () {
             getCountries('#country');
             ImgFitDiv(".picContain img", 3, 4);
+            getHotChoice();
             if (!getQueryVariable('page')) {
                 getRadomImg().then(function (data) { browserShow(data) })
                 $('.pageNum').hide()
             } else if (getQueryVariable('choice')) {
+                if (getQueryVariable('choice') === 'title') $('#searchBoxText').val(getQueryVariable('text'));
                 browserGetImg().then(function (data) { browserShow(data) })
             } else {
                 browserGetFilterImg().then(function (data) { browserShow(data) })
@@ -211,21 +213,40 @@
             $('.hotContent a').click(function () {
                 window.location.href = window.location.origin + window.location.pathname + `?page=1&choice=content&text=${$(this).text()}`
             })
+            $('#linkageFilter').click(function () {
+                // scenery Canada Calgary
+                let content = $('#content option:selected').val();
+                let city = $('#city  option:selected').val();
+                let country = $('#country option:selected').val();
+
+                if (!content || !city || !country) {
+                    myAlert('warning', 'Please select!');
+                    return;
+                } else {
+                    window.location.href = window.location.origin + window.location.pathname + `?page=1&content=${content}&city=${city}&country=${country}`
+                }
+            })
         });
 
-        $('#linkageFilter').click(function () {
-            // scenery Canada Calgary
-            let content = $('#content option:selected').val();
-            let city = $('#city  option:selected').val();
-            let country = $('#country option:selected').val();
-
-            if (!content || !city || !country) {
-                myAlert('warning', 'Please select!');
-                return;
-            } else {
-                window.location.href = window.location.origin + window.location.pathname + `?page=1&content=${content}&city=${city}&country=${country}`
-            }
-        })
+        function getHotChoice() {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/backend/PHP/api/imgChoice.php",
+            }).done((data) => {
+                for (let index = 0; index < 3; index++) {
+                    let content = data.content[index]
+                    if (content) {
+                        content = content.charAt(0).toUpperCase() + content.slice(1)
+                        $('.hotContent li a').eq(index).text(content)
+                    }
+                    $('.hotCity li a').eq(index).text(data.city[index])
+                    $('.hotCountry li a').eq(index).text(data.country[index])
+                }
+            }).fail((err) => {
+                if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
+                myAlert('error', JSON.parse(err.responseText).message);
+            });
+        }
 
         function browserGetFilterImg() {
             const content = getQueryVariable('content');

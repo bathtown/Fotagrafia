@@ -88,7 +88,7 @@
 
           $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
 
-          $img_query = "SELECT ImageID FROM `travelimagefavor` WHERE UID='$userid' LIMIT $start, 8";
+          $img_query = "SELECT ImageID FROM `travelimagefavor` WHERE UID='$userid' ORDER BY ImageID LIMIT $start, 8";
           $page_query = "SELECT ImageID FROM `travelimagefavor` WHERE UID='$userid'";
 
           $img_result = $conn->query($img_query);
