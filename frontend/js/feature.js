@@ -1,5 +1,5 @@
-const backendSrc = 'http://localhost:8080/backend/PHP/api';
-const backendImgSrc = 'http://localhost:8080/backend/travel-images/large';
+const backendSrc = 'http://localhost/Fotagrafia/backend/PHP/api';
+const backendImgSrc = 'http://localhost/backend/travel-images/large';
 
 // switch description and properties
 function switchDeAndPro () {
@@ -203,7 +203,7 @@ function ImgFitDiv (filter, width, height) {
 function getCountries (filter) {
     return $.ajax({
         method: "GET",
-        url: "http://localhost:8080/backend/PHP/api/JSONCountry.php",
+        url: `${backendSrc}/JSONCountry.php`,
     }).done((data) => {
         for (let index = 0; index < data.countries.length; index++) {
             let newOption = $(`<option value="${data.countries[index]}">${data.countries[index]}</option>`);
@@ -221,7 +221,7 @@ function countrysCity (countryFilter, cityFilter) {
     // console.log(country.options[country.selectedIndex].text);
     return $.ajax({
         method: "GET",
-        url: "http://localhost:8080/backend/PHP/api/JSONCity.php",
+        url: `${backendSrc}/JSONCity.php`,
         data: { country: $(countryFilter).val() }
     }).done((data) => {
         for (let index = 0; index < data.cities.length; index++) {
