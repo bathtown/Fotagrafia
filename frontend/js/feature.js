@@ -163,10 +163,8 @@ $(function () {
 
 // open details
 function openDetail (event) {
-    // console.log(event.target.getAttribute('data-id'));
     const id = event.target.getAttribute('data-id');
-    // window.open(`../html/details.html?id=${id}`)
-    window.location.href = `../html/details.html?id=${id}`;
+    window.open(`../html/details.html?id=${id}`, "_blank");
 }
 
 // getQueryVariable
@@ -250,7 +248,7 @@ function searchImg (choice, text, page = 1) {
         return data;
     }).fail((err) => {
         console.log(err.responseText);
-        
+
         if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
         myAlert('error', JSON.parse(err.responseText).message);
     });
