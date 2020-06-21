@@ -191,7 +191,7 @@
             formData.append('description', description);
 
             $.ajax({
-                url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
+                url: `${backendSrc}/pageMyGallery.php`,
                 type: "POST",
                 data: formData,
                 contentType: false,
@@ -208,7 +208,7 @@
         function getUpload(imgID) {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/imgDetail.php",
+                url: `${backendSrc}/imgDetail.php`,
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { imgID: imgID }
             }).done((data) => {
@@ -220,7 +220,7 @@
                     $(`#city option[value=${data.city}]`).attr("selected", true);
                 })
 
-                $('#uploadPic').attr('src', `http://localhost:8080/backend/travel-images/large/${data.src}`);
+                $('#uploadPic').attr('src', `${backendImgSrc}/${data.src}`);
                 $('#uploadPicBox').css('display', 'flex')
                 $('.uploadBtn p').hide()
                 $('.uploadBtn label').text('change picture')
@@ -235,7 +235,7 @@
             if ($("#picFile").val()) {
                 $.ajax({
                     method: "DELETE",
-                    url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
+                    url: `${backendSrc}/pageMyGallery.php`,
                     headers: { Authorization: sessionStorage.getItem("token") },
                     data: { imgID: imgID },
                 }).done(() => {
@@ -258,7 +258,7 @@
                 }
 
                 $.ajax({
-                    url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
+                    url: `${backendSrc}/pageMyGallery.php`,
                     type: "PUT",
                     data: {
                         title: title,

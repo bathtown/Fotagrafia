@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="../css/general.css">
     <link rel="stylesheet" type="text/css" href="../css/myPicture.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../js/feature.js" type="text/javascript"></script>
     <base target="_self">
     <title>myGallery</title>
     <script>
@@ -26,7 +27,7 @@
             async function checkUserAuthority() {
                 await $.ajax({
                     method: "POST",
-                    url: "http://localhost:8080/backend/PHP/api/token.php",
+                    url: `${backendSrc}/token.php`,
                     headers: { Authorization: sessionStorage.getItem("token") }
                 })
             }
@@ -207,7 +208,7 @@
             </div>
         </section>
     </footer>
-    <script src="../js/feature.js" type="text/javascript"></script>
+
     <script>
 
         $(function () {
@@ -220,10 +221,10 @@
                 window.location.href += '?page=1'
                 return
             }
-            
+
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
+                url: `${backendSrc}/pageMyGallery.php`,
                 headers: { Authorization: sessionStorage.getItem("token") },
                 data: { page: getQueryVariable('page') }
             }).done((data) => {
@@ -255,7 +256,7 @@
                 for (let index = 0; index < imgs.length; index++) {
                     let imgID = imgs[index].id
                     $('img').eq(index).attr({
-                        'src': `http://localhost:8080/backend/travel-images/large/${imgs[index].src}`,
+                        'src': `${backendImgSrc}/${imgs[index].src}`,
                         'data-id': imgID,
                     });
                     $('.message h1').eq(index).text(imgs[index].title);
@@ -283,7 +284,7 @@
                         action: function () {
                             $.ajax({
                                 method: "DELETE",
-                                url: "http://localhost:8080/backend/PHP/api/pageMyGallery.php",
+                                url: `${backendSrc}/pageMyGallery.php`,
                                 headers: { Authorization: sessionStorage.getItem("token") },
                                 data: { imgID: imgID },
                             }).done((data) => {

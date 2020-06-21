@@ -47,6 +47,10 @@
 2. Log in 和 My Account 显示闪烁
 3. search page 亮晶晶
 
+## Bugs
+
+1. city name same
+
 ## Backend
 
 ### ToDo Lists

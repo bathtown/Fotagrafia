@@ -231,7 +231,7 @@
         function getHotChoice() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/imgChoice.php",
+                url: `${backendSrc}/imgChoice.php`,
             }).done((data) => {
                 for (let index = 0; index < 3; index++) {
                     let content = data.content[index]
@@ -256,7 +256,7 @@
 
             return $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/pageBrowser.php",
+                url: `${backendSrc}/pageBrowser.php`,
                 data: { content: content, city: city, country: country, page: page }
             }).done((data) => {
                 return data
@@ -269,7 +269,7 @@
         function getRadomImg() {
             return $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
+                url: `${backendSrc}/imgRandom.php`,
                 data: { num: 8 }
             }).done((data) => {
                 return data;
@@ -304,7 +304,7 @@
 
             for (let index = 0; index < data.imgs.length; index++) {
                 $('img').eq(index).attr({
-                    'src': `http://localhost:8080/backend/travel-images/large/${data.imgs[index].src}`,
+                    'src': `${backendImgSrc}/${data.imgs[index].src}`,
                     'data-id': data.imgs[index].id,
                 });
             }
@@ -324,6 +324,39 @@
                 else $(this).parents('.picContain').show()
             })
         }
+
+        // swipe right to show aside, swipe left to show filter
+        function browserAsideAppear() {
+            const browserAside = document.getElementsByClassName("browserAside")[0];
+            const mainPic = document.getElementsByClassName("mainPic")[0];
+            const browserResult = document.getElementsByClassName("browserResult")[0];
+            const pageNum = document.getElementsByClassName("pageNum")[0];
+            const threeFilter = document.getElementById("threeFilter");
+
+            mainPic.addEventListener("swipeRight", function () {
+                browserAside.style.display = "flex";
+                browserResult.style.display = "none";
+                pageNum.style.display = "none";
+            });
+
+            mainPic.addEventListener("swipeLeft", function () {
+                threeFilter.style.transform = "translateX(0)";
+            });
+
+            threeFilter.addEventListener("swipeRight", function () {
+                threeFilter.style.transform = "translateX(1000px)";
+            });
+
+            browserAside.addEventListener("swipeLeft", function () {
+                browserAside.style.display = "none";
+                browserResult.style.display = "flex";
+                pageNum.style.display = "initial";
+            });
+        }
+        // condition
+        if (document.getElementsByClassName("browserAside")[0])
+            browserAsideAppear();
+
     </script>
 
 </body>

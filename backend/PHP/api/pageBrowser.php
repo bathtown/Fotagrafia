@@ -28,7 +28,7 @@
   $start = (mysql_entities_fix_string($_GET['page']) - 1) * 8;
 
   // get imgs array
-  $img_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content' LIMIT $start, 8";
+  $img_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content' ORDER BY ImageID LIMIT $start, 8";
   $page_query = "SELECT PATH, ImageID FROM travelimage WHERE Country_RegionCodeISO='$countryiso' AND CityCode='$cityCode' AND Content='$content'";
 
   $page_result = $conn->query($page_query);

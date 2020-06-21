@@ -1,14 +1,5 @@
-// for safari, to make hover available
-document.body.addEventListener('touchstart', function () { }, false);
-
-// home page
-// goto top
-function goTop () {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
+const backendSrc = 'http://localhost:8080/backend/PHP/api';
+const backendImgSrc = 'http://localhost:8080/backend/travel-images/large';
 
 // switch description and properties
 function switchDeAndPro () {
@@ -31,10 +22,6 @@ function switchDeAndPro () {
         choice1.className = "";
         choice2.className = "selected";
     };
-}
-// condition
-if (document.getElementsByClassName("de_choice de_myProperties")[0]) {
-    switchDeAndPro();
 }
 
 //my hearts & my gallery pages
@@ -120,56 +107,6 @@ function buttonAppear () {
     }
 }());
 
-// browser page
-// swipe right to show aside, swipe left to show filter
-function browserAsideAppear () {
-    const browserAside = document.getElementsByClassName("browserAside")[0];
-    const mainPic = document.getElementsByClassName("mainPic")[0];
-    const browserResult = document.getElementsByClassName("browserResult")[0];
-    const pageNum = document.getElementsByClassName("pageNum")[0];
-    const threeFilter = document.getElementById("threeFilter");
-
-    mainPic.addEventListener("swipeRight", function () {
-        browserAside.style.display = "flex";
-        browserResult.style.display = "none";
-        pageNum.style.display = "none";
-    });
-
-    mainPic.addEventListener("swipeLeft", function () {
-        threeFilter.style.transform = "translateX(0)";
-    });
-
-    threeFilter.addEventListener("swipeRight", function () {
-        threeFilter.style.transform = "translateX(1000px)";
-    });
-
-    browserAside.addEventListener("swipeLeft", function () {
-        browserAside.style.display = "none";
-        browserResult.style.display = "flex";
-        pageNum.style.display = "initial";
-    });
-}
-// condition
-if (document.getElementsByClassName("browserAside")[0])
-    browserAsideAppear();
-
-// login page
-function hintRegister () {
-    var hintIt = document.getElementById("hintIt");
-    let counter = setInterval(function () {
-        if (hintIt.style.display == "inline-block")
-            hintIt.style.display = "none";
-        else
-            hintIt.style.display = "inline-block";
-    }, 400);
-    setTimeout(function () {
-        clearInterval(counter)
-    }, 1500);
-}
-if (document.getElementById("hintIt")) {
-    hintRegister();
-}
-
 // 提示框 warning, success, error
 function myAlert (type, content) {
     if (type === 'warning') $.dialog({ title: '⚠ Warning', content: content, type: 'orange', backgroundDismiss: true });
@@ -215,6 +152,13 @@ $(function () {
         if ($("#myGallery").length) $(".hinter").text("My Gallery | try ←👆");
         if ($('#browser').length) $(".hinter").text(" try 👆→ | Browser | try ←👆");
     }
+
+    // for safari, to make hover available
+    document.body.addEventListener('touchstart', function () { }, false);
+    // condition
+    if (document.getElementsByClassName("de_choice de_myProperties")[0]) {
+        switchDeAndPro();
+    }
 })
 
 // open details
@@ -225,6 +169,7 @@ function openDetail (event) {
     window.location.href = `../html/details.html?id=${id}`;
 }
 
+// getQueryVariable
 function getQueryVariable (variable) {
     const query = window.location.search.substring(1);
     const vars = query.split("&");
@@ -304,6 +249,8 @@ function searchImg (choice, text, page = 1) {
     }).done((data) => {
         return data;
     }).fail((err) => {
+        console.log(err.responseText);
+        
         if (err.status === 0) { myAlert('error', 'Connection refused!'); return; }
         myAlert('error', JSON.parse(err.responseText).message);
     });

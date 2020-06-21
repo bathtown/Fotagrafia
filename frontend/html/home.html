@@ -141,6 +141,13 @@
             ImgsFit();
         });
 
+        // goto top
+        function goTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
 
         function ImgsFit() {
             ImgFitDiv(".pin img", 3, 4);
@@ -150,13 +157,13 @@
         function getPhotos() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/imgHot.php",
+                url: `${backendSrc}/imgHot.php`,
                 dataType: 'text',
             }).done((data) => {
                 var imgs = JSON.parse(data)
 
                 $('img').eq(0).attr({
-                    'src': `http://localhost:8080/backend/travel-images/large/${imgs[0].src}`,
+                    'src': `${backendImgSrc}/${imgs[0].src}`,
                     'data-id': imgs[0].id,
                 });
                 // <section class="pin">
@@ -166,7 +173,7 @@
                 // </section>
                 for (let index = 1; index < imgs.length; index++) {
                     $('img').eq(index).attr({
-                        'src': `http://localhost:8080/backend/travel-images/large/${imgs[index].src}`,
+                        'src': `${backendImgSrc}/${imgs[index].src}`,
                         'data-id': imgs[index].id,
                     });
                     $('.pin h1').eq(index - 1).text(imgs[index].title);
@@ -180,17 +187,17 @@
         function getRadomPhotos() {
             $.ajax({
                 method: "GET",
-                url: "http://localhost:8080/backend/PHP/api/imgRandom.php",
+                url: `${backendSrc}/imgRandom.php`,
                 data: { num: 7 }
             }).done((data) => {
                 var imgs = data.imgs
                 $('img').eq(0).attr({
-                    'src': `http://localhost:8080/backend/travel-images/large/${imgs[0].src}`,
+                    'src': `${backendImgSrc}/${imgs[0].src}`,
                     'data-id': imgs[0].id,
                 });
                 for (let index = 1; index < imgs.length; index++) {
                     $('img').eq(index).attr({
-                        'src': `http://localhost:8080/backend/travel-images/large/${imgs[index].src}`,
+                        'src': `${backendImgSrc}/${imgs[index].src}`,
                         'data-id': imgs[index].id,
                     });
                     $('.pin h1').eq(index - 1).text(imgs[index].title);
