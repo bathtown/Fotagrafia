@@ -1,5 +1,5 @@
-const backendSrc = 'http://localhost/Fotagrafia/backend/PHP/api';
-const backendImgSrc = 'http://localhost/backend/travel-images/large';
+const backendSrc = 'http://localhost:8080/backend/PHP/api';
+const backendImgSrc = 'http://localhost:8080/backend/travel-images/large';
 
 // switch description and properties
 function switchDeAndPro () {
@@ -242,7 +242,7 @@ function searchImg (choice, text, page = 1) {
 
     return $.ajax({
         method: "GET",
-        url: "http://localhost:8080/backend/PHP/api/imgSearch.php",
+        url: `${backendSrc}/imgSearch.php`,
         data: { choice: choice, text: text, page: page }
     }).done((data) => {
         return data;
