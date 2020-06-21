@@ -292,7 +292,7 @@ function pageNumClick (pageNum) {
             }
             case '>': {
                 if ((getQueryVariable('page') == pageNum)) myAlert('warning', 'It\'s the last page 🙄')
-                else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) - 1))
+                else window.location.href = window.location.href.replace(/=[0-9]*/, '=' + ((Number)(getQueryVariable('page')) + 1))
                 break;
             }
             case '>>': {
