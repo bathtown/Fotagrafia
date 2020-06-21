@@ -1,6 +1,6 @@
   <?php
 
-  $frontendOrigin = 'http://127.0.0.1:5500';
+  $frontendOrigin = 'http://localhost';
 
   // accessable headers
   header("Access-Control-Allow-Origin: $frontendOrigin");

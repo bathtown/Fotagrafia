@@ -5,8 +5,10 @@
 ## 说明
 
 1. 这是 fudan _19ss_web 基础课程\_Project_01_ 旅游照片分享平台（下）
-2. my page:
+2. my page: fail 😥
 3. my repository: **[Fotagrafia 🗽](https://github.com/bathtown/Fotagrafia)**
+4. set frontend port at <http://localhost/frontend/>
+5. set backend port at <http://localhost:8080/backend/>
 
 ## 评分项
 
@@ -39,17 +41,7 @@
 10. Bonus
     - [x] [密码加盐](backend/PHP/api/pageRegister.php)
     - [x] [前端框架](#前端框架使用)
-    - [ ] 部署服务器
-
-## Drawbacks
-
-1. 未使用缩略图
-2. Log in 和 My Account 显示闪烁
-3. search page 亮晶晶
-
-## Bugs
-
-1. city name same
+    - [ ] 部署服务器 😔
 
 ## Backend
 
@@ -111,3 +103,15 @@
   <link rel="stylesheet" type="text/css" href="../css/general.css" />
   <link rel="stylesheet" type="text/css" href="../css/register.css" />
   ```
+
+## Improvement
+
+### Drawbacks
+
+1. 未使用缩略图
+2. Log in 和 My Account 显示闪烁
+3. search page 亮晶晶
+
+### Bugs
+
+1. Cities with the same name
