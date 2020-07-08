@@ -5,8 +5,7 @@
 ## 说明
 
 1. 这是 fudan _19ss_web 基础课程\_Project_01_ 旅游照片分享平台（下）
-2. my page: **Fotagrafia 🗽** <http://39.98.130.199/Fotagrafia/frontend/>
-3. my repository: **[Fotagrafia 🗽](https://github.com/bathtown/Fotagrafia)**
+2. my repository: **[Fotagrafia 🗽](https://github.com/bathtown/Fotagrafia)**
 
 ## 评分项
 
