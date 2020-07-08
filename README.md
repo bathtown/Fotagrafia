@@ -1,5 +1,6 @@
 # Fotagrafia 🗽
 
+> For more features, please visit **[FotagrafiaPro 🗽](https://github.com/bathtown/FotagrafiaPro)**  
 > project 01 repository: **[Fotagrafia-frontend](https://github.com/bathtown/Fotagrafia-frontend)**
 
 ## 说明
